@@ -51,7 +51,8 @@ def create_app(instance_path=None, config={}):
     configure_authentication(app)
     configure_templating(app)
     configure_error_pages(app)
-    configure_sentry(app)
+    if config.get('SENTRY_DSN'):
+        configure_sentry(app)
     db.init_app(app)
     return app
 
