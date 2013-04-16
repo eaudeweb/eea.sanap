@@ -1,0 +1,46 @@
+{% extends "frame" %}
+{% from "_bits.html" import flash_messages %}
+
+{% block frame_title %} - Virtual Library{% block title %}{% endblock %}{% endblock %}
+
+    {% block head %}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+
+    {% assets "packed_css" %}
+      <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+
+    {% assets "packed_js" %}
+      <script src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% block scripts %}{% endblock %}
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40087299-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+
+    {% endblock head %}
+
+    {% block login %}
+    {% if g.user.is_anonymous() %}
+      <a href="{{ url_for('auth.login') }}">login</a>
+      {% else %}
+      <a href="{{ url_for('auth.logout') }}">logout ({{ g.user.id }})</a>
+      {% endif %}
+    {% endblock %}
+
+    {% block frame_content %}
+    <div class="message information">
+      {% block flash_messages %} {{ flash_messages() }} {% endblock %}
+    </div>
+    {% block content %}{% endblock %}
+    {% endblock frame_content %}

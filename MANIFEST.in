@@ -1,0 +1,3 @@
+include *.txt *.rst
+recursive-include sanap *
+global-exclude *py[co]
