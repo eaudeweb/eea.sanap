@@ -10,7 +10,7 @@ from raven.handlers.logging import SentryHandler
 
 from sanap.models import db
 from sanap.auth import login_manager
-from sanap import auth, frameservice
+from sanap import auth, frameservice, survey
 
 from .assets import BUNDLE_JS, BUNDLE_CSS
 
@@ -35,6 +35,7 @@ DEFAULT_CONFIG = {
 
 BLUEPRINTS = (
     auth,
+    survey,
 )
 
 
