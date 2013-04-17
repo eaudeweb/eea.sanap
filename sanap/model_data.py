@@ -76,3 +76,13 @@ COUNTRIES = (
     ('SK', 'Slovakia'),
     ('TR', 'Turkey'),
 )
+
+AGREEMENT = (
+    ('strongly agree', 'strongly agree'),
+    ('agree', 'agree'),
+    ('neutral', 'neutral'),
+    ('disagree', 'disagree'),
+    ('strongly disagree', 'strongly disagree'),
+    ('don\'t know', 'don\'t know'),
+)
+
