@@ -9,7 +9,6 @@ app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 
 def main():
-    global app
     manager = script.Manager(app)
     manager.run()
 
