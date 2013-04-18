@@ -9,8 +9,8 @@ from flask.ext import wtf
 from flask.ext import login as flask_login
 
 
-from sanap.forms import LoginForm
-from sanap.models import User
+from sanap.forms import LoginForm, RegisterForm
+from sanap.models import User, Invite
 from sanap import plugldap
 
 
@@ -27,6 +27,7 @@ def load_user_in_g():
 def initialize_app(app):
     app.register_blueprint(auth)
     app.before_request(load_user_in_g)
+
 
 def get_user(userid):
     """ Get or create user document in local db, using info in LDAP """
@@ -61,9 +62,30 @@ def login():
             return resp
         else:
             flash('Bad username or password.')
-    # if request.args.get("next"):
-        # flash("You need to login in order to continue.")
     return render_template('login.html', form=form)
+
+
+@auth.route('/access/<string:key>', methods=['GET', 'POST'])
+def register(key):
+    try:
+        invite = Invite.objects.get(key=key)
+    except Invite.DoesNotExist:
+        flash(("Your access link appears to be incorrect."
+               " Please make you sure you coppied the full URL."))
+        return redirect(url_for('auth.unauthorized'))
+    form = RegisterForm()
+    if form.validate_on_submit():
+        email = request.form['email']
+        user, created = User.objects.get_or_create(invite=invite, id=email,
+                    defaults={'first_name': request.form['first_name'],
+                              'last_name': request.form['last_name'],
+                              'email': email,
+                              'organisation': request.form['organisation'],
+                              'phone_number': request.form['phone_number'],
+                    })
+        flask_login.login_user(user)
+        return redirect(url_for('survey.contact_assessment', key=key))
+    return render_template("register.html", form=form)
 
 
 @auth.route("/logout")
@@ -75,12 +97,14 @@ def logout():
     resp.set_cookie("__ac", "")
     return resp
 
+
 def get_current_user_roles():
     user = flask_login.current_user
     if user.is_anonymous():
         return []
     else:
         return user.roles
+
 
 def requires_role(role):
     def wrapper(f):
@@ -91,6 +115,7 @@ def requires_role(role):
             return f(*args, **kwargs)
         return wrapped
     return wrapper
+
 
 @auth.route("/unauthorized")
 def unauthorized():

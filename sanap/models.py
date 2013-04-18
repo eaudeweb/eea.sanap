@@ -10,7 +10,7 @@ db = MongoEngine()
 
 class User(db.Document, UserMixin):
 
-    id = db.StringField(max_length=16, required=True, primary_key=True)
+    id = db.StringField(max_length=64, required=True, primary_key=True)
 
     first_name = db.StringField(max_length=128, required=True)
 
@@ -22,11 +22,15 @@ class User(db.Document, UserMixin):
 
     organisation = db.StringField(max_length=128)
 
+    country = db.StringField(choices=COUNTRIES)
+
     last_login = db.DateTimeField()
 
     country = db.StringField(max_length=128, choices=COUNTRIES)
 
     roles = db.ListField(db.StringField(), default=[])
+
+    invite = db.ReferenceField('Invite', default=None)
 
     def get_id(self):
         return self.id
@@ -76,3 +80,11 @@ class Survey(db.Document):
 
     part1_comments = db.StringField(max_length=2056)
 
+
+class Invite(db.Document):
+
+    key = db.StringField(max_length=36)
+
+    country = db.StringField(choices=COUNTRIES)
+
+    invitee = db.ReferenceField(User)
