@@ -2,7 +2,6 @@
 BUNDLE_JS = (
     'js/select2/select2.js',
     'js/main.js',
-    'js/literature.js'
 )
 
 

@@ -1,9 +1,92 @@
 {% extends "layout.html" %}
+{% from "_formhelpers.html" import render_field, render_other %}
 
 
 {% block content %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir">
+
+  <fieldset>
+
+    <legend>Part I: Assessing statements</legend>
+
+    <div class="row">
+      {{ render_field(form.lead_organisation) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.organisations, class_='tagit') }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.public_awareness) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_need, class_='tagit') }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.willingness, class_='tagit') }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.triggers) }}
+
+      <div class="other">
+        <a id="trigger-add">Add trigger</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.knowledge) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.uncertainties) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.goals) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.integration) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.integration_examples) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.mitigation) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.mitigation_examples) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.transnational_cooperation) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.transnational_cooperation_examples) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.monitoring) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.barriers) }}
+    </div>
+
+    <div class="row lastOfType">
+      <button type="submit">Submit</button>
+    </div>
+
+  </fieldset>
 
 </form>
 

@@ -86,3 +86,33 @@ AGREEMENT = (
     ('don\'t know', 'don\'t know'),
 )
 
+
+TRIGGERS = (
+    ('Extreme weather events', 'Extreme weather events'),
+    ('Damage costs', 'Damage costs'),
+    ('UNFCCC process', 'UNFCCC process'),
+    ('EU policies', 'EU policies'),
+    ('Adaptation in neighbouring countries', 'Adaptation in neighbouring countries'),
+    ('Scientific research', 'Scientific research'),
+    ('Public pressure', 'Public pressure'),
+    ('Lobbying from private sector', 'Lobbying from private sector'),
+    ('Forerunner sectors', 'Forerunner sectors'),
+    ('Media coverage', 'Media coverage'),
+)
+
+BARRIERS = (
+    ('Lack of political commitment/will', 'Lack of political commitment/will'),
+    ('Unclear responsibilities', 'Unclear responsibilities'),
+    ('Limited cooperation among stakeholders', 'Limited cooperation among stakeholders'),
+    ('Lack of (financial, human) resources', 'Lack of (financial, human) resources'),
+    ('Uncertainties', 'Uncertainties'),
+    ('Lack of knowledge generation', 'Lack of knowledge generation'),
+    ('Lack of knowledge exchange', 'Lack of knowledge exchange'),
+    ('Lack of data such as socio-economic, climate and other physical data', 'Lack of data such as socio-economic, climate and other physical data'),
+    ('Limited capacity in the policy, practitioner and/or research communities', 'Limited capacity in the policy, practitioner and/or research communities'),
+    ('Conflicting values and interests', 'Conflicting values and interests'),
+    ('No adequate adaptation options available', 'No adequate adaptation options available'),
+    ('Legal issues (e.g. conflicting legislations)', 'Legal issues (e.g. conflicting legislations)')
+)
+
+

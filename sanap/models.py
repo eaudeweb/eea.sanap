@@ -44,7 +44,7 @@ class Survey(db.Document):
 
     organisations = db.ListField(db.StringField(), default=[])
 
-    public_awareness = db.StringField(choices=AGREEMENT)
+    public_awareness = db.StringField()
 
     adaptation_need = db.StringField(choices=AGREEMENT)
 
