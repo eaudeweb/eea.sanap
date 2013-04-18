@@ -84,7 +84,7 @@ def register(key):
                               'phone_number': request.form['phone_number'],
                     })
         flask_login.login_user(user)
-        return redirect(url_for('survey.add'))
+        return redirect(url_for('survey.edit'))
     return render_template("register.html", form=form)
 
 
