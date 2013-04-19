@@ -193,7 +193,12 @@ ADAPTATION_ACTIONS_DATA = (
 ADAPTATION_ACTIONS = [(i, i) for i in ADAPTATION_ACTIONS_DATA]
 
 
-
+MONITOR_REPORT_EVALUATE_DATA = (
+    'Monitoring',
+    'Reporting',
+    'Evaluation',
+)
+MONITOR_REPORT_EVALUATE = [(i, i) for i in MONITOR_REPORT_EVALUATE_DATA]
 
 
 

@@ -2,11 +2,21 @@ from flask.ext import wtf
 from flask.ext.mongoengine.wtf import model_form
 
 from sanap.models import Survey
-from sanap.forms.fields import MultiCheckboxField, expand_choices
+from sanap.forms.fields import (MultiCheckboxField, expand_choices,
+    MatrixCheckboxWidget)
 from sanap.model_data import *
 
 
 _SurveyForm = model_form(Survey)
+
+
+class MonitorReportEvaluateForm(wtf.Form):
+
+    not_planed_yet = MultiCheckboxField()
+
+    under_development = MultiCheckboxField()
+
+    implemented = MultiCheckboxField()
 
 
 class SurveyForm(_SurveyForm):
@@ -66,6 +76,9 @@ class SurveyForm(_SurveyForm):
 
     adaptation_actions = MultiCheckboxField(choices=ADAPTATION_ACTIONS,
         validators=[wtf.validators.optional()])
+
+    monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
+        widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE))
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

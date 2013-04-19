@@ -309,3 +309,7 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     font-size: 18px;
     text-align: center;
 }
+
+.matrix label {
+    display: none;
+}

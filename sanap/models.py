@@ -119,6 +119,8 @@ class Survey(db.Document):
 
     integrating_plans = db.StringField(max_length=512)
 
+    monitor_report_evaluate = db.DictField(default={})
+
     part2_comments = db.StringField(max_length=512)
 
 
