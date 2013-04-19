@@ -19,7 +19,7 @@ class SurveyForm(_SurveyForm):
     adaptation_need = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    triggers = MultiCheckboxField(choices=TRIGGERS, pre_validate=False,
+    triggers = MultiCheckboxField(choices=TRIGGERS,
         validators=[wtf.validators.optional()])
 
     knowledge = wtf.RadioField(choices=AGREEMENT,
@@ -37,9 +37,35 @@ class SurveyForm(_SurveyForm):
     monitoring = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    barriers = MultiCheckboxField(choices=BARRIERS, pre_validate=False,
+    barriers = MultiCheckboxField(choices=BARRIERS,
         validators=[wtf.validators.optional()])
 
+    horizontal_integration = wtf.RadioField(choices=EFFECTIVENESS,
+        validators=[wtf.validators.optional()])
+
+    vertical_integration = wtf.RadioField(choices=EFFECTIVENESS,
+        validators=[wtf.validators.optional()])
+
+    assessment = wtf.RadioField(choices=STATUS,
+        validators=[wtf.validators.optional()])
+
+    needed_info = MultiCheckboxField(choices=BARRIERS,
+        validators=[wtf.validators.optional()])
+
+    assessment_update = wtf.RadioField(choices=PLANNING,
+        validators=[wtf.validators.optional()])
+
+    adaptation_options = wtf.RadioField(choices=STATUS,
+        validators=[wtf.validators.optional()])
+
+    adaptation_scale = MultiCheckboxField(choices=ADAPTATION_SCALE,
+        validators=[wtf.validators.optional()])
+
+    identified_options = MultiCheckboxField(choices=IDENTIFIED_OPTIONS,
+        validators=[wtf.validators.optional()])
+
+    adaptation_actions = MultiCheckboxField(choices=ADAPTATION_ACTIONS,
+        validators=[wtf.validators.optional()])
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

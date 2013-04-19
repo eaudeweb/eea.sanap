@@ -1,7 +1,7 @@
 $(function () {
 
-  $('#trigger-add').on('click', function () {
-    var trigger = prompt('Add a new trigger');
+  $('.add-item').on('click', function () {
+    var trigger = prompt($(this).data('title'));
     if (!trigger) {
         return;
     }
@@ -17,7 +17,7 @@ $(function () {
 
     li.append(input)
     li.append(label);
-    $('#triggers').append(li);
+    $(this).parents('.row').find('ul').append(li);
   });
 
 });

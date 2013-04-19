@@ -34,7 +34,8 @@
       {{ render_field(form.triggers) }}
 
       <div class="other">
-        <a id="trigger-add">Add trigger</a>
+        <a class="add-item" data-title="Add trigger">
+          Add trigger</a>
       </div>
     </div>
 
@@ -80,7 +81,118 @@
 
     <div class="row">
       {{ render_field(form.barriers) }}
+     <div class="other">
+        <a class="add-item" data-title="Add barrier">
+          Add barrier</a>
+      </div>
     </div>
+
+    <div class="row">
+      {{ render_field(form.part1_comments) }}
+    </div>
+
+  </fieldset>
+  <fieldset>
+
+    <legend>Part II: Assessing the adaptation policy process</legend>
+
+    <div class="row">
+      {{ render_field(form.horizontal_integration) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.vertical_integration) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.horizontal_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.vertical_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.crucial_in_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.challenging_in_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_methodological_approach) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.needed_info) }}
+      <div class="other">
+        <a class="add-item" data-title="Add more info">
+          Add more info</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_update) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_update) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_options) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_scale) }}
+      <div class="other">
+        <a class="add-item" data-title="Add more adaptation scale">
+          Add more adaptation scale</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.identified_options) }}
+      <div class="other">
+        <a class="add-item" data-title="Add more identified options">
+          Add more identified options</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.options_comments) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_actions) }}
+      <div class="other">
+        <a class="add-item" data-title="Add more adaptation actions">
+          Add more adaptation actions</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.practice_example) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.integrating_plans) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part2_comments) }}
+    </div>
+
+
 
     <div class="row lastOfType">
       <button type="submit">Submit</button>

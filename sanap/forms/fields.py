@@ -4,7 +4,7 @@ from flask.ext import wtf
 class MultiCheckboxField(wtf.SelectMultipleField):
 
     def __init__(self, *args, **kwargs):
-        self.pre_validate_option = kwargs.pop('pre_validate', True)
+        self.pre_validate_option = kwargs.pop('pre_validate', False)
         super(MultiCheckboxField, self).__init__(*args, **kwargs)
 
     def pre_validate(self, form):

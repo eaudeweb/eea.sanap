@@ -44,7 +44,7 @@ class Survey(db.Document):
 
     country = db.StringField(max_length=128, choices=COUNTRIES)
 
-    lead_organisation = db.StringField(max_length=256)
+    lead_organisation = db.StringField(max_length=512)
 
     organisations = db.ListField(db.StringField(), default=[])
 
@@ -54,7 +54,7 @@ class Survey(db.Document):
 
     willingness = db.StringField(choices=AGREEMENT)
 
-    triggers = db.ListField(db.StringField(max_length=256), default=[])
+    triggers = db.ListField(db.StringField(max_length=512), default=[])
 
     knowledge = db.StringField(choices=AGREEMENT)
 
@@ -76,9 +76,50 @@ class Survey(db.Document):
 
     monitoring = db.StringField(choices=AGREEMENT)
 
-    barriers = db.ListField(db.StringField(max_length=256), default=[])
+    barriers = db.ListField(db.StringField(), default=[])
 
     part1_comments = db.StringField(max_length=2056)
+
+    # part 2
+    horizontal_integration = db.StringField(choices=EFFECTIVENESS)
+
+    vertical_integration = db.StringField(choices=EFFECTIVENESS)
+
+    horizontal_coordination = db.StringField(max_length=512)
+
+    vertical_coordination = db.StringField(max_length=512)
+
+    crucial_in_coordination = db.StringField(max_length=512)
+
+    challenging_in_coordination = db.StringField(max_length=512)
+
+    assessment = db.StringField(choices=STATUS)
+
+    #TODO sectors_assessments
+
+    assessment_coordination = db.StringField(max_length=512)
+
+    assessment_methodological_approach = db.StringField(max_length=512)
+
+    needed_info = db.ListField(db.StringField(), default=[])
+
+    assessment_update = db.StringField(choices=PLANNING)
+
+    adaptation_options = db.StringField(choices=STATUS)
+
+    adaptation_scale = db.ListField(db.StringField(), default=[])
+
+    identified_options = db.ListField(db.StringField(), default=[])
+
+    options_comments = db.StringField(max_length=512)
+
+    adaptation_actions = db.ListField(db.StringField(), default=[])
+
+    practice_example = db.StringField(max_length=512)
+
+    integrating_plans = db.StringField(max_length=512)
+
+    part2_comments = db.StringField(max_length=512)
 
 
 class Invite(db.Document):
@@ -88,3 +129,5 @@ class Invite(db.Document):
     country = db.StringField(choices=COUNTRIES)
 
     invitee = db.ReferenceField(User)
+
+    assessment_scale = db.ListField(db.StringField(), default=[])
