@@ -19,6 +19,45 @@ class MonitorReportEvaluateForm(wtf.Form):
     implemented = MultiCheckboxField()
 
 
+class MainInstrumentsForm(wtf.Form):
+
+    agriculture = MultiCheckboxField()
+
+    forestry = MultiCheckboxField()
+
+    biodiversity = MultiCheckboxField()
+
+    human_health = MultiCheckboxField()
+
+    water = MultiCheckboxField()
+
+    marine_fisheries = MultiCheckboxField()
+
+    coastal_areas = MultiCheckboxField()
+
+    mountain_areas = MultiCheckboxField()
+
+    tourism = MultiCheckboxField()
+
+    transport = MultiCheckboxField()
+
+    energy = MultiCheckboxField()
+
+    built_environment = MultiCheckboxField()
+
+    spatial_planning = MultiCheckboxField()
+
+    civil_protection = MultiCheckboxField()
+
+    industry = MultiCheckboxField()
+
+    business_services = MultiCheckboxField()
+
+    financial_insurance = MultiCheckboxField()
+
+    cultural_heritage = MultiCheckboxField()
+
+
 class SurveyForm(_SurveyForm):
 
     organisations = wtf.TextField()
@@ -80,6 +119,13 @@ class SurveyForm(_SurveyForm):
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
         widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE))
 
+    instruments = wtf.RadioField(choices=INSTRUMENTS,
+        validators=[wtf.validators.optional()])
+
+    main_instruments = wtf.FormField(MainInstrumentsForm,
+        widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments'))
+
+
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)
         expand_choices(self.triggers)
@@ -93,12 +139,45 @@ class SurveyForm(_SurveyForm):
         if organisations:
             survey.organisations = organisations
 
-        adaptation_need = self.data['adaptation_need'].split(',')
-        if organisations:
-            survey.adaptation_need = adaptation_need
+        survey.public_awareness = self.data['public_awareness']
+        survey.adaptation_need = self.data['adaptation_need']
+        survey.willingness = self.data['willingness']
+        survey.triggers = self.data['triggers']
+        survey.knowledge = self.data['knowledge']
+        survey.uncertainties = self.data['uncertainties']
+        survey.goals = self.data['goals']
+        survey.integration = self.data['integration']
+        survey.integration_examples = self.data['integration_examples']
+        survey.mitigation = self.data['mitigation']
+        survey.mitigation_examples = self.data['mitigation_examples']
+        survey.transnational_cooperation = self.data['transnational_cooperation']
+        survey.transnational_cooperation_examples = self.data['transnational_cooperation_examples']
+        survey.monitoring = self.data['monitoring']
+        survey.barriers = self.data['barriers']
+        survey.part1_comments = self.data['part1_comments']
+        survey.horizontal_integration = self.data['horizontal_integration']
+        survey.vertical_integration = self.data['vertical_integration']
+        survey.horizontal_coordination = self.data['horizontal_coordination']
+        survey.vertical_coordination = self.data['vertical_coordination']
+        survey.crucial_in_coordination = self.data['crucial_in_coordination']
+        survey.challenging_in_coordination = self.data['challenging_in_coordination']
+        survey.assessment = self.data['assessment']
+        survey.assessment_coordination = self.data['assessment_coordination']
+        survey.assessment_methodological_approach = self.data['assessment_methodological_approach']
+        survey.needed_info = self.data['needed_info']
+        survey.assessment_update = self.data['assessment_update']
+        survey.adaptation_options = self.data['adaptation_options']
+        survey.adaptation_scale = self.data['adaptation_scale']
+        survey.identified_options = self.data['identified_options']
 
-        willingness = self.data['adaptation_need'].split(',')
-        if willingness:
-            survey.willingness = adaptation_need
+        options_comments = self.data['options_comments'].split(',')
+        if options_comments:
+            survey.options_comments = options_comments
+
+        survey.adaptation_actions = self.data['adaptation_actions']
+        survey.practice_example = self.data['practice_example']
+        survey.monitor_report_evaluate = self.data['monitor_report_evaluate']
+        survey.part2_comments = self.data['part2_comments']
+        survey.instruments = self.data['instruments']
 
         return survey

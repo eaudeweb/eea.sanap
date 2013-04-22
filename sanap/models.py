@@ -123,6 +123,13 @@ class Survey(db.Document):
 
     part2_comments = db.StringField(max_length=512)
 
+    # part 3
+    # TODOsectors
+
+    main_instruments = db.DictField(default={})
+
+    main_instruments_considered = db.StringField(max_length=512)
+
 
 class Invite(db.Document):
 

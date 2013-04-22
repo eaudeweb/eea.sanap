@@ -201,6 +201,24 @@ MONITOR_REPORT_EVALUATE_DATA = (
 MONITOR_REPORT_EVALUATE = [(i, i) for i in MONITOR_REPORT_EVALUATE_DATA]
 
 
+INSTRUMENTS_DATA = (
+    'yes',
+    'under development',
+    'no',
+    'don\'t know',
+)
+INSTRUMENTS = [(i, i) for i in INSTRUMENTS_DATA]
+
+
+MAIN_INSTRUMENTS_DATA = (
+    'Information (e.g. dissemination, education, guidelines)',
+    'Main-streaming',
+    'Financial support (e.g. subsidies, taxes)',
+    'Regulation',
+    'Partnering instrum-ents (e.g. PPPs)',
+    'Action plans',
+)
+MAIN_INSTRUMENTS = [(i, i) for i in MAIN_INSTRUMENTS_DATA]
 
 
 

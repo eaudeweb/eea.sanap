@@ -28,7 +28,23 @@ def expand_choices(field):
     return field
 
 
-class MatrixCheckboxWidget():
+class MatrixBaseWidget():
+
+    def update_data(self, form_field, data):
+        for value in form_field.data.values():
+            if not value: continue
+            for item in value:
+                if item not in [i[0] for i in data]: data.append((item, item))
+        return data
+
+    def update_keys(self, form_field, data_keys):
+        for value in form_field.data.values():
+            if not value: continue
+            for item in value:
+                if item not in data_keys: data_keys.append(item)
+        return data_keys
+
+class MatrixCheckboxWidget(MatrixBaseWidget):
 
     def __init__(self, data, *args, **kwargs):
         self.data = data
@@ -37,6 +53,8 @@ class MatrixCheckboxWidget():
     def __call__(self, form_field, **kwargs):
         fields = [f for f in form_field if 'csrf_token' not in f.id ]
         data_keys = [i[0] for i in self.data]
+        data_keys = self.update_keys(form_field, data_keys)
+        self.data = self.update_data(form_field, self.data)
 
         page = markup.page()
         page.table(id=self.id, class_='matrix')
