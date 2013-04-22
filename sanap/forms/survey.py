@@ -83,9 +83,6 @@ class SurveyForm(_SurveyForm):
     integration = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    monitoring = wtf.RadioField(choices=AGREEMENT,
-        validators=[wtf.validators.optional()])
-
     barriers = MultiCheckboxField(choices=BARRIERS,
         validators=[wtf.validators.optional()])
 

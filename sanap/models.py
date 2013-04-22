@@ -44,6 +44,10 @@ class Survey(db.Document):
 
     country = db.StringField(max_length=128, choices=COUNTRIES)
 
+    user = db.ReferenceField(User)
+
+    for_eea = db.BooleanField(default=True)
+
     lead_organisation = db.StringField(max_length=512)
 
     organisations = db.ListField(db.StringField(), default=[])
@@ -60,7 +64,7 @@ class Survey(db.Document):
 
     uncertainties = db.StringField(choices=AGREEMENT)
 
-    goals = db.StringField(choices=AGREEMENT)
+    objectives = db.StringField(choices=AGREEMENT)
 
     integration = db.StringField(choices=AGREEMENT)
 
@@ -73,8 +77,6 @@ class Survey(db.Document):
     transnational_cooperation = db.StringField(choices=AGREEMENT)
 
     transnational_cooperation_examples = db.StringField(max_length=2056)
-
-    monitoring = db.StringField(choices=AGREEMENT)
 
     barriers = db.ListField(db.StringField(), default=[])
 

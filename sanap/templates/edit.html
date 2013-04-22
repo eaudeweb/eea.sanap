@@ -27,16 +27,16 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.willingness, class_='tagit') }}
-    </div>
-
-    <div class="row">
       {{ render_field(form.triggers) }}
 
       <div class="other">
         <a class="add-item" data-title="Add trigger">
           Add trigger</a>
       </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.willingness, class_='tagit') }}
     </div>
 
     <div class="row">
@@ -48,7 +48,7 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.goals) }}
+      {{ render_field(form.objectives) }}
     </div>
 
     <div class="row">
@@ -73,10 +73,6 @@
 
     <div class="row">
       {{ render_field(form.transnational_cooperation_examples) }}
-    </div>
-
-    <div class="row">
-      {{ render_field(form.monitoring) }}
     </div>
 
     <div class="row">
