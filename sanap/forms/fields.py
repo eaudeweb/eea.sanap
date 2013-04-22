@@ -19,6 +19,17 @@ class MultiCheckboxField(wtf.SelectMultipleField):
     option_widget = wtf.widgets.CheckboxInput()
 
 
+class CustomFileField(wtf.FileField):
+
+    def process_formdata(self, valuelist):
+        if valuelist and valuelist[0]:
+            filestorage = valuelist[0]
+            filestorage.filename = filestorage.filename.lower()
+            self.data = filestorage
+        else:
+            self.data = ''
+
+
 def expand_choices(field):
     choices = list(field.choices)
     if field.data:

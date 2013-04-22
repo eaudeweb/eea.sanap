@@ -83,6 +83,9 @@ class Survey(db.Document):
     part1_comments = db.StringField(max_length=2056)
 
     # part 2
+
+    process_stage = db.StringField(choices=PROCESS_STAGE)
+
     horizontal_integration = db.StringField(choices=EFFECTIVENESS)
 
     vertical_integration = db.StringField(choices=EFFECTIVENESS)
@@ -97,15 +100,25 @@ class Survey(db.Document):
 
     assessment = db.StringField(choices=STATUS)
 
+    assessment_scale = db.StringField(choices=ASSESSMENT_SCALE)
+
+    assessment_subnational_info = db.StringField(max_length=512)
+
+    assessment_subnational_files = db.StringField(max_length=512)
+
     #TODO sectors_assessments
 
     assessment_coordination = db.StringField(max_length=512)
 
     assessment_methodological_approach = db.StringField(max_length=512)
 
+    change_adaptation_costs = db.StringField(max_length=512)
+
     needed_info = db.ListField(db.StringField(), default=[])
 
     assessment_update = db.StringField(choices=PLANNING)
+
+    assessment_update_info = db.StringField(max_length=512)
 
     adaptation_options = db.StringField(choices=STATUS)
 
@@ -113,9 +126,15 @@ class Survey(db.Document):
 
     identified_options = db.ListField(db.StringField(), default=[])
 
-    options_comments = db.StringField(max_length=512)
-
     adaptation_actions = db.ListField(db.StringField(), default=[])
+
+    prioritised_options = db.StringField(choices=STATUS)
+
+    options_methodological = db.StringField(max_length=512)
+
+    action_plan_info = db.StringField(max_length=512)
+
+    action_plan_file = db.StringField(max_length=512)
 
     practice_example = db.StringField(max_length=512)
 

@@ -175,6 +175,13 @@ ADAPTATION_SCALE_DATA = (
 )
 ADAPTATION_SCALE = [(i, i) for i in ADAPTATION_SCALE_DATA]
 
+ASSESSMENT_SCALE_DATA = (
+    'national level',
+    'sub-national level'
+)
+ASSESSMENT_SCALE = [(i, i) for i in ASSESSMENT_SCALE_DATA]
+
+
 
 IDENTIFIED_OPTIONS_DATA = (
     'Expert judgement',
@@ -219,6 +226,17 @@ MAIN_INSTRUMENTS_DATA = (
     'Action plans',
 )
 MAIN_INSTRUMENTS = [(i, i) for i in MAIN_INSTRUMENTS_DATA]
+
+
+PROCESS_STAGE_DATA = (
+    'Adaptation process has not started',
+    'Agenda setting (i.e. adaptation is politically recognised as important)',
+    'Formulation (i.e. responsible actors respond by formulating adaptation policies)',
+    'Decision (i.e. policymakers have adopted an adaptation policy)',
+    'Implementation (i.e. implement instruments foreseen it the policy)',
+    'Monitoring and evaluation (i.e. review and update policy / actions)',
+)
+PROCESS_STAGE = [(i, i) for i in PROCESS_STAGE_DATA]
 
 
 

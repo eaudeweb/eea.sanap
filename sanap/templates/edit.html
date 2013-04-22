@@ -93,6 +93,10 @@
     <legend>Part II: Assessing the adaptation policy process</legend>
 
     <div class="row">
+      {{ render_field(form.process_stage) }}
+    </div>
+
+    <div class="row">
       {{ render_field(form.horizontal_integration) }}
     </div>
 
@@ -121,11 +125,27 @@
     </div>
 
     <div class="row">
+      {{ render_field(form.assessment_scale) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_subnational_info) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.assessment_subnational_files) }}
+    </div>
+
+    <div class="row">
       {{ render_field(form.assessment_coordination) }}
     </div>
 
     <div class="row">
       {{ render_field(form.assessment_methodological_approach) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.change_adaptation_costs) }}
     </div>
 
     <div class="row">
@@ -141,7 +161,7 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.assessment_update) }}
+      {{ render_field(form.assessment_update_info) }}
     </div>
 
     <div class="row">
@@ -165,15 +185,27 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.options_comments) }}
-    </div>
-
-    <div class="row">
       {{ render_field(form.adaptation_actions) }}
       <div class="other">
         <a class="add-item" data-title="Add more adaptation actions">
           Add more adaptation actions</a>
       </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.prioritised_options) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.options_methodological) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.action_plan_info) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.action_plan_file) }}
     </div>
 
     <div class="row">
