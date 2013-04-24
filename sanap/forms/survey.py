@@ -128,7 +128,7 @@ class SurveyForm(_SurveyForm):
     prioritised_options = wtf.RadioField(choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    action_plan_file =  CustomFileField(
+    action_plan_files =  CustomFileField(
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
@@ -140,6 +140,8 @@ class SurveyForm(_SurveyForm):
     main_instruments = wtf.FormField(MainInstrumentsForm,
         widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments'))
 
+    part2_files =  CustomFileField(
+       validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

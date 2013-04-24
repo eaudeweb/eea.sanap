@@ -134,7 +134,7 @@ class Survey(db.Document):
 
     action_plan_info = db.StringField(max_length=512)
 
-    action_plan_file = db.StringField(max_length=512)
+    action_plan_files = db.StringField(max_length=512)
 
     practice_example = db.StringField(max_length=512)
 
@@ -143,6 +143,8 @@ class Survey(db.Document):
     monitor_report_evaluate = db.DictField(default={})
 
     part2_comments = db.StringField(max_length=512)
+
+    part2_files = db.StringField(max_length=512)
 
     # part 3
     # TODOsectors

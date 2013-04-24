@@ -205,7 +205,7 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.action_plan_file) }}
+      {{ render_field(form.action_plan_files) }}
     </div>
 
     <div class="row">
@@ -223,6 +223,15 @@
     <div class="row">
       {{ render_field(form.part2_comments) }}
     </div>
+
+    <div class="row">
+      {{ render_field(form.part2_files) }}
+    </div>
+
+  </fieldset>
+  <fieldset>
+
+    <legend>Part III: Level of adaptation and policy instruments in sectors</legend>
 
     <div class="row">
       {{ render_field(form.instruments) }}
