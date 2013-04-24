@@ -196,6 +196,7 @@ ADAPTATION_ACTIONS_DATA = (
     'Grey measures (i.e. technological such as river flood defence, beach nourishment)',
     'Green measures (i.e. ecosystem-based approaches that use nature\'s multiple services such as crop diversification, enhancing the ability of indigenous plant and animal species to move across landscapes) ',
     'Soft measures  (i.e. behavioural, managerial, legal and policy approaches that includes e.g. awareness raising initiatives, passing legislations, early warning systems, insurances, planning instruments)',
+    'Combined options'
 )
 ADAPTATION_ACTIONS = [(i, i) for i in ADAPTATION_ACTIONS_DATA]
 
