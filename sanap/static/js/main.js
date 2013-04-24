@@ -20,11 +20,12 @@ $(function () {
     $(this).parents('.row').find('ul').append(li);
   });
 
-  $('.main-instruments-other').on('click', function (e) {
+  $('.matrix-other').on('click', function (e) {
 
     e.preventDefault();
 
-    var row = $('#main-instruments').find('tbody tr:last');
+    var row = $(this).parents('.row').find('tbody tr:last');
+    var name = $(this).data('name')
     var category = prompt('Add another category');
     var fields = ['agriculture', 'forestry', 'biodiversity', 'human_health',
                   'water', 'marine_fisheries', 'coastal_areas', 'mountain_areas',
@@ -44,7 +45,7 @@ $(function () {
       var input = $('<input>').attr({
         'type': 'checkbox',
         'value': category,
-        'name': 'main_instruments-' + value
+        'name': name + '-' + value
       });
       parent_html.append(input);
       row.find('td').eq(i+1).find('ul').append(parent_html);

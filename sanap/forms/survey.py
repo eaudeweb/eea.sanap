@@ -141,6 +141,12 @@ class SurveyForm(_SurveyForm):
     part2_files =  CustomFileField(
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
+    financing_mechanisms = wtf.FormField(MainInstrumentsForm,
+        widget=MatrixCheckboxWidget(data=FINANCING_MECHANISMS))
+
+    part3_files =  CustomFileField(
+       validators=[wtf.file_allowed(files, 'Document is not valid')])
+
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)
         expand_choices(self.triggers)
@@ -148,62 +154,22 @@ class SurveyForm(_SurveyForm):
     def save(self):
         survey = Survey()
 
-        survey.lead_organisation = self.data['lead_organisation']
+        for key, value in self.data.items():
+            if key in ('organisations', 'assessment_subnational_files',
+                       'action_plan_files'):
+                continue
+            setattr(survey, key, value)
 
         organisations = self.data['organisations'].split(',')
         if organisations:
             survey.organisations = organisations
 
-        survey.public_awareness = self.data['public_awareness']
-        survey.adaptation_need = self.data['adaptation_need']
-        survey.willingness = self.data['willingness']
-        survey.triggers = self.data['triggers']
-        survey.knowledge = self.data['knowledge']
-        survey.uncertainties = self.data['uncertainties']
-        survey.objectives = self.data['objectives']
-        survey.integration = self.data['integration']
-        survey.integration_examples = self.data['integration_examples']
-        survey.mitigation = self.data['mitigation']
-        survey.mitigation_examples = self.data['mitigation_examples']
-        survey.transnational_cooperation = self.data['transnational_cooperation']
-        survey.transnational_cooperation_examples = self.data['transnational_cooperation_examples']
-        survey.barriers = self.data['barriers']
-        survey.part1_comments = self.data['part1_comments']
-        survey.process_stage = self.data['process_stage']
-        survey.horizontal_integration = self.data['horizontal_integration']
-        survey.vertical_integration = self.data['vertical_integration']
-        survey.horizontal_coordination = self.data['horizontal_coordination']
-        survey.vertical_coordination = self.data['vertical_coordination']
-        survey.crucial_in_coordination = self.data['crucial_in_coordination']
-        survey.challenging_in_coordination = self.data['challenging_in_coordination']
-        survey.assessment = self.data['assessment']
-        survey.assessment_coordination = self.data['assessment_coordination']
-        survey.assessment_methodological_approach = self.data['assessment_methodological_approach']
-        survey.change_adaptation_costs = self.data['change_adaptation_costs']
-        survey.needed_info = self.data['needed_info']
-        survey.assessment_update = self.data['assessment_update']
-        survey.assessment_update_info = self.data['assessment_update_info']
-        survey.adaptation_options = self.data['adaptation_options']
-        survey.adaptation_scale = self.data['adaptation_scale']
-        survey.assessment_subnational_info = self.data['assessment_subnational_info']
+        assessment_subnational_files = self.data['assessment_subnational_files']
+        if assessment_subnational_files:
+            survey.assessment_subnational_files = files.save(assessment_subnational_files)
 
-        filename = self.data['assessment_subnational_files']
-        file_saved = files.save(filename) if filename else ''
-        survey.assessment_subnational_files = file_saved
-
-        survey.identified_options = self.data['identified_options']
-        survey.adaptation_actions = self.data['adaptation_actions']
-        survey.prioritised_options = self.data['prioritised_options']
-        survey.options_methodological = self.data['options_methodological']
-        survey.action_plan_info = self.data['action_plan_info']
-
-        filename = self.data['action_plan_file']
-        file_saved = files.save(filename) if filename else ''
-        survey.action_plan_file = file_saved
-
-        survey.practice_example = self.data['practice_example']
-        survey.monitor_report_evaluate = self.data['monitor_report_evaluate']
-        survey.part2_comments = self.data['part2_comments']
-        survey.instruments = self.data['instruments']
+        action_plan_files = self.data['action_plan_files']
+        if action_plan_files:
+            survey.action_plan_files = files.save(action_plan_files)
 
         return survey

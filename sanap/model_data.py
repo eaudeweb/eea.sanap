@@ -229,6 +229,15 @@ MAIN_INSTRUMENTS_DATA = (
 MAIN_INSTRUMENTS = [(i, i) for i in MAIN_INSTRUMENTS_DATA]
 
 
+FINANCING_MECHANISMS_DATA = (
+    'Explicit budgetary allocations',
+    'Project based public support',
+    'Public-private partnerships',
+    'Insurance mechanisms',
+)
+FINANCING_MECHANISMS = [(i, i) for i in FINANCING_MECHANISMS_DATA]
+
+
 PROCESS_STAGE_DATA = (
     'Adaptation process has not started',
     'Agenda setting (i.e. adaptation is politically recognised as important)',

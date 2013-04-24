@@ -149,9 +149,23 @@ class Survey(db.Document):
     # part 3
     # TODOsectors
 
+    instruments = db.StringField(choices=INSTRUMENTS)
+
     main_instruments = db.DictField(default={})
 
     main_instruments_considered = db.StringField(max_length=512)
+
+    financing_mechanisms = db.DictField(default={})
+
+    part3_comments = db.StringField(max_length=512)
+
+    part3_files = db.StringField(max_length=512)
+
+    transboundary_issues = db.StringField(max_length=512)
+
+    regions_coordination = db.StringField(max_length=512)
+
+    stakeholders_involved = db.StringField(choices=YES_NO)
 
 
 class Invite(db.Document):

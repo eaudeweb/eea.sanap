@@ -239,15 +239,26 @@
 
     <div class="row">
       {{ form.main_instruments }}
-
       <div class="other">
-        <a href="" class="main-instruments-other">
+        <a href="" class="matrix-other" data-name="main_instruments">
           Add another</a>
       </div>
     </div>
 
     <div class="row">
       {{ render_field(form.main_instruments_considered) }}
+    </div>
+
+    <div class="row">
+      {{ form.financing_mechanisms }}
+      <div class="other">
+        <a href="" class="matrix-other" data-name="financing_mechanisms">
+          Add another</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part3_comments) }}
     </div>
 
     <div class="row lastOfType">
