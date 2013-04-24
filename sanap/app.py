@@ -2,8 +2,11 @@ import flask
 import logging
 import jinja2
 
-from flask.ext.assets import Environment, Bundle
 from werkzeug import SharedDataMiddleware
+
+from flask.ext.assets import Environment, Bundle
+from flask.ext.uploads import configure_uploads
+
 from raven.contrib.flask import Sentry
 from raven.conf import setup_logging
 from raven.handlers.logging import SentryHandler
@@ -11,6 +14,7 @@ from raven.handlers.logging import SentryHandler
 from sanap.models import db
 from sanap.auth import login_manager
 from sanap import auth, frameservice, survey
+from sanap.forms.survey import files
 
 from .assets import BUNDLE_JS, BUNDLE_CSS
 
@@ -41,7 +45,6 @@ BLUEPRINTS = (
 
 sentry = Sentry()
 
-
 def create_app(instance_path=None, config={}):
     app = flask.Flask(__name__, instance_path=instance_path,
                       instance_relative_config=True)
@@ -52,6 +55,7 @@ def create_app(instance_path=None, config={}):
     configure_authentication(app)
     configure_templating(app)
     configure_error_pages(app)
+    configure_uploads(app, files)
     if config.get('SENTRY_DSN'):
         configure_sentry(app)
     db.init_app(app)
@@ -113,3 +117,6 @@ def configure_sentry(app):
     sentry_handler = SentryHandler(sentry.client)
     sentry_handler.setLevel(logging.WARN)
     setup_logging(sentry_handler)
+
+
+

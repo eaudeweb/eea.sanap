@@ -8,8 +8,6 @@ from sanap.model_data import *
 
 
 files = UploadSet('files', AllExcept(SCRIPTS + EXECUTABLES))
-
-
 _SurveyForm = model_form(Survey)
 
 
@@ -128,7 +126,7 @@ class SurveyForm(_SurveyForm):
     prioritised_options = wtf.RadioField(choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    action_plan_file =  CustomFileField(
+    action_plan_file = CustomFileField(
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
@@ -186,14 +184,21 @@ class SurveyForm(_SurveyForm):
         survey.adaptation_options = self.data['adaptation_options']
         survey.adaptation_scale = self.data['adaptation_scale']
         survey.assessment_subnational_info = self.data['assessment_subnational_info']
-        #TODO assessment_subnational_files
-        survey.identified_options = self.data['identified_options']
 
+        filename = self.data['assessment_subnational_files']
+        file_saved = files.save(filename) if filename else ''
+        survey.assessment_subnational_files = file_saved
+
+        survey.identified_options = self.data['identified_options']
         survey.adaptation_actions = self.data['adaptation_actions']
         survey.prioritised_options = self.data['prioritised_options']
         survey.options_methodological = self.data['options_methodological']
         survey.action_plan_info = self.data['action_plan_info']
-        #TODO action_plan_file
+
+        filename = self.data['action_plan_file']
+        file_saved = files.save(filename) if filename else ''
+        survey.action_plan_file = file_saved
+
         survey.practice_example = self.data['practice_example']
         survey.monitor_report_evaluate = self.data['monitor_report_evaluate']
         survey.part2_comments = self.data['part2_comments']
