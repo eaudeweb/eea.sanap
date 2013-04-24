@@ -87,16 +87,28 @@ class SurveyForm(_SurveyForm):
     triggers = MultiCheckboxField(choices=TRIGGERS,
         validators=[wtf.validators.optional()])
 
+    willingness = wtf.RadioField(choices=AGREEMENT,
+        validators=[wtf.validators.optional()])
+
     knowledge = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
     uncertainties = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
+    objectives = wtf.RadioField(choices=AGREEMENT,
+        validators=[wtf.validators.optional()])
+
     goals = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
     integration = wtf.RadioField(choices=AGREEMENT,
+        validators=[wtf.validators.optional()])
+
+    mitigation = wtf.RadioField(choices=AGREEMENT,
+        validators=[wtf.validators.optional()])
+
+    transnational_cooperation = wtf.RadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
     barriers = MultiCheckboxField(choices=BARRIERS,
