@@ -25,13 +25,9 @@ $(function () {
     e.preventDefault();
 
     var row = $(this).parents('.row').find('tbody tr:last');
-    var name = $(this).data('name')
+    var name = $(this).data('name');
     var category = prompt('Add another category');
-    var fields = ['agriculture', 'forestry', 'biodiversity', 'human_health',
-                  'water', 'marine_fisheries', 'coastal_areas', 'mountain_areas',
-                  'tourism', 'transport', 'energy', 'built_environment',
-                  'spatial_planning', 'civil_protection', 'industry',
-                  'business_services', 'financial_insurance', 'cultural_heritage'];
+    var fields = $(this).data('fields');
 
     if(!category) return;
 

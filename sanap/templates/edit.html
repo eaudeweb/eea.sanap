@@ -240,7 +240,13 @@
     <div class="row">
       {{ form.main_instruments }}
       <div class="other">
-        <a href="" class="matrix-other" data-name="main_instruments">
+        <a href="" class="matrix-other"
+           data-name="main_instruments"
+           data-fields='["agriculture", "forestry", "biodiversity",
+                         "human_health", "water", "marine_fisheries", "coastal_areas", "mountain_areas", "tourism", "transport", "energy", "built_environment",
+                         "spatial_planning", "civil_protection", "industry",
+                         "business_services", "financial_insurance",
+                         "cultural_heritage"]'>
           Add another</a>
       </div>
     </div>
@@ -252,13 +258,128 @@
     <div class="row">
       {{ form.financing_mechanisms }}
       <div class="other">
-        <a href="" class="matrix-other" data-name="financing_mechanisms">
+        <a href="" class="matrix-other"
+           data-name="financing_mechanisms"
+           data-fields='["agriculture", "forestry", "biodiversity",
+                         "human_health", "water", "marine_fisheries", "coastal_areas", "mountain_areas", "tourism", "transport", "energy", "built_environment",
+                         "spatial_planning", "civil_protection", "industry",
+                         "business_services", "financial_insurance",
+                         "cultural_heritage"]'>
           Add another</a>
       </div>
     </div>
 
     <div class="row">
       {{ render_field(form.part3_comments) }}
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+
+    <legend>Part IV: Involvement of stakeholders </legend>
+
+    <div class="row">
+      {{ render_field(form.transboundary_issues) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.regions_coordination) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.stakeholders_involved) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.stakeholders_contribution) }}
+    </div>
+
+    <div class="row">
+      {{ form.development_involvement }}
+      <div class="other">
+        <a href="" class="matrix-other"
+           data-name="development_involvement"
+           data-fields='["information_given", "information_gathered",
+                         "consultation", "active_involvement", "partnerships", "empowerment"]'>
+          Add another</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ form.implementation_involvement }}
+      <div class="other">
+        <a href="" class="matrix-other"
+           data-name="implementation_involvement"
+           data-fields='["information_given", "information_gathered",
+                         "consultation", "active_involvement", "partnerships", "empowerment"]'>
+          Add another</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ form.monitoring_involvement }}
+      <div class="other">
+        <a href="" class="matrix-other"
+           data-name="monitoring_involvement"
+           data-fields='["information_given", "information_gathered",
+                         "consultation", "active_involvement", "partnerships", "empowerment"]'>
+          Add another</a>
+      </div>
+    </div>
+
+    <div class="row">
+      {{ render_field(form.stakeholders_success) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part4_comments) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part4_comments) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part4_files) }}
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+
+    <legend>Part V: Open questions on next steps</legend>
+
+    <div class="row">
+      {{ render_field(form.next_step_vulnerability) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.next_step_legislation) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.next_step_implementation) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.next_step_monitoring) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.next_step_strategy) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.next_step_others) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_key_issues) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.adaptation_support_eu_level) }}
     </div>
 
     <div class="row lastOfType">

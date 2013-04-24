@@ -161,11 +161,43 @@ class Survey(db.Document):
 
     part3_files = db.StringField(max_length=512)
 
+    # part 4
     transboundary_issues = db.StringField(max_length=512)
 
     regions_coordination = db.StringField(max_length=512)
 
     stakeholders_involved = db.StringField(choices=YES_NO)
+
+    stakeholders_contribution = db.StringField(choices=STAKEHOLDERS_CONTRIBUTION)
+
+    development_involvement = db.DictField(default={})
+
+    implementation_involvement = db.DictField(default={})
+
+    monitoring_involvement = db.DictField(default={})
+
+    stakeholders_success = db.StringField(max_length=512)
+
+    part4_comments = db.StringField(max_length=512)
+
+    part4_files = db.StringField(max_length=512)
+
+    # part 5
+    next_step_vulnerability = db.StringField(max_length=512)
+
+    next_step_legislation = db.StringField(max_length=512)
+
+    next_step_implementation = db.StringField(max_length=512)
+
+    next_step_monitoring = db.StringField(max_length=512)
+
+    next_step_strategy = db.StringField(max_length=512)
+
+    next_step_others = db.StringField(max_length=512)
+
+    adaptation_key_issues = db.StringField(max_length=512)
+
+    adaptation_support_eu_level = db.StringField(max_length=512)
 
 
 class Invite(db.Document):

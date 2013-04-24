@@ -59,6 +59,21 @@ class MainInstrumentsForm(wtf.Form):
     cultural_heritage = MultiCheckboxField()
 
 
+class InvolmentForm(wtf.Form):
+
+    information_given =  MultiCheckboxField()
+
+    information_gathered = MultiCheckboxField()
+
+    consultation = MultiCheckboxField()
+
+    active_involvement = MultiCheckboxField()
+
+    partnerships = MultiCheckboxField()
+
+    empowerment = MultiCheckboxField()
+
+
 class SurveyForm(_SurveyForm):
 
     organisations = wtf.TextField()
@@ -144,7 +159,25 @@ class SurveyForm(_SurveyForm):
     financing_mechanisms = wtf.FormField(MainInstrumentsForm,
         widget=MatrixCheckboxWidget(data=FINANCING_MECHANISMS))
 
-    part3_files =  CustomFileField(
+    part3_files = CustomFileField(
+       validators=[wtf.file_allowed(files, 'Document is not valid')])
+
+    stakeholders_involved = wtf.RadioField(choices=YES_NO,
+        validators=[wtf.validators.optional()])
+
+    stakeholders_contribution = wtf.RadioField(choices=STAKEHOLDERS_CONTRIBUTION,
+        validators=[wtf.validators.optional()])
+
+    development_involvement = wtf.FormField(InvolmentForm,
+        widget=MatrixCheckboxWidget(data=INVOLMENT))
+
+    implementation_involvement = wtf.FormField(InvolmentForm,
+        widget=MatrixCheckboxWidget(data=INVOLMENT))
+
+    monitoring_involvement = wtf.FormField(InvolmentForm,
+        widget=MatrixCheckboxWidget(data=INVOLMENT))
+
+    part4_files = CustomFileField(
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     def __init__(self, *args, **kwargs):
@@ -171,5 +204,9 @@ class SurveyForm(_SurveyForm):
         action_plan_files = self.data['action_plan_files']
         if action_plan_files:
             survey.action_plan_files = files.save(action_plan_files)
+
+        part4_files = self.data['part4_files']
+        if part4_files:
+            survey.part4_files = files.save(part4_files)
 
         return survey

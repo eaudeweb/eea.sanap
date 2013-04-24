@@ -249,8 +249,25 @@ PROCESS_STAGE_DATA = (
 PROCESS_STAGE = [(i, i) for i in PROCESS_STAGE_DATA]
 
 
+STAKEHOLDERS_CONTRIBUTION_DATA = (
+    'very important',
+    'important',
+    'neutral',
+    'less important',
+    'not important',
+)
+STAKEHOLDERS_CONTRIBUTION = [(i, i) for i in STAKEHOLDERS_CONTRIBUTION_DATA]
 
 
+INVOLMENT_DATA = (
+    'Governmental stakeholders from national level (e.g. policy makers, public administration, governmental agencies)',
+    'Governmental stakeholders from sub- national level (including local level)',
+    'Private sector',
+    'Interest groups (e.g. chamber of agriculture, NGOs)',
+    'Scientists/researcher',
+    'General public'
+)
+INVOLMENT = [(i, i) for i in INVOLMENT_DATA]
 
 
 
