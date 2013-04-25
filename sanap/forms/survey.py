@@ -201,7 +201,7 @@ class SurveyForm(_SurveyForm):
         survey = Survey()
         survey.user = g.user
         survey.country = g.user.country
-        import pdb; pdb.set_trace()
+        survey.for_eea = False if g.user.invitee else True
 
         for key, value in self.data.items():
             if key in ('organisations', 'assessment_subnational_files',
