@@ -1,3 +1,4 @@
+from flask import g
 from flask.ext import wtf
 from flask.ext.mongoengine.wtf import model_form
 from flask.ext.uploads import UploadSet, AllExcept, SCRIPTS, EXECUTABLES
@@ -198,6 +199,9 @@ class SurveyForm(_SurveyForm):
 
     def save(self):
         survey = Survey()
+        survey.user = g.user
+        survey.country = g.user.country
+        import pdb; pdb.set_trace()
 
         for key, value in self.data.items():
             if key in ('organisations', 'assessment_subnational_files',

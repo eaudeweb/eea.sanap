@@ -37,7 +37,7 @@ def get_user(userid):
         user_info = plugldap.user_info(userid)
         if user_info:
             (user, created) = User.objects.get_or_create(id=user_info['uid'],
-                                                          defaults=user_info)
+                                                         defaults=user_info)
             return user
         else:
             return None
@@ -93,7 +93,7 @@ def register(key):
 def logout():
     flask_login.logout_user()
     flash("You have successfully logged out.")
-    resp = redirect(url_for('library.home'))
+    resp = redirect(url_for('survey.home'))
     resp.set_cookie("__ac", "")
     return resp
 

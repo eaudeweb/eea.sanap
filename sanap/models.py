@@ -32,6 +32,9 @@ class User(db.Document, UserMixin):
 
     invite = db.ReferenceField('Invite', default=None)
 
+    def __unicode__(self):
+        return self.name
+
     def get_id(self):
         return self.id
 
