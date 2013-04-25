@@ -79,55 +79,55 @@ class SurveyForm(_SurveyForm):
 
     organisations = wtf.TextField()
 
-    public_awareness = wtf.RadioField(choices=AGREEMENT,
+    public_awareness = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    adaptation_need = wtf.RadioField(choices=AGREEMENT,
+    adaptation_need = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
     triggers = MultiCheckboxField(choices=TRIGGERS,
         validators=[wtf.validators.optional()])
 
-    willingness = wtf.RadioField(choices=AGREEMENT,
+    willingness = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    knowledge = wtf.RadioField(choices=AGREEMENT,
+    knowledge = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    uncertainties = wtf.RadioField(choices=AGREEMENT,
+    uncertainties = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    objectives = wtf.RadioField(choices=AGREEMENT,
+    objectives = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    goals = wtf.RadioField(choices=AGREEMENT,
+    goals = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    integration = wtf.RadioField(choices=AGREEMENT,
+    integration = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    mitigation = wtf.RadioField(choices=AGREEMENT,
+    mitigation = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    transnational_cooperation = wtf.RadioField(choices=AGREEMENT,
+    transnational_cooperation = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
     barriers = MultiCheckboxField(choices=BARRIERS,
         validators=[wtf.validators.optional()])
 
-    process_stage = wtf.RadioField(choices=PROCESS_STAGE,
+    process_stage = CustomRadioField(choices=PROCESS_STAGE,
         validators=[wtf.validators.optional()])
 
-    horizontal_integration = wtf.RadioField(choices=EFFECTIVENESS,
+    horizontal_integration = CustomRadioField(choices=EFFECTIVENESS,
         validators=[wtf.validators.optional()])
 
-    vertical_integration = wtf.RadioField(choices=EFFECTIVENESS,
+    vertical_integration = CustomRadioField(choices=EFFECTIVENESS,
         validators=[wtf.validators.optional()])
 
-    assessment = wtf.RadioField(choices=STATUS,
+    assessment = CustomRadioField(choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    assessment_scale = wtf.RadioField(choices=ASSESSMENT_SCALE,
+    assessment_scale = CustomRadioField(choices=ASSESSMENT_SCALE,
         validators=[wtf.validators.optional()])
 
     assessment_subnational_files = CustomFileField(
@@ -136,10 +136,10 @@ class SurveyForm(_SurveyForm):
     needed_info = MultiCheckboxField(choices=BARRIERS,
         validators=[wtf.validators.optional()])
 
-    assessment_update = wtf.RadioField(choices=PLANNING,
+    assessment_update = CustomRadioField(choices=PLANNING,
         validators=[wtf.validators.optional()])
 
-    adaptation_options = wtf.RadioField(choices=STATUS,
+    adaptation_options = CustomRadioField(choices=STATUS,
         validators=[wtf.validators.optional()])
 
     adaptation_scale = MultiCheckboxField(choices=ADAPTATION_SCALE,
@@ -151,7 +151,7 @@ class SurveyForm(_SurveyForm):
     adaptation_actions = MultiCheckboxField(choices=ADAPTATION_ACTIONS,
         validators=[wtf.validators.optional()])
 
-    prioritised_options = wtf.RadioField(choices=STATUS,
+    prioritised_options = CustomRadioField(choices=STATUS,
         validators=[wtf.validators.optional()])
 
     action_plan_files = CustomFileField(
@@ -160,7 +160,7 @@ class SurveyForm(_SurveyForm):
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
         widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE))
 
-    instruments = wtf.RadioField(choices=INSTRUMENTS,
+    instruments = CustomRadioField(choices=INSTRUMENTS,
         validators=[wtf.validators.optional()])
 
     main_instruments = wtf.FormField(MainInstrumentsForm,
@@ -175,10 +175,10 @@ class SurveyForm(_SurveyForm):
     part3_files = CustomFileField(
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    stakeholders_involved = wtf.RadioField(choices=YES_NO,
+    stakeholders_involved = CustomRadioField(choices=YES_NO,
         validators=[wtf.validators.optional()])
 
-    stakeholders_contribution = wtf.RadioField(choices=STAKEHOLDERS_CONTRIBUTION,
+    stakeholders_contribution = CustomRadioField(choices=STAKEHOLDERS_CONTRIBUTION,
         validators=[wtf.validators.optional()])
 
     development_involvement = wtf.FormField(InvolmentForm,
@@ -205,7 +205,7 @@ class SurveyForm(_SurveyForm):
 
         for key, value in self.data.items():
             if key in ('organisations', 'assessment_subnational_files',
-                       'action_plan_files'):
+                       'action_plan_files') and value and value not in ('None',):
                 continue
             setattr(survey, key, value)
 
@@ -225,4 +225,5 @@ class SurveyForm(_SurveyForm):
         if part4_files:
             survey.part4_files = files.save(part4_files)
 
+        survey.save()
         return survey

@@ -30,6 +30,14 @@ class CustomFileField(wtf.FileField):
             self.data = ''
 
 
+class CustomRadioField(wtf.RadioField):
+
+    def process_formdata(self, valuelist):
+        if not valuelist:
+            self.data = None
+        else:
+            self.data = valuelist[0]
+
 def expand_choices(field):
     choices = list(field.choices)
     if field.data:
@@ -54,6 +62,7 @@ class MatrixBaseWidget():
             for item in value:
                 if item not in data_keys: data_keys.append(item)
         return data_keys
+
 
 class MatrixCheckboxWidget(MatrixBaseWidget):
 
