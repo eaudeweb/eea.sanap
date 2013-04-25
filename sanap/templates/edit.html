@@ -237,7 +237,7 @@
       {{ render_field(form.instruments) }}
     </div>
 
-    <div class="row special">
+    <div class="row">
       {{ form.main_instruments }}
       <div class="other">
         <a href="" class="matrix-other main-instruments-other"
@@ -251,6 +251,12 @@
       </div>
     </div>
 
+    <div class="row">
+      {{ render_field(form.main_instruments_considered) }}
+    </div>
+
+    <div class="row">
+      {{ form.financing_mechanisms }}
 
       <div class="other">
         <a href="" class="matrix-other financing_mechanisms-other"
@@ -268,12 +274,6 @@
       {{ render_field(form.part3_comments) }}
     </div>
 
-  </fieldset>
-
-  <fieldset>
-
-    <legend>Part IV: Involvement of stakeholders </legend>
-
     <div class="row">
       {{ render_field(form.transboundary_issues) }}
     </div>
@@ -281,6 +281,12 @@
     <div class="row">
       {{ render_field(form.regions_coordination) }}
     </div>
+
+  </fieldset>
+
+  <fieldset>
+
+    <legend>Part IV: Involvement of stakeholders </legend>
 
     <div class="row">
       {{ render_field(form.stakeholders_involved) }}
@@ -375,10 +381,6 @@
 
     <div class="row">
       {{ render_field(form.adaptation_support_eu_level) }}
-    </div>
-
-    <div class="row lastOfType">
-      {{ render_field(form.main_instruments_considered) }}
     </div>
 
   </fieldset>

@@ -83,7 +83,7 @@ def register(token):
         user_invitee = User.objects.get(token=token)
     except User.DoesNotExist:
         flash(('Your access link appears to be incorrect.'
-               ' Please make you sure you coppied the full URL.'))
+               ' Please make you sure you copied the full URL.'))
         return redirect(url_for('.unauthorized'))
 
     form = RegisterForm()
