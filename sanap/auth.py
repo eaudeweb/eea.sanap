@@ -20,6 +20,16 @@ login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
 
 
+def login_required(fn):
+    @wraps(fn)
+    @flask_login.login_required
+    def decorated_view(*args, **kwargs):
+        if not g.user.country:
+            return redirect(url_for('auth.unauthorized'))
+        return fn(*args, **kwargs)
+    return decorated_view
+
+
 def load_user_in_g():
     g.user = flask_login.current_user
 
@@ -96,25 +106,6 @@ def logout():
     resp = redirect(url_for('survey.home'))
     resp.set_cookie("__ac", "")
     return resp
-
-
-def get_current_user_roles():
-    user = flask_login.current_user
-    if user.is_anonymous():
-        return []
-    else:
-        return user.roles
-
-
-def requires_role(role):
-    def wrapper(f):
-        @wraps(f)
-        def wrapped(*args, **kwargs):
-            if role not in get_current_user_roles():
-                return redirect(url_for('auth.unauthorized'))
-            return f(*args, **kwargs)
-        return wrapped
-    return wrapper
 
 
 @auth.route("/unauthorized")

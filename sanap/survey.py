@@ -1,5 +1,5 @@
 from flask import (Blueprint, redirect, render_template, flash, views, url_for)
-from flask.ext.login import login_required
+from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
 
