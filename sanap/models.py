@@ -165,10 +165,11 @@ class Survey(db.Document):
 
     part3_files = db.StringField(max_length=512)
 
-    # part 4
     transboundary_issues = db.StringField(max_length=512)
 
     regions_coordination = db.StringField(max_length=512)
+
+    # part 4
 
     stakeholders_involved = db.StringField(choices=YES_NO)
 
