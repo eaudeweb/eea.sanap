@@ -46,10 +46,10 @@ def pack():
 @choose_target
 def build_env():
     """ a sad try, never actually used """
-    mkdirp = [[""], ["var"], ["var", "sanap-instance"],
-	      ["var", "sanap-instance", "log"],
-              ["var", "sanap-instance", "files"],
-              ["var", "sanap-instance", "supervisor"]]
+    mkdirp = [[""], ["var"], ["var", "sanap.app-instance"],
+	      ["var", "sanap.app-instance", "logs"],
+              ["var", "sanap.app-instance", "files"],
+              ["var", "sanap.app-instance", "supervisor"]]
     root = env['target']['project_root']
     for mkdir in mkdirp:
         directory = os.path.join(root, *mkdir)
@@ -63,7 +63,7 @@ def build_env():
 
 def supervisor(root, command):
     run('%s/bin/supervisorctl %s' %
-                    (root, root, command))
+                    (root, command))
 
 
 @task

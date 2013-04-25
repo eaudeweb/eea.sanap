@@ -56,21 +56,21 @@ body {
     margin: 0;
 }
 
-.ecosystem th {
+.matrix th {
     padding: 5px 8px;
     width: 120px;
 }
 
-.ecosystem .category {
+.matrix .category {
     text-align: left;
     font-size: 14px;
 }
 
-.ecosystem .category-left {
+.matrix .category-left {
     text-align: left;
 }
 
-.ecosystem .check-column {
+.matrix .check-column {
     text-align: center;
     width: 120px;
 }
@@ -109,11 +109,13 @@ body {
 
 
 /*  restyle the form */
+.ecoAsVir {
+    margin-top: 10px;
+}
+
 .ecoAsVir fieldset {
-	border: 2px solid #B4D8AE;
+	border: 2px solid rgb(165, 206, 209);
 	margin-bottom: 15px;
-	-moz-border-radius: 12px;
-	border-radius: 12px;
 	width: 96%;
 }
 
@@ -129,7 +131,7 @@ body {
 }
 
 .ecoAsVir label {
-	width: 250px;
+	width: 155px;
 	float: left;
 	color: #5A5A5A;
 }
@@ -137,6 +139,33 @@ body {
 .ecoAsVir .field {
 	display: inline-block;
 	margin: 0;
+}
+
+.ecoAsVir .field ul {
+    list-style-type: none;
+}
+
+.ecoAsVir .field ul li {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.ecoAsVir #triggers li,
+.ecoAsVir #barriers li,
+.ecoAsVir #needed_info li,
+.ecoAsVir #adaptation_scale li,
+.ecoAsVir #identified_options li,
+.ecoAsVir #adaptation_actions li {
+    display: block;
+}
+
+.ecoAsVir .field ul label {
+    width: auto;
+    margin-right: 5px;
+}
+
+.ecoAsVir .field input {
+    float: left;
 }
 
 .ecoAsVir .row {
@@ -155,19 +184,35 @@ body {
 	padding: 0px 3px;
 }
 
-.ecoAsVir #title,
-.ecoAsVir #english_title,
-.ecoAsVir #origin_other,
-.ecoAsVir #url,
-.ecoAsVir #content_other,
-.ecoAsVir #key_elements,
-.ecoAsVir #feedback,
-.ecoAsVir #feedback_other {
-	width: 597px;
+.ecoAsVir #lead_organisation,
+.ecoAsVir #organisations,
+.ecoAsVir #integration_examples,
+.ecoAsVir #mitigation_examples,
+.ecoAsVir #transnational_cooperation_examples,
+.ecoAsVir #part1_comments,
+.ecoAsVir #horizontal_coordination,
+.ecoAsVir #vertical_coordination,
+.ecoAsVir #crucial_in_coordination,
+.ecoAsVir #challenging_in_coordination,
+.ecoAsVir #assessment_subnational_info,
+.ecoAsVir #assessment_coordination,
+.ecoAsVir #assessment_methodological_approach,
+.ecoAsVir #change_adaptation_costs,
+.ecoAsVir #assessment_update_info,
+.ecoAsVir #options_methodological,
+.ecoAsVir #action_plan_info,
+.ecoAsVir #practice_example,
+.ecoAsVir #integrating_plans,
+.ecoAsVir #part2_comments,
+.ecoAsVir #main_instruments_considered,
+.ecoAsVir .field ul {
+	width: 565px;
+  padding-left: 0px;
+  margin: 0;
 }
 
 .ecoAsVir .other {
-	margin-left: 255px;
+	margin-left: 160px;
 	margin-bottom: 5px;
 }
 
@@ -178,18 +223,18 @@ body {
 
 
 /*  TABLES */
-.ecoAsVir .ecosystem {
-    margin-left: 255px;
+.ecoAsVir .matrix {
+    margin-left: 160px;
 }
 
-.ecoAsVir .ecosystem .category-left {
+.ecoAsVir .matrix .category-left {
 	vertical-align: top;
 }
 
-.ecoAsVir .ecosystem .category-left div {
-    width: 246px;
+.ecoAsVir .matrix .category-left div {
+    width: 130px;
     border-bottom: 1px solid #FFF;
-    padding: 4px 3px 6px 10px;
+    padding: 4px 3px 7px 10px;
     color: #444;
 }
 
@@ -203,36 +248,24 @@ body {
 	background: #B4DBDB;
 }
 
-/* red table with issues */
-.ecoAsVir #ecosystem-types-issues .category,
-.ecoAsVir #ecosystem-types-issues .category-left div {
-    background: #FD9288;
+/*  table after Integrating Plans */
+.ecoAsVir .matrix  .category-left div,
+.ecoAsVir #main-instruments .category-left div {
+    background: #ddd;
 }
 
-/* green table with methods */
-.ecoAsVir #ecosystem-types-methods .category,
-.ecoAsVir #ecosystem-types-methods .category-left div {
-    background: #76D176;
+.ecoAsVir #main-instruments .category-left div {
+    width: 333px;
 }
 
-/*  yellow table with services */
-.ecoAsVir #ecosystem-service-types .category,
-.ecoAsVir #ecosystem-service-types .category-left div {
-    background: #EBF38E;
-}
-
-.ecoAsVir .ecosystem li {
+.ecoAsVir .matrix li {
 	border-bottom: 1px solid #fff;
   padding: 4px 3px 4px 3px;
   margin: 0;
-  width: 79px;
+  width: 100%;
 }
 
-.ecoAsVir #ecosystem-service-types li {
-    width: 100%;
-}
-
-.ecoAsVir .ecosystem ul {
+.ecoAsVir .matrix ul {
 	list-style-type: none;
 	padding: 0px;
   margin: 0px;
@@ -240,13 +273,17 @@ body {
 
 .ecoAsVir .row.special {
 	overflow-x: scroll;
-  width: 865px; /* only for Firefox */
+  width: 710px; /*for Firefox */
 }
 
-.ecoAsVir .category-left:empty,
-.ecoAsVir #ecosystem-service-types .category-left:empty {
+.ecoAsVir .category-left:empty {
 	border: 0px;
 	background: #fff;
+}
+
+.ecoAsVir .add-item {
+    text-decoration: underline;
+    color: rgb(152, 89, 64);
 }
 
 
@@ -262,6 +299,7 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     margin: 15px auto;
     width: 500px;
 }
+
 .login-container {
     -webkit-border-bottom-right-radius: 4px;
     -webkit-border-bottom-left-radius: 4px;
@@ -269,13 +307,11 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     -moz-border-radius-bottomleft: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    border-bottom: 1px solid #d1dfbd;
-    border-left: 1px solid #d1dfbd;
-    border-right: 1px solid #dee9ce;
-    border-top: 1px solid #dee9ce;
-    background: #e4eed6;
+    border: 1px solid #ddd;
+    background: #DCF6F8;
     margin-top: 0;
 }
+
 .login-container label {
     width: 120px;
     float: left;
@@ -284,11 +320,13 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     overflow: hidden;
     height: 40px;
 }
+
 .login-container input[type=text],
 .login-container input[type=password] {
     padding: 4px;
     width: 300px;
 }
+
 .login-title {
     -webkit-border-top-left-radius: 4px;
     -webkit-border-top-right-radius: 4px;
@@ -296,12 +334,11 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     -moz-border-radius-topright: 4px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    border: 1px solid #74864f;
-    background: #74864f;
+    border: 1px solid #84ACAF;
+    background: #A5CED1;
     font-weight: bold;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #fff;
     margin-bottom: 0;
 }
 
