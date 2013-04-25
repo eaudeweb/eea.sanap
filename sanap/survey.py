@@ -14,7 +14,7 @@ def initialize_app(app):
 class Home(views.MethodView):
 
     def get(self):
-        return redirect(url_for('.add'))
+        return redirect(url_for('.edit'))
 
 survey.add_url_rule('/',
     view_func=login_required(Home.as_view('home')))

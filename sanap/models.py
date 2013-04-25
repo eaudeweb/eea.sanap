@@ -1,3 +1,6 @@
+import re
+from unicodedata import normalize
+
 from flask.ext.mongoengine import MongoEngine
 from flask.ext.login import UserMixin
 from werkzeug.utils import cached_property
@@ -26,11 +29,9 @@ class User(db.Document, UserMixin):
 
     last_login = db.DateTimeField()
 
-    country = db.StringField(max_length=128, choices=COUNTRIES)
+    invitee = db.ReferenceField('User', default=None)
 
-    roles = db.ListField(db.StringField(), default=[])
-
-    invite = db.ReferenceField('Invite', default=None)
+    token = db.StringField(max_length=36, default=None)
 
     def __unicode__(self):
         return self.name
@@ -203,12 +204,12 @@ class Survey(db.Document):
     adaptation_support_eu_level = db.StringField(max_length=512)
 
 
-class Invite(db.Document):
-
-    key = db.StringField(max_length=36)
-
-    country = db.StringField(choices=COUNTRIES)
-
-    invitee = db.ReferenceField(User)
-
-    assessment_scale = db.ListField(db.StringField(), default=[])
+_punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
+def slugify(text, delim=u'-'):
+    """Generates an slightly worse ASCII-only slug."""
+    result = []
+    for word in _punct_re.split(text.lower()):
+        word = normalize('NFKD', word).encode('ascii', 'ignore')
+        if word:
+            result.append(word)
+    return unicode(delim.join(result))

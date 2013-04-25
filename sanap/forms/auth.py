@@ -1,4 +1,5 @@
 from flask.ext import wtf
+from sanap.models import User, slugify
 
 
 class LoginForm(wtf.Form):
@@ -20,3 +21,18 @@ class RegisterForm(wtf.Form):
     phone_number = wtf.TextField('Phone Number')
 
     organisation = wtf.TextField('Organisation')
+
+
+    def validate_email(self, field):
+        if User.objects.filter(email=field.data, invitee__exists=False).count() > 0:
+            raise wtf.ValidationError('User already exists')
+
+    def save(self, user_invitee):
+        defaults = self.data
+        defaults['id'] = slugify('%s %s' % (self.data['first_name'],
+                                            self.data['last_name']))
+        defaults['invitee'] = user_invitee
+        defaults['country'] = user_invitee.country
+        user, created = User.objects.get_or_create(email=self.data['email'],
+                                                   defaults=defaults)
+        return user
