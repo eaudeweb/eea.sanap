@@ -16,7 +16,7 @@ from sanap.auth import login_manager
 from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
 
-from .assets import BUNDLE_JS, BUNDLE_CSS
+from .assets import BUNDLE_JS, BUNDLE_CSS, BUNDLE_IE_CSS
 
 
 DEFAULT_CONFIG = {
@@ -77,9 +77,11 @@ def configure_assets(app):
     assets = Environment(app)
     js = Bundle(*BUNDLE_JS, filters='jsmin', output='output/packed.js')
     css = Bundle(*BUNDLE_CSS, filters='cssmin', output='output/packed.css')
+    ie_css = Bundle(*BUNDLE_IE_CSS, filters='cssmin', output='output/ie7.css')
 
     assets.register('packed_js', js)
     assets.register('packed_css', css)
+    assets.register('packed_ie_css', ie_css)
 
 def configure_static(app):
     if app.config['DEBUG']:

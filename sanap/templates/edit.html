@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row lastOfType">
       {{ render_field(form.part1_comments) }}
     </div>
 
@@ -224,7 +224,7 @@
       {{ render_field(form.part2_comments) }}
     </div>
 
-    <div class="row">
+    <div class="row lastOfType">
       {{ render_field(form.part2_files) }}
     </div>
 
@@ -237,10 +237,10 @@
       {{ render_field(form.instruments) }}
     </div>
 
-    <div class="row">
+    <div class="row special">
       {{ form.main_instruments }}
       <div class="other">
-        <a href="" class="matrix-other"
+        <a href="" class="matrix-other main-instruments-other"
            data-name="main_instruments"
            data-fields='["agriculture", "forestry", "biodiversity",
                          "human_health", "water", "marine_fisheries", "coastal_areas", "mountain_areas", "tourism", "transport", "energy", "built_environment",
@@ -251,14 +251,9 @@
       </div>
     </div>
 
-    <div class="row">
-      {{ render_field(form.main_instruments_considered) }}
-    </div>
 
-    <div class="row">
-      {{ form.financing_mechanisms }}
       <div class="other">
-        <a href="" class="matrix-other"
+        <a href="" class="matrix-other financing_mechanisms-other"
            data-name="financing_mechanisms"
            data-fields='["agriculture", "forestry", "biodiversity",
                          "human_health", "water", "marine_fisheries", "coastal_areas", "mountain_areas", "tourism", "transport", "energy", "built_environment",
@@ -383,10 +378,14 @@
     </div>
 
     <div class="row lastOfType">
-      <button type="submit">Submit</button>
+      {{ render_field(form.main_instruments_considered) }}
     </div>
 
   </fieldset>
+
+  <div class="row lastOfType">
+    <button type="submit">Submit</button>
+  </div>
 
 </form>
 
