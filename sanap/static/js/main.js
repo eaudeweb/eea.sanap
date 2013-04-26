@@ -49,4 +49,10 @@ $(function () {
 
   });
 
+  $('.tagit').select2({
+    width: '600px',
+    tags: [],
+    tokenSeparators: []
+  });
+
 });
