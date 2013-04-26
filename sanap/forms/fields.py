@@ -38,6 +38,7 @@ class CustomRadioField(wtf.RadioField):
         else:
             self.data = valuelist[0]
 
+
 def expand_choices(field):
     choices = list(field.choices)
     if field.data:

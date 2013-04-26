@@ -198,14 +198,17 @@ class SurveyForm(_SurveyForm):
         expand_choices(self.triggers)
 
     def save(self):
+        user = g.user._get_current_object()
+
         survey = Survey()
-        survey.user = g.user
-        survey.country = g.user.country
-        survey.for_eea = False if g.user.invitee else True
+        survey.user = user
+        survey.country = user.country
+        survey.for_eea = False if user.invitee else True
 
         for key, value in self.data.items():
             if key in ('organisations', 'assessment_subnational_files',
-                       'action_plan_files') and value and value not in ('None',):
+                       'action_plan_files', 'country',
+                       'for_eea', 'user') and value:
                 continue
             setattr(survey, key, value)
 
