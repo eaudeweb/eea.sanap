@@ -79,7 +79,7 @@ class SurveyForm(_SurveyForm):
 
     draft = CustomBoolean()
 
-    organisations = wtf.TextField()
+    organisations = Tagit()
 
     country = wtf.TextField()
 

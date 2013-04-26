@@ -33,8 +33,6 @@ class Edit(views.MethodView):
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
         else:
-            if Survey.objects.filter(country=g.user.country).count > 0:
-                return redirect(url_for('.home'))
             form = SurveyForm()
         return render_template('edit.html', form=form)
 

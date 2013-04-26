@@ -48,23 +48,13 @@ class CustomBoolean(wtf.BooleanField):
             self.data = ''
 
 
-# class TagitWidget(wtf.widgets.TextInput):
-
-#     def __call__(self, field, **kwargs):
-#         # import pdb; pdb.set_trace()
-#         kwargs.setdefault('id', field.id)
-#         kwargs.setdefault('type', self.input_type)
-#         if 'value' not in kwargs:
-#             kwargs['value'] = field._value()
-#         return HTMLString('<input %s>' % self.html_params(name=field.name, **kwargs))
-
-
 class Tagit(wtf.TextField):
 
-    # widget = TagitWidget()
-
     def process_data(self, value):
-        self.data = ""
+        if isinstance(value, list):
+            self.data = ','.join(value)
+        else:
+            self.data = ''
 
 
 def expand_choices(field):
