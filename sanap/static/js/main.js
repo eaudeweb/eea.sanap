@@ -52,7 +52,8 @@ $(function () {
   $('.tagit').select2({
     width: '600px',
     tags: [],
-    tokenSeparators: []
+    tokenSeparators: [],
+    formatNoMatches: function (term) { return "Use Tab/Enter key between different items." },
   });
 
 });
