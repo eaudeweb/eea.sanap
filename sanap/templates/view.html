@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+{% for k, v in form.data.items() %}
+
+  {{ k }}, {{ v }}
+
+{% endfor %}
+
+
+{% endblock %}

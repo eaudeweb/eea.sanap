@@ -15,6 +15,7 @@ from sanap.models import db
 from sanap.auth import login_manager
 from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
+from sanap.context_processor import model_data_context
 
 from .assets import BUNDLE_JS, BUNDLE_CSS, BUNDLE_IE_CSS
 
@@ -42,6 +43,10 @@ BLUEPRINTS = (
     survey,
 )
 
+CONTEXT_PROCESSORS = (
+    model_data_context,
+)
+
 
 sentry = Sentry()
 
@@ -49,13 +54,14 @@ def create_app(instance_path=None, config={}):
     app = flask.Flask(__name__, instance_path=instance_path,
                       instance_relative_config=True)
     configure_app(app, config)
-    configure_blueprints(app, BLUEPRINTS)
+    configure_blueprints(app)
     configure_assets(app)
     configure_static(app)
     configure_authentication(app)
     configure_templating(app)
     configure_error_pages(app)
     configure_uploads(app, files)
+    configure_context_processor(app)
     if config.get('SENTRY_DSN'):
         configure_sentry(app)
     db.init_app(app)
@@ -68,9 +74,14 @@ def configure_app(app, config):
     app.config.update(config)
 
 
-def configure_blueprints(app, blueprints):
-    for blueprint in blueprints:
+def configure_blueprints(app):
+    for blueprint in BLUEPRINTS:
         blueprint.initialize_app(app)
+
+
+def configure_context_processor(app):
+    for context in CONTEXT_PROCESSORS:
+        app.context_processor(context)
 
 
 def configure_assets(app):

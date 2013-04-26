@@ -197,10 +197,10 @@ class SurveyForm(_SurveyForm):
         super(SurveyForm, self).__init__(*args, **kwargs)
         expand_choices(self.triggers)
 
-    def save(self):
+    def save(self, survey):
         user = g.user._get_current_object()
 
-        survey = Survey()
+        survey = survey or Survey()
         survey.user = user
         survey.country = user.country
         survey.for_eea = False if user.invitee else True

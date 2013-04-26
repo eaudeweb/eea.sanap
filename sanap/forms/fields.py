@@ -39,11 +39,35 @@ class CustomRadioField(wtf.RadioField):
             self.data = valuelist[0]
 
 
+# class TagitWidget(wtf.widgets.TextInput):
+
+#     def __call__(self, field, **kwargs):
+#         # import pdb; pdb.set_trace()
+#         kwargs.setdefault('id', field.id)
+#         kwargs.setdefault('type', self.input_type)
+#         if 'value' not in kwargs:
+#             kwargs['value'] = field._value()
+#         return HTMLString('<input %s>' % self.html_params(name=field.name, **kwargs))
+
+
+# class Tagit(wtf.TextField):
+
+#     widget = TagitWidget()
+
+#     def process(self, *args, **kwargs):
+#         import pdb; pdb.set_trace()
+
+#     def process_data(self, value):
+#         import pdb; pdb.set_trace()
+#         self.data = ""
+#         self.tag_value = value
+
+
 def expand_choices(field):
     choices = list(field.choices)
     if field.data:
         for i in field.data:
-            if i not in choices: choices.append((i, i))
+            if i not in [c[0] for c in choices]: choices.append((i, i))
         field.choices = tuple(choices)
     return field
 

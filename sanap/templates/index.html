@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+
+{% if surveys.count() > 0 %}
+<table cellspaging="1" cellpadding="0">
+
+  <thead>
+
+    <tr>
+      <th>Country</th>
+      <th>Status</th>
+      <th>User</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    {% for survey in surveys %}
+    <tr>
+      <td>
+        <a href="{{ url_for('.edit', survey_id=survey.id) }}">
+          {{ COUNTRIES[survey.country] }}</a>
+      </td>
+      <td>
+        {% if survey.draft %}
+          Draft
+        {% else %}
+          Final
+        {% endif %}
+      </td>
+      <td>{{ survey.user }}</td>
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+
+</table>
+
+{% else %}
+
+<div>
+  <a href="{{ url_for('.edit') }}">Add a survey</a>
+</div>
+
+{% endif %}
+
+{% endblock %}

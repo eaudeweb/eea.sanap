@@ -46,11 +46,17 @@ class User(db.Document, UserMixin):
 
 class Survey(db.Document):
 
+    meta = {
+        'ordering': ('-for_eea',)
+    }
+
     country = db.StringField(max_length=128, choices=COUNTRIES)
 
     user = db.ReferenceField(User)
 
     for_eea = db.BooleanField(default=True)
+
+    draft = db.BooleanField(default=True)
 
     lead_organisation = db.StringField(max_length=512)
 
@@ -203,6 +209,9 @@ class Survey(db.Document):
     adaptation_key_issues = db.StringField(max_length=512)
 
     adaptation_support_eu_level = db.StringField(max_length=512)
+
+    def __unicode__(self):
+        return self.country
 
 
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
