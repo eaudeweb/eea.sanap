@@ -56,7 +56,7 @@ def create_app(instance_path=None, config={}):
     configure_templating(app)
     configure_error_pages(app)
     configure_uploads(app, files)
-    if config.get('SENTRY_DSN'):
+    if app.config.get('SENTRY_DSN'):
         configure_sentry(app)
     db.init_app(app)
     return app
