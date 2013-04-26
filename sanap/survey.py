@@ -33,6 +33,8 @@ class Edit(views.MethodView):
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
         else:
+            if Survey.objects.filter(country=g.user.country).count > 0:
+                return redirect(url_for('.home'))
             form = SurveyForm()
         return render_template('edit.html', form=form)
 
@@ -44,8 +46,9 @@ class Edit(views.MethodView):
             survey = None
             form = SurveyForm()
         if form.validate():
-            form.save(survey=survey)
+            obj = form.save(survey=survey)
             flash('Survey added successfully')
+            return redirect(url_for('.edit', survey_id=obj.id))
         return render_template('edit.html', form=form)
 
 survey.add_url_rule('/add', view_func=Edit.as_view('edit'))

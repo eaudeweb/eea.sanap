@@ -61,6 +61,7 @@ def create_app(instance_path=None, config={}):
     configure_templating(app)
     configure_error_pages(app)
     configure_uploads(app, files)
+    configure_context_processor(app)
     if app.config.get('SENTRY_DSN'):
         configure_sentry(app)
     db.init_app(app)
@@ -93,11 +94,13 @@ def configure_assets(app):
     assets.register('packed_css', css)
     assets.register('packed_ie_css', ie_css)
 
+
 def configure_static(app):
     if app.config['DEBUG']:
         app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
             "/static/files": app.config['UPLOADED_FILES_DEST'],
         })
+
 
 def configure_authentication(app):
     login_manager.setup_app(app)

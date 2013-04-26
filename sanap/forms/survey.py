@@ -77,7 +77,11 @@ class InvolmentForm(wtf.Form):
 
 class SurveyForm(_SurveyForm):
 
+    draft = CustomBoolean()
+
     organisations = wtf.TextField()
+
+    country = wtf.TextField()
 
     public_awareness = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
@@ -212,13 +216,15 @@ class SurveyForm(_SurveyForm):
         survey.user = user
         survey.country = user.country
         survey.for_eea = False if user.invitee else True
+        survey.draft = True if self.data['draft'] else False
 
         for key, value in self.data.items():
             if key in ('organisations', 'assessment_subnational_files',
                        'action_plan_files', 'country',
-                       'for_eea', 'user') and value:
+                       'for_eea', 'user', 'draft'):
                 continue
-            setattr(survey, key, value)
+            if value:
+                setattr(survey, key, value)
 
         organisations = self.data['organisations'].split(',')
         if organisations:

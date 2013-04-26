@@ -39,6 +39,15 @@ class CustomRadioField(wtf.RadioField):
             self.data = valuelist[0]
 
 
+class CustomBoolean(wtf.BooleanField):
+
+    def process_formdata(self, valuelist):
+        if bool(valuelist[0]):
+            self.data = '1'
+        else:
+            self.data = ''
+
+
 # class TagitWidget(wtf.widgets.TextInput):
 
 #     def __call__(self, field, **kwargs):
@@ -50,17 +59,12 @@ class CustomRadioField(wtf.RadioField):
 #         return HTMLString('<input %s>' % self.html_params(name=field.name, **kwargs))
 
 
-# class Tagit(wtf.TextField):
+class Tagit(wtf.TextField):
 
-#     widget = TagitWidget()
+    # widget = TagitWidget()
 
-#     def process(self, *args, **kwargs):
-#         import pdb; pdb.set_trace()
-
-#     def process_data(self, value):
-#         import pdb; pdb.set_trace()
-#         self.data = ""
-#         self.tag_value = value
+    def process_data(self, value):
+        self.data = ""
 
 
 def expand_choices(field):
