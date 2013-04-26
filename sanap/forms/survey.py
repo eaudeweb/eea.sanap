@@ -106,14 +106,22 @@ class SurveyForm(_SurveyForm):
     integration = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
+    integration_examples = wtf.TextAreaField()
+
     mitigation = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
+
+    mitigation_examples = wtf.TextAreaField()
 
     transnational_cooperation = CustomRadioField(choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
+    transnational_cooperation_examples = wtf.TextAreaField()
+
     barriers = MultiCheckboxField(choices=BARRIERS,
         validators=[wtf.validators.optional()])
+
+    part1_comments = wtf.TextAreaField()
 
     process_stage = CustomRadioField(choices=PROCESS_STAGE,
         validators=[wtf.validators.optional()])
