@@ -1,6 +1,7 @@
 from flask.ext import wtf
 from libs import markup
 from libs.markup import oneliner as e
+from sanap.model_data import SECTORS_DATA
 
 
 class MultiCheckboxField(wtf.SelectMultipleField):
@@ -17,6 +18,36 @@ class MultiCheckboxField(wtf.SelectMultipleField):
     widget = wtf.widgets.ListWidget(prefix_label=False)
 
     option_widget = wtf.widgets.CheckboxInput()
+
+
+class ListTextWidget():
+
+    def __call__(self, field, **kwargs):
+        page = markup.page()
+        page.ul(id=field.id)
+
+        for subfield in field:
+            page.li()
+            value = field.data.get(subfield.data, '') if field.data else ''
+            page.input(name=subfield.name, id=subfield.id, value=value)
+            page.li.close()
+        page.ul.close()
+        return str(page)
+
+
+class MultiTextField(wtf.SelectMultipleField):
+
+    widget = ListTextWidget()
+
+    def process_data(self, value):
+        self.data = value if isinstance(value, dict) else ''
+
+    def process_formdata(self, valuelist):
+        data = dict(zip(SECTORS_DATA, valuelist))
+        self.data = dict((k, v) for k, v in data.iteritems() if v)
+
+    def pre_validate(self, form):
+        pass
 
 
 class CustomFileField(wtf.FileField):
@@ -97,7 +128,6 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
 
         page = markup.page()
         page.table(id=self.id, class_='matrix')
-
         page.thead()
         page.tr()
         page.th('', class_='category-left')
@@ -111,7 +141,7 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
         page.td(e.div(data_keys), class_='category-left')
         for i, field in enumerate(fields):
             field.choices = [(k, v) for k, v in self.data]
-            odd_even = i%2 and 'odd' or 'even'
+            odd_even = i % 2 and 'odd' or 'even'
             page.td(field(**kwargs), class_=('check-column %s' % odd_even))
         page.tr.close()
 
@@ -119,3 +149,4 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
         page.table.close()
 
         return page
+

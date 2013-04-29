@@ -270,4 +270,27 @@ INVOLMENT_DATA = (
 INVOLMENT = [(i, i) for i in INVOLMENT_DATA]
 
 
+SECTORS_DATA = (
+    'Agriculture',
+    'Forestry',
+    'Biodiversity',
+    'Human health',
+    'Water',
+    'Marine and fisheries',
+    'Coastal areas',
+    'Mountain areas',
+    'Tourism',
+    'Transport',
+    'Energy',
+    'Built environment',
+    'Spatial planning, urban planning',
+    'Disaster risk reduction',
+    'Civil protection',
+    'Industry',
+    'Business and services',
+    'Financial/Insurance',
+    'Cultural heritage',
+)
+SECTORS = [(i, i) for i in SECTORS_DATA]
+
 

@@ -157,7 +157,7 @@ class Survey(db.Document):
     part2_files = db.StringField(max_length=512)
 
     # part 3
-    # TODOsectors
+    sectors = db.DictField(default={})
 
     instruments = db.StringField(choices=INSTRUMENTS)
 

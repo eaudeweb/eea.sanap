@@ -12,6 +12,19 @@ files = UploadSet('files', AllExcept(SCRIPTS + EXECUTABLES))
 _SurveyForm = model_form(Survey)
 
 
+class SectorsForm(wtf.Form):
+
+    adaptation_national = MultiTextField()
+
+    adaptation_sub_national = MultiTextField()
+
+    adaptation_local = MultiTextField()
+
+    priority_sectors = MultiCheckboxField()
+
+    examples = MultiTextField()
+
+
 class MonitorReportEvaluateForm(wtf.Form):
 
     not_planed_yet = MultiCheckboxField()
@@ -171,6 +184,9 @@ class SurveyForm(_SurveyForm):
 
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
         widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE))
+
+    sectors = wtf.FormField(SectorsForm, widget=MatrixCheckboxWidget(
+        data=SECTORS, id='sectors'))
 
     instruments = CustomRadioField(choices=INSTRUMENTS,
         validators=[wtf.validators.optional()])

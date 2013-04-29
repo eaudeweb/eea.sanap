@@ -56,4 +56,8 @@ $(function () {
     formatNoMatches: function (term) { return "Use Tab/Enter key between different items." },
   });
 
+  $('#sectors-adaptation_national,#sectors-adaptation_sub_national,#sectors-adaptation_local').find('input').spinner({
+    min: 0, max: 6
+  });
+
 });
