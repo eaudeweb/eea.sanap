@@ -5,25 +5,27 @@
 {% block content %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir">
-
   <fieldset>
-
-    <legend>Part I: Assessing statements</legend>
-
     <div class="row">
       {{ render_field(form.lead_organisation) }}
     </div>
 
     <div class="row">
+      <p>We encourage involving other stakeholders with whom you work in filling out this self-assessment (e.g. researchers, EPAs, NGOs).</p>
       {{ render_field(form.organisations, class_='tagit') }}
     </div>
+  </fieldset>
+  <fieldset>
+
+    <legend>Part I: General statements on adaptation</legend>
+
 
     <div class="row">
       {{ render_field(form.public_awareness) }}
     </div>
 
     <div class="row">
-      {{ render_field(form.adaptation_need, class_='tagit') }}
+      {{ render_field(form.adaptation_need) }}
     </div>
 
     <div class="row">
@@ -36,7 +38,7 @@
     </div>
 
     <div class="row">
-      {{ render_field(form.willingness, class_='tagit') }}
+      {{ render_field(form.willingness) }}
     </div>
 
     <div class="row">

@@ -92,53 +92,52 @@ class SurveyForm(_SurveyForm):
 
     draft = CustomBoolean()
 
-    organisations = Tagit()
+    lead_organisation = wtf.TextField(Q['lead_organisation'])
+
+    organisations = Tagit(Q['organisations'])
 
     country = wtf.TextField()
 
-    public_awareness = CustomRadioField(choices=AGREEMENT,
+    public_awareness = CustomRadioField(Q['1'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    adaptation_need = CustomRadioField(choices=AGREEMENT,
+    adaptation_need = CustomRadioField(Q['2'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    triggers = MultiCheckboxField(choices=TRIGGERS,
+    triggers = MultiCheckboxField(Q['3'], choices=TRIGGERS,
         validators=[wtf.validators.optional()])
 
-    willingness = CustomRadioField(choices=AGREEMENT,
+    willingness = CustomRadioField(Q['4'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    knowledge = CustomRadioField(choices=AGREEMENT,
+    knowledge = CustomRadioField(Q['5'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    uncertainties = CustomRadioField(choices=AGREEMENT,
+    uncertainties = CustomRadioField(Q['6'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    objectives = CustomRadioField(choices=AGREEMENT,
+    objectives = CustomRadioField(Q['7'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    goals = CustomRadioField(choices=AGREEMENT,
+    integration = CustomRadioField(Q['8'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    integration = CustomRadioField(choices=AGREEMENT,
+    integration_examples = wtf.TextAreaField(Q['provide_examples'])
+
+    mitigation = CustomRadioField(Q['9'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    integration_examples = wtf.TextAreaField()
+    mitigation_examples = wtf.TextAreaField(Q['provide_examples'])
 
-    mitigation = CustomRadioField(choices=AGREEMENT,
+    transnational_cooperation = CustomRadioField(Q['10'], choices=AGREEMENT,
         validators=[wtf.validators.optional()])
 
-    mitigation_examples = wtf.TextAreaField()
+    transnational_cooperation_examples = wtf.TextAreaField(Q['provide_examples'])
 
-    transnational_cooperation = CustomRadioField(choices=AGREEMENT,
+    barriers = MultiCheckboxField(Q['11'], choices=BARRIERS,
         validators=[wtf.validators.optional()])
 
-    transnational_cooperation_examples = wtf.TextAreaField()
-
-    barriers = MultiCheckboxField(choices=BARRIERS,
-        validators=[wtf.validators.optional()])
-
-    part1_comments = wtf.TextAreaField()
+    part1_comments = wtf.TextAreaField(Q['p1comments'])
 
     process_stage = CustomRadioField(choices=PROCESS_STAGE,
         validators=[wtf.validators.optional()])

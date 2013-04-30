@@ -293,4 +293,20 @@ SECTORS_DATA = (
 )
 SECTORS = [(i, i) for i in SECTORS_DATA]
 
-
+Q = {
+    'lead_organisation': 'Name of lead organisation responsible for the reply (including contact details)',
+    'organisations': 'List of other stakeholder organisations also involved in filling out this form',
+    '1': '1. In my country, in the past five years, the level of public awareness of the need for adaptation as a response to climate change has increased',
+    '2': '2.	In my country, the need for climate change adaptation has reached the national political',
+    '3': '3.	In my country, the following influences have triggered adaptation (Please select three most important triggers)',
+    '4': '4. In my country, the willingness to take adaptation action at national level is',
+    '5': '5. In my country, in the past five years, there has been an increase in the amount of adaptation-related knowledge (e.g. in relation to vulnerabilities, adaptation options) generated with the aim of informing policy making',
+    '6': '6.	In my country, uncertainties in future projections (e.g. uncertainties regarding climate change) are explicitly addressed in the adaptation policy process',
+    '7': '7. In my country, adaptation objectives are based on an understanding of the impacts, risks and/or vulnerabilities to climate change',
+    '8': '8.	In my country, integration of adaptation into sectoral policies and programmes is increasing',
+    'provide_examples': 'Please provide examples:',
+    '9': '9. In my country, aspects that are relevant to climate change mitigation are taken into account in the adaptation policy process',
+    '10': '10. In my country, transnational co-operation is considered as an element in our adaptation policy process',
+    '11': '11. In my country, the following barriers for adaptation have been identified (Please select the three most important barriers)',
+    'p1comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references)'
+}
