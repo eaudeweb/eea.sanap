@@ -5,6 +5,12 @@ body {
     font-size: 13px;
 }
 
+textarea {
+    font-size: 12px;
+    font-family: arial, sans-serif;
+    height: 80px;
+}
+
 .hide {
     display: none;
 }
@@ -206,7 +212,7 @@ body {
 .ecoAsVir #part2_comments,
 .ecoAsVir #main_instruments_considered,
 .ecoAsVir .field ul {
-	width: 565px;
+  width: 600px;
   padding-left: 0px;
   margin: 0;
 }
@@ -291,6 +297,10 @@ body {
 body .ui-dialog .ui-dialog-titlebar-close span {
     margin-top: -7px;
     margin-left: -7px; /* margin for span inside close button, from browser alert window */
+}
+
+.ui-spinner input{
+    width: 30px;
 }
 
 .login-container,
