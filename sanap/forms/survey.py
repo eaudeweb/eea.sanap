@@ -29,11 +29,13 @@ class SectorsForm(wtf.Form):
 
 class MonitorReportEvaluateForm(wtf.Form):
 
-    not_planed_yet = MultiCheckboxField()
+    not_planed = MultiCheckboxField()
+
+    planned = MultiCheckboxField()
 
     under_development = MultiCheckboxField()
 
-    implemented = MultiCheckboxField()
+    currently_being_implemented = MultiCheckboxField()
 
 
 class MainInstrumentsForm(wtf.Form):
@@ -169,35 +171,55 @@ class SurveyForm(_SurveyForm):
     assessment_scale = MultiCheckboxField(Q['if_yes'], choices=ASSESSMENT_SCALE,
         validators=[wtf.validators.optional()])
 
-    assessment_subnational_files = CustomFileField(
+    assessment_subnational_info = wtf.TextAreaField(Q['text'])
+
+    assessment_subnational_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    needed_info = MultiCheckboxField(choices=BARRIERS,
+    #TODO sectors_assessments
+    assessment_coordination = wtf.TextAreaField(Q['coordination'])
+
+    assessment_methodological_approach = wtf.TextAreaField(Q['meth_approach'])
+
+    change_adaptation_costs = wtf.TextAreaField(Q['19'])
+
+    needed_info = MultiCheckboxField(Q['20'], choices=NEEDED_INFO,
         validators=[wtf.validators.optional()])
 
-    assessment_update = CustomRadioField(choices=PLANNING,
+    assessment_update = CustomRadioField(Q['21'], choices=PLANNING,
         validators=[wtf.validators.optional()])
 
-    adaptation_options = CustomRadioField(choices=STATUS,
+    assessment_update_info = wtf.TextAreaField(Q['req_regular'])
+
+    adaptation_options = CustomRadioField(Q['22'], choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    adaptation_scale = MultiCheckboxField(choices=ADAPTATION_SCALE,
+    adaptation_scale = MultiCheckboxField(Q['if_yes'], choices=ADAPTATION_SCALE,
         validators=[wtf.validators.optional()])
 
-    identified_options = MultiCheckboxField(choices=IDENTIFIED_OPTIONS,
+    identified_options = MultiCheckboxField(Q['23'], choices=IDENTIFIED_OPTIONS,
         validators=[wtf.validators.optional()])
 
-    adaptation_actions = MultiCheckboxField(choices=ADAPTATION_ACTIONS,
+    adaptation_actions = MultiCheckboxField(Q['24'], choices=ADAPTATION_ACTIONS,
         validators=[wtf.validators.optional()])
 
-    prioritised_options = CustomRadioField(choices=STATUS,
+    prioritised_options = CustomRadioField(Q['25'], choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    action_plan_files = CustomFileField(
+    options_methodological = wtf.TextAreaField(Q['26'])
+
+    action_plan_info = wtf.TextAreaField(Q['27'])
+
+    action_plan_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
+
+    practice_example = wtf.TextAreaField(Q['28'])
+
+    integrating_plans = wtf.TextAreaField(Q['29'])
 
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
-        widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE))
+        widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE, label=Q['30'],
+                                    title='Current state of work'))
 
     sectors = wtf.FormField(SectorsForm, widget=MatrixCheckboxWidget(
         data=SECTORS, id='sectors'))
@@ -208,7 +230,9 @@ class SurveyForm(_SurveyForm):
     main_instruments = wtf.FormField(MainInstrumentsForm,
         widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments'))
 
-    part2_files =  CustomFileField(
+    part2_comments = wtf.TextAreaField(Q['p2comments'])
+
+    part2_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     financing_mechanisms = wtf.FormField(MainInstrumentsForm,

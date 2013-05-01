@@ -158,11 +158,11 @@ PLANNING = [(i, i) for i in PLANNING_DATA]
 NEEDED_INFO_DATA = (
     'Uncertainty estimates',
     'Local/community level information',
-    'Time period',
-    'Estimate of costs',
-    'Estimate of benefits',
-    'Interdependencies across sectors',
-    'Social vulnerability'
+    'Consideration of different time periods',
+    'Estimates of costs',
+    'Estimates of benefits',
+    'Information on interdependencies across sectors',
+    'Consideration of social issues',
 )
 NEEDED_INFO = [(i, i) for i in NEEDED_INFO_DATA]
 
@@ -171,7 +171,7 @@ ADAPTATION_SCALE_DATA = (
     'national level',
     'sub-national level',
     'sectoral level',
-    'cross-sectoral',
+    'cross-sectoral level',
 )
 ADAPTATION_SCALE = [(i, i) for i in ADAPTATION_SCALE_DATA]
 
@@ -193,10 +193,10 @@ IDENTIFIED_OPTIONS = [(i, i) for i in IDENTIFIED_OPTIONS_DATA]
 
 
 ADAPTATION_ACTIONS_DATA = (
-    'Grey measures (i.e. technological such as river flood defence, beach nourishment)',
-    'Green measures (i.e. ecosystem-based approaches that use nature\'s multiple services such as crop diversification, enhancing the ability of indigenous plant and animal species to move across landscapes) ',
-    'Soft measures  (i.e. behavioural, managerial, legal and policy approaches that includes e.g. awareness raising initiatives, passing legislations, early warning systems, insurances, planning instruments)',
-    'Combined options'
+    u'Grey options (i.e. technological, such as river flood defence, beach nourishment)',
+    u'Green options (i.e. ecosystem-based approaches that use nature’s multiple services, such as crop diversification, enhancing the ability of indigenous plant and animal species to move across landscapes)',
+    u'Soft options (i.e. managerial, legal and policy approaches, such as awareness-raising initiatives, passing legislation, creating early warning systems, insurance, planning instruments)',
+    'Combined options',
 )
 ADAPTATION_ACTIONS = [(i, i) for i in ADAPTATION_ACTIONS_DATA]
 
@@ -319,5 +319,21 @@ Q = {
     'm_coordination': 'What was challenging or missing? ',
     '16': '16. Are risk assessments or vulnerability assessments available for your country?',
     'if_yes': 'If yes: available at',
-    'if_subnational': ''
+    'text': 'Please insert text and provide references to documents.',
+    'coordination': 'Coordination',
+    'meth_approach': 'Methodological approach',
+    '19': '19. In relation to the national assessment, have you identified the costs of climate change impacts and the costs and benefits of adaptation?',
+    '20': '20. In relation to the national assessment, what kind of information is still needed for risk or vulnerability assessments? Please select the three most important issues:',
+    '21': '21. In relation to the national assessment, do you plan to update the risk or vulnerability assessments?',
+    'req_regular': 'Are there requirements to do so on a regular basis? Please explain.',
+    '22': '22. Have you identified and assessed adaptation options?',
+    '23': '23. How have you identified and assessed adaptation options?',
+    '24': '24. Please indicate the types of adaptation options identified:',
+    '25': '25. Have you prioritised adaptation options?',
+    '26': '26. If you have prioritised adaptation options, which methodological approach (e.g. expert judgment, multi-criteria analysis) has been used?',
+    '27': '27. Have the adaptation options been included in an action plan?',
+    '28': u'28. Please provide a maximum of three examples of what you would consider as ‘good practices’ in adaptation that have already been put in place in your country. Please indicate why they are considered to be ‘good practice’?',
+    '29': '29. What are your plans for integrating new information and insights into existing adaptation policies',
+    '30': u'30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …',
+    'p2comments': 'Please insert text and upload documents (e.g. vulnerability assessment, risk assessment, adaptation options, M&E, etc.)',
 }

@@ -157,11 +157,17 @@
       {{ render_field(form.assessment_subnational_files) }}
     </div>
 
-    <div class="row">
-      {{ render_field(form.assessment_coordination) }}
-    </div>
+    <!-- #TODO sectors_assessments -->
 
     <div class="row">
+      <label>
+        18. In relation to the national assessment, how is/was the risk or vulnerability assessment process coordinated (e.g. who commissioned the work; who carried it out)? What methodological approach (e.g. literature review, modelling, expert appraisal) has been used? How have uncertainties been addressed?
+      </label>
+    </div>
+    <div class="row nested">
+      {{ render_field(form.assessment_coordination) }}
+    </div>
+    <div class="row nested">
       {{ render_field(form.assessment_methodological_approach) }}
     </div>
 
@@ -189,11 +195,11 @@
       {{ render_field(form.adaptation_options) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.adaptation_scale) }}
       <div class="other">
         <a class="add-item" data-title="Add more adaptation scale">
-          Add more adaptation scale</a>
+          Add other scale</a>
       </div>
     </div>
 
@@ -223,11 +229,11 @@
 
     <div class="row">
       {{ render_field(form.action_plan_info) }}
-    </div>
-
-    <div class="row">
+      <br />
       {{ render_field(form.action_plan_files) }}
     </div>
+
+    <p><strong>Implementation, monitoring and evaluation</strong></p>
 
     <div class="row">
       {{ render_field(form.practice_example) }}

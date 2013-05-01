@@ -119,6 +119,8 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
     def __init__(self, data, *args, **kwargs):
         self.data = data
         self.id = kwargs.pop('id', '')
+        self.label = kwargs.pop('label', '')
+        self.title = kwargs.pop('title', '')
 
     def __call__(self, form_field, **kwargs):
         fields = [f for f in form_field if 'csrf_token' not in f.id ]
@@ -127,10 +129,11 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
         self.data = self.update_data(form_field, self.data)
 
         page = markup.page()
+        page.label(self.label)
         page.table(id=self.id, class_='matrix')
         page.thead()
         page.tr()
-        page.th('', class_='category-left')
+        page.th(self.title, class_='category-left')
         for i, f in enumerate(fields):
             page.th(f.label.text, class_=i%2 and 'odd' or 'even')
         page.tr.close()
