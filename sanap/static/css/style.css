@@ -310,6 +310,14 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     width: 30px;
 }
 
+.row.nested{
+    padding-left: 50px;
+}
+
+.row.nested2{
+    padding-left: 100px;
+}
+
 .login-container,
 .login-title {
     padding: 20px;
