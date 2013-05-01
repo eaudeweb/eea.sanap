@@ -261,14 +261,27 @@
     <legend>Part III: Level of adaptation and policy instruments in sectors</legend>
 
     <div class="row">
+      <label>31. Please highlight the relevant sectors/areas in your country and assess the current state of adaptation at various levels:</label>
+      <p>Please score the state of adaptation using the following scale:
+<br />0= adaptation is not relevant for my country
+<br />1= need for adaptation not recognised and no measures implemented yet
+<br />2= coordination activities for adaptation started
+<br />3= some adaptation measures identified for the sector but not yet implemented
+<br />4= portfolio of adaptation measures identified and implementation (of some) launched
+<br />5= portfolio of adaptation measures implemented
+<br />6= portfolio of adaptation measures in place and monitored/evaluated
+</p>
+
+      <p>Use the arrows or the keyboard to input digits from 0 to 6.</p>
       {{ form.sectors }}
+      <!-- #TODO: add other -->
     </div>
 
     <div class="row">
       {{ render_field(form.instruments) }}
     </div>
 
-    <div class="row">
+    <div class="row special">
       {{ form.main_instruments }}
       <div class="other">
         <a href="" class="matrix-other main-instruments-other"
@@ -286,7 +299,7 @@
       {{ render_field(form.main_instruments_considered) }}
     </div>
 
-    <div class="row">
+    <div class="row special">
       {{ form.financing_mechanisms }}
 
       <div class="other">
@@ -303,6 +316,10 @@
 
     <div class="row">
       {{ render_field(form.part3_comments) }}
+    </div>
+
+    <div class="row">
+      {{ render_field(form.part3_files) }}
     </div>
 
     <div class="row">

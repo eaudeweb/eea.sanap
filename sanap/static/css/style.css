@@ -217,6 +217,9 @@ textarea {
 .ecoAsVir #integrating_plans,
 .ecoAsVir #part2_comments,
 .ecoAsVir #main_instruments_considered,
+.ecoAsVir #part3_comments,
+.ecoAsVir #transboundary_issues,
+.ecoAsVir #regions_coordination,
 .ecoAsVir .field ul {
   width: 600px;
   padding-left: 0px;
@@ -285,7 +288,7 @@ textarea {
 
 .ecoAsVir .row.special {
 	overflow-x: scroll;
-  width: 710px; /*for Firefox */
+  width: 95%;
 }
 
 .ecoAsVir .category-left:empty {
@@ -375,3 +378,24 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 .matrix label {
     display: none;
 }
+
+textarea.cell{
+    font-size: 11px;
+    height: 30px;
+}
+
+#sectors tr td div{
+    height: 34px;
+}
+#sectors tr td ul li {
+    height: 34px;
+    padding-top: 11px;
+    padding-bottom: 0px;
+}
+
+#financing-mechanisms tr td div,
+#financing-mechanisms tr td ul li {
+    height: 30px;
+    padding: 8px;
+}
+

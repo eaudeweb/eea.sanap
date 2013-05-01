@@ -16,15 +16,15 @@ FILE_FIELDS = ('assessment_subnational_files', 'action_plan_files',
 
 class SectorsForm(wtf.Form):
 
-    adaptation_national = MultiTextField()
+    adaptation_national = MultiTextField('Adaptation at national level')
 
-    adaptation_sub_national = MultiTextField()
+    adaptation_sub_national = MultiTextField('Adaptation at sub-national level (e.g. provinces, regions)')
 
-    adaptation_local = MultiTextField()
+    adaptation_local = MultiTextField('Adaptation at local or city-level')
 
-    priority_sectors = MultiCheckboxField()
+    priority_sectors = MultiCheckboxField('Priority sectors/areas for implementation')
 
-    examples = MultiTextField()
+    examples = MultiTextAreaField('Please provide some examples if you have indicated that the adaptation state is 4, 5 or 6')
 
 
 class MonitorReportEvaluateForm(wtf.Form):
@@ -221,25 +221,39 @@ class SurveyForm(_SurveyForm):
         widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE, label=Q['30'],
                                     title='Current state of work'))
 
-    sectors = wtf.FormField(SectorsForm, widget=MatrixCheckboxWidget(
-        data=SECTORS, id='sectors'))
-
-    instruments = CustomRadioField(choices=INSTRUMENTS,
-        validators=[wtf.validators.optional()])
-
-    main_instruments = wtf.FormField(MainInstrumentsForm,
-        widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments'))
-
     part2_comments = wtf.TextAreaField(Q['p2comments'])
 
     part2_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    financing_mechanisms = wtf.FormField(MainInstrumentsForm,
-        widget=MatrixCheckboxWidget(data=FINANCING_MECHANISMS))
+    ## part3
 
-    part3_files = CustomFileField(
+    sectors = wtf.FormField(SectorsForm, widget=MatrixCheckboxWidget(
+        data=SECTORS, id='sectors', title='Sectors / Areas'))
+
+    instruments = CustomRadioField(Q['32'], choices=INSTRUMENTS,
+        validators=[wtf.validators.optional()])
+
+    main_instruments = wtf.FormField(MainInstrumentsForm,
+        widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments',
+                                    title="Instruments / Sectors",
+                                    label=Q['33']))
+
+    main_instruments_considered = wtf.TextAreaField(Q['34'])
+
+    financing_mechanisms = wtf.FormField(MainInstrumentsForm,
+        widget=MatrixCheckboxWidget(data=FINANCING_MECHANISMS, label=Q['35'],
+                                    id='financing-mechanisms',
+                                    title="Financing mechanisms / Sectors"))
+
+    part3_comments = wtf.TextAreaField(Q['p3comments'])
+
+    part3_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
+
+    transboundary_issues = wtf.TextAreaField(Q['36'])
+
+    regions_coordination = wtf.TextAreaField(Q['37'])
 
     stakeholders_involved = CustomRadioField(choices=YES_NO,
         validators=[wtf.validators.optional()])
