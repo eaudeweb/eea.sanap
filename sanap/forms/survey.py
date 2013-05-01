@@ -10,6 +10,8 @@ from sanap.model_data import *
 
 files = UploadSet('files', AllExcept(SCRIPTS + EXECUTABLES))
 _SurveyForm = model_form(Survey)
+FILE_FIELDS = ('assessment_subnational_files', 'action_plan_files',
+               'part4_files', 'part2_files', 'part1_files', 'part3_files',)
 
 
 class SectorsForm(wtf.Form):
@@ -139,6 +141,9 @@ class SurveyForm(_SurveyForm):
 
     part1_comments = wtf.TextAreaField(Q['p1comments'])
 
+    part1_files =  CustomFileField(Q['files'],
+       validators=[wtf.file_allowed(files, 'Document is not valid')])
+
     process_stage = CustomRadioField(choices=PROCESS_STAGE,
         validators=[wtf.validators.optional()])
 
@@ -234,9 +239,8 @@ class SurveyForm(_SurveyForm):
         survey.draft = True if self.data['draft'] else False
 
         for key, value in self.data.items():
-            if key in ('organisations', 'assessment_subnational_files',
-                       'action_plan_files', 'country',
-                       'for_eea', 'user', 'draft'):
+            if key in ('organisations',
+                       'country', 'for_eea', 'user', 'draft') + FILE_FIELDS:
                 continue
             if value:
                 setattr(survey, key, value)
@@ -245,17 +249,12 @@ class SurveyForm(_SurveyForm):
         if organisations:
             survey.organisations = organisations
 
-        assessment_subnational_files = self.data['assessment_subnational_files']
-        if assessment_subnational_files:
-            survey.assessment_subnational_files = files.save(assessment_subnational_files)
-
-        action_plan_files = self.data['action_plan_files']
-        if action_plan_files:
-            survey.action_plan_files = files.save(action_plan_files)
-
-        part4_files = self.data['part4_files']
-        if part4_files:
-            survey.part4_files = files.save(part4_files)
+        for field_name in FILE_FIELDS:
+            uploaded = self.data[field_name]
+            if uploaded:
+                value = getattr(survey, field_name, False) or []
+                value.append(files.save(uploaded))
+                setattr(survey, field_name, value)
 
         survey.save()
         return survey

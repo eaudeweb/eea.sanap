@@ -92,6 +92,8 @@ class Survey(db.Document):
 
     part1_comments = db.StringField(max_length=2056)
 
+    part1_files = db.ListField(db.StringField(max_length=512), default=[])
+
     # part 2
 
     process_stage = db.StringField(choices=PROCESS_STAGE)
@@ -114,7 +116,8 @@ class Survey(db.Document):
 
     assessment_subnational_info = db.StringField(max_length=512)
 
-    assessment_subnational_files = db.StringField(max_length=512)
+    assessment_subnational_files = db.ListField(db.StringField(max_length=512),
+                                                default=[])
 
     #TODO sectors_assessments
 
@@ -144,7 +147,7 @@ class Survey(db.Document):
 
     action_plan_info = db.StringField(max_length=512)
 
-    action_plan_files = db.StringField(max_length=512)
+    action_plan_files = db.ListField(db.StringField(max_length=512), default=[])
 
     practice_example = db.StringField(max_length=512)
 
@@ -154,7 +157,7 @@ class Survey(db.Document):
 
     part2_comments = db.StringField(max_length=512)
 
-    part2_files = db.StringField(max_length=512)
+    part2_files = db.ListField(db.StringField(max_length=512), default=[])
 
     # part 3
     sectors = db.DictField(default={})
@@ -169,7 +172,7 @@ class Survey(db.Document):
 
     part3_comments = db.StringField(max_length=512)
 
-    part3_files = db.StringField(max_length=512)
+    part3_files = db.ListField(db.StringField(max_length=512), default=[])
 
     transboundary_issues = db.StringField(max_length=512)
 
@@ -191,7 +194,7 @@ class Survey(db.Document):
 
     part4_comments = db.StringField(max_length=512)
 
-    part4_files = db.StringField(max_length=512)
+    part4_files = db.ListField(db.StringField(max_length=512), default=[])
 
     # part 5
     next_step_vulnerability = db.StringField(max_length=512)

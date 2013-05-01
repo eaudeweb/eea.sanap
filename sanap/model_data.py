@@ -308,5 +308,7 @@ Q = {
     '9': '9. In my country, aspects that are relevant to climate change mitigation are taken into account in the adaptation policy process',
     '10': '10. In my country, transnational co-operation is considered as an element in our adaptation policy process',
     '11': '11. In my country, the following barriers for adaptation have been identified (Please select the three most important barriers)',
-    'p1comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references)'
+    'p1comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references)',
+    'files': 'Upload documents. If more than one, compress them in one zip file, or upload one at a time',
+
 }

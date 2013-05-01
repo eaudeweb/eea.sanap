@@ -85,14 +85,18 @@
       </div>
     </div>
 
-    <div class="row lastOfType">
+    <div class="row">
       {{ render_field(form.part1_comments) }}
+    </div>
+
+    <div class="row lastOfType">
+      {{ render_field(form.part1_files) }}
     </div>
 
   </fieldset>
   <fieldset>
 
-    <legend>Part II: Assessing the adaptation policy process</legend>
+    <legend>Part II: The adaptation policy process</legend>
 
     <div class="row">
       {{ render_field(form.process_stage) }}
