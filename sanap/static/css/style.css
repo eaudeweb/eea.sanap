@@ -389,12 +389,6 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     display: none;
 }
 
-textarea.cell{
-    font-size: 11px;
-    height: 30px;
-    width: 196px;
-}
-
 #sectors tr td div{
     height: 38px;
 }
@@ -404,7 +398,12 @@ textarea.cell{
     padding-bottom: 0px;
 }
 #sectors th#sectors-4{
-    width: 200px;
+    width: 300px;
+}
+textarea.cell{
+    font-size: 11px;
+    height: 30px;
+    width: 296px;
 }
 
 #financing-mechanisms tr td div,
