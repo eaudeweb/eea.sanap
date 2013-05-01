@@ -1,22 +1,22 @@
 $(function () {
 
   $('.add-item').on('click', function () {
-    var trigger = prompt($(this).data('title'));
-    if (!trigger) {
+    var value = prompt($(this).data('title'));
+    if (!value) {
         return;
     }
 
-    var li = $('<li />');
-    var input = $('<input />');
-    var label = $('<label >')
+    var li = $(this).parents('.row').find('ul').find('li:last').clone();
+    var input = li.find('input');
+    var label = li.find('label');
 
-    input.attr({'name': 'triggers',
-                'type': 'checkbox',
-                'value': trigger});
-    label.text(trigger);
+    var next_id = input.attr('id').replace(/\d+$/, function(n){ return (++n) });
 
-    li.append(input)
-    li.append(label);
+    input.attr({'id': next_id,
+                'value': value});
+    label.text(value);
+    label.attr({'for': next_id})
+
     $(this).parents('.row').find('ul').append(li);
   });
 
