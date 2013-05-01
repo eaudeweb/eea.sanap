@@ -116,7 +116,7 @@ def expand_choices(field):
     return field
 
 
-class MatrixBaseWidget():
+class MatrixBaseWidget(object):
 
     def update_data(self, form_field, data):
         for value in form_field.data.values():
@@ -154,7 +154,8 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
         page.tr()
         page.th(self.title, class_='category-left')
         for i, f in enumerate(fields):
-            page.th(f.label.text, class_=i%2 and 'odd' or 'even')
+            page.th(f.label.text, class_=i%2 and 'odd' or 'even',
+                    id="%s-%d" % (self.id, i))
         page.tr.close()
         page.thead.close()
 

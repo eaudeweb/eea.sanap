@@ -92,6 +92,15 @@ class InvolmentForm(wtf.Form):
     empowerment = MultiCheckboxField()
 
 
+class SectorsAssessmentsForm(wtf.Form):
+
+    national = MultiCheckboxField('covered in the national assessment')
+
+    public_sector = MultiCheckboxField('covered in sector-based assessment led by ministries in charge  of this sector')
+
+    private_sector = MultiCheckboxField('covered in sector-based assessment led by private sector or industry groups')
+
+
 class SurveyForm(_SurveyForm):
 
     draft = CustomBoolean()
@@ -176,7 +185,10 @@ class SurveyForm(_SurveyForm):
     assessment_subnational_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    #TODO sectors_assessments
+    sectors_assessments = wtf.FormField(SectorsAssessmentsForm,
+        widget=MatrixCheckboxWidget(data=SECTORS_EXTENDED, label=Q['17'],
+                                    title='Sectors', id='sectors-assessments'))
+
     assessment_coordination = wtf.TextAreaField(Q['coordination'])
 
     assessment_methodological_approach = wtf.TextAreaField(Q['meth_approach'])
@@ -219,7 +231,8 @@ class SurveyForm(_SurveyForm):
 
     monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
         widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE, label=Q['30'],
-                                    title='Current state of work'))
+                                    title='Current state of work',
+                                    id='monitor-report-evaluate'))
 
     part2_comments = wtf.TextAreaField(Q['p2comments'])
 
@@ -287,6 +300,23 @@ class SurveyForm(_SurveyForm):
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     ## part 5
+
+    next_step_vulnerability = wtf.TextAreaField(Q['risk_assessments'])
+
+    next_step_legislation = wtf.TextAreaField(Q['legislation'])
+
+    next_step_implementation = wtf.TextAreaField(Q['implementation'])
+
+    next_step_monitoring = wtf.TextAreaField(Q['monitoring'])
+
+    next_step_strategy = wtf.TextAreaField(Q['updating'])
+
+    next_step_others = wtf.TextAreaField(Q['others'])
+
+    adaptation_key_issues = wtf.TextAreaField(Q['43'])
+
+    adaptation_support_eu_level = wtf.TextAreaField(Q['44'])
+
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

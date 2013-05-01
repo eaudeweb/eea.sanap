@@ -157,7 +157,9 @@
       {{ render_field(form.assessment_subnational_files) }}
     </div>
 
-    <!-- #TODO sectors_assessments -->
+    <div class="row">
+      {{ form.sectors_assessments }}
+    </div>
 
     <div class="row">
       <label>
@@ -408,26 +410,30 @@
     <legend>Part V: Open questions on next steps</legend>
 
     <div class="row">
+      <label>42. What are the next steps your country is planning? Please provide information on the following issues and the related timing (addressing both national and sub-national levels):
+      </label>
+    </div>
+    <div class="row nested">
       {{ render_field(form.next_step_vulnerability) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.next_step_legislation) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.next_step_implementation) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.next_step_monitoring) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.next_step_strategy) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.next_step_others) }}
     </div>
 
@@ -439,6 +445,12 @@
       {{ render_field(form.adaptation_support_eu_level) }}
     </div>
 
+  </fieldset>
+  <fieldset>
+    <legend>Thank you for your contribution!</legend>
+  <div class="row">
+    We are looking forward to getting your feedback on this self-assessment. Thanks a lot.
+  </div>
   </fieldset>
 
   <div class="row lastOfType">

@@ -222,6 +222,14 @@ textarea {
 .ecoAsVir #regions_coordination,
 .ecoAsVir #stakeholders_success,
 .ecoAsVir #part4_comments,
+.ecoAsVir #next_step_vulnerability,
+.ecoAsVir #next_step_legislation,
+.ecoAsVir #next_step_implementation,
+.ecoAsVir #next_step_monitoring,
+.ecoAsVir #next_step_strategy,
+.ecoAsVir #next_step_others,
+.ecoAsVir #adaptation_key_issues,
+.ecoAsVir #adaptation_support_eu_level,
 .ecoAsVir .field ul {
   width: 600px;
   padding-left: 0px;
@@ -384,15 +392,19 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 textarea.cell{
     font-size: 11px;
     height: 30px;
+    width: 196px;
 }
 
 #sectors tr td div{
-    height: 34px;
+    height: 38px;
 }
 #sectors tr td ul li {
-    height: 34px;
+    height: 38px;
     padding-top: 11px;
     padding-bottom: 0px;
+}
+#sectors th#sectors-4{
+    width: 200px;
 }
 
 #financing-mechanisms tr td div,
@@ -416,4 +428,8 @@ textarea.cell{
 {
     height: 50px;
     padding: 8px;
+}
+
+#sectors-assessments .category-left div{
+    width: 200px;
 }

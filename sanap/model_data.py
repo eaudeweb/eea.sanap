@@ -292,6 +292,7 @@ SECTORS_DATA = (
     'Cultural heritage',
 )
 SECTORS = [(i, i) for i in SECTORS_DATA]
+SECTORS_EXTENDED = SECTORS + [('Cross-sectoral impacts', 'Cross-sectoral impacts')]
 
 Q = {
     'lead_organisation': 'Name of lead organisation responsible for the reply (including contact details)',
@@ -320,6 +321,7 @@ Q = {
     '16': '16. Are risk assessments or vulnerability assessments available for your country?',
     'if_yes': 'If yes: available at',
     'text': 'Please insert text and provide references to documents.',
+    '17': '17. In relation to the risk and vulnerability assessment available at national level, which of the following sectors have been covered?',
     'coordination': 'Coordination',
     'meth_approach': 'Methodological approach',
     '19': '19. In relation to the national assessment, have you identified the costs of climate change impacts and the costs and benefits of adaptation?',
@@ -351,7 +353,7 @@ Q = {
     '41': '41. From your experience, what are the three most important elements in running a successful stakeholders process?',
     'p4comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references):',
     'risk_assessments': 'Risk or vulnerability assessments (e.g. consider other sectors)',
-    'legislation': '',
+    'legislation': 'Legislation to support adaptation',
     'implementation': 'Implementation',
     'monitoring': 'Monitoring/reporting and evaluation',
     'updating': 'Updating strategy/plan',
