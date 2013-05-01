@@ -243,8 +243,8 @@ PROCESS_STAGE_DATA = (
     'Agenda setting (i.e. adaptation is politically recognised as important)',
     'Formulation (i.e. responsible actors respond by formulating adaptation policies)',
     'Decision (i.e. policymakers have adopted an adaptation policy)',
-    'Implementation (i.e. implement instruments foreseen it the policy)',
-    'Monitoring and evaluation (i.e. review and update policy / actions)',
+    'Implementation (i.e. measures foreseen in the policy are being implemented)',
+    'Monitoring and evaluation (i.e. review and updates of policy/actions)',
 )
 PROCESS_STAGE = [(i, i) for i in PROCESS_STAGE_DATA]
 
@@ -297,18 +297,27 @@ Q = {
     'lead_organisation': 'Name of lead organisation responsible for the reply (including contact details)',
     'organisations': 'List of other stakeholder organisations also involved in filling out this form',
     '1': '1. In my country, in the past five years, the level of public awareness of the need for adaptation as a response to climate change has increased',
-    '2': '2.	In my country, the need for climate change adaptation has reached the national political',
-    '3': '3.	In my country, the following influences have triggered adaptation (Please select three most important triggers)',
+    '2': '2. In my country, the need for climate change adaptation has reached the national political',
+    '3': '3. In my country, the following influences have triggered adaptation (Please select three most important triggers)',
     '4': '4. In my country, the willingness to take adaptation action at national level is',
     '5': '5. In my country, in the past five years, there has been an increase in the amount of adaptation-related knowledge (e.g. in relation to vulnerabilities, adaptation options) generated with the aim of informing policy making',
-    '6': '6.	In my country, uncertainties in future projections (e.g. uncertainties regarding climate change) are explicitly addressed in the adaptation policy process',
+    '6': '6. In my country, uncertainties in future projections (e.g. uncertainties regarding climate change) are explicitly addressed in the adaptation policy process',
     '7': '7. In my country, adaptation objectives are based on an understanding of the impacts, risks and/or vulnerabilities to climate change',
-    '8': '8.	In my country, integration of adaptation into sectoral policies and programmes is increasing',
+    '8': '8. In my country, integration of adaptation into sectoral policies and programmes is increasing',
     'provide_examples': 'Please provide examples:',
     '9': '9. In my country, aspects that are relevant to climate change mitigation are taken into account in the adaptation policy process',
     '10': '10. In my country, transnational co-operation is considered as an element in our adaptation policy process',
     '11': '11. In my country, the following barriers for adaptation have been identified (Please select the three most important barriers)',
     'p1comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references)',
     'files': 'Upload documents. If more than one, compress them in one zip file, or upload one at a time',
-
+    '12': '12. In what stage of the adaptation policy process is your country in?',
+    '13': '13. How would you assess the mechanism put in place at national level to coordinate the horizontal integration (i.e. integration into sectors) of the adaptation policy process?',
+    '14': '14. How would you assess the mechanism put in place at national level to coordinate the vertical integration (from national to local level) of the adaptation policy process?',
+    'h_coordination': 'Horizontal coordination',
+    'v_coordination': 'Vertical coordination',
+    'c_coordination': 'What was crucial for successful coordination?',
+    'm_coordination': 'What was challenging or missing? ',
+    '16': '16. Are risk assessments or vulnerability assessments available for your country?',
+    'if_yes': 'If yes: available at',
+    'if_subnational': ''
 }

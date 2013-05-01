@@ -144,19 +144,29 @@ class SurveyForm(_SurveyForm):
     part1_files =  CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    process_stage = CustomRadioField(choices=PROCESS_STAGE,
+    ## part2
+
+    process_stage = CustomRadioField(Q['12'], choices=PROCESS_STAGE,
         validators=[wtf.validators.optional()])
 
-    horizontal_integration = CustomRadioField(choices=EFFECTIVENESS,
+    horizontal_integration = CustomRadioField(Q['13'], choices=EFFECTIVENESS,
         validators=[wtf.validators.optional()])
 
-    vertical_integration = CustomRadioField(choices=EFFECTIVENESS,
+    vertical_integration = CustomRadioField(Q['14'], choices=EFFECTIVENESS,
         validators=[wtf.validators.optional()])
 
-    assessment = CustomRadioField(choices=STATUS,
+    horizontal_coordination = wtf.TextAreaField(Q['h_coordination'])
+
+    vertical_coordination = wtf.TextAreaField(Q['v_coordination'])
+
+    crucial_in_coordination = wtf.TextAreaField(Q['c_coordination'])
+
+    challenging_in_coordination = wtf.TextAreaField(Q['m_coordination'])
+
+    assessment = CustomRadioField(Q['16'], choices=STATUS,
         validators=[wtf.validators.optional()])
 
-    assessment_scale = CustomRadioField(choices=ASSESSMENT_SCALE,
+    assessment_scale = MultiCheckboxField(Q['if_yes'], choices=ASSESSMENT_SCALE,
         validators=[wtf.validators.optional()])
 
     assessment_subnational_files = CustomFileField(

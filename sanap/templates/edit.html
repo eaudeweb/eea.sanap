@@ -102,6 +102,8 @@
       {{ render_field(form.process_stage) }}
     </div>
 
+    <p><strong>Prepare the ground for adaptation</strong></p>
+
     <div class="row">
       {{ render_field(form.horizontal_integration) }}
     </div>
@@ -111,34 +113,47 @@
     </div>
 
     <div class="row">
+      <label>15. Please give a short description of the horizontal and vertical coordination of adaptation policy in your country. Please also indicate who has been involved and what mechanism for coordination has been used (please also indicate if these mechanisms have changed in the different stages of the process, e.g. from formulation to implementation).
+      </label>
+    </div>
+
+    <div class="row nested">
       {{ render_field(form.horizontal_coordination) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.vertical_coordination) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.crucial_in_coordination) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.challenging_in_coordination) }}
     </div>
+
+    <p><strong>Identify risks and explore options</strong></p>
 
     <div class="row">
       {{ render_field(form.assessment) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.assessment_scale) }}
+      <div class="other">
+        <a class="add-item" data-title="Add other scale">
+          Add other scale</a>
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row nested2">
+      <label>If available at sub-national level - </label>
+      <label>What assessments are available at sub-national (e.g. Länder, provinces, regions, communities) level?</label>
       {{ render_field(form.assessment_subnational_info) }}
     </div>
 
-    <div class="row">
+    <div class="row nested2">
       {{ render_field(form.assessment_subnational_files) }}
     </div>
 
