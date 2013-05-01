@@ -260,7 +260,7 @@
 
     <legend>Part III: Level of adaptation and policy instruments in sectors</legend>
 
-    <div class="row">
+    <div class="row special">
       <label>31. Please highlight the relevant sectors/areas in your country and assess the current state of adaptation at various levels:</label>
       <p>Please score the state of adaptation using the following scale:
 <br />0= adaptation is not relevant for my country
@@ -344,7 +344,19 @@
       {{ render_field(form.stakeholders_contribution) }}
     </div>
 
-    <div class="row">
+    <div class="row special">
+        <label>40. The three tables below allow you to identify the stakeholders involved and the format of their involvement for the development (1st table), implementation (2nd table) and monitoring and evaluation (3rd table) phases of the adaptation process.   
+</label>
+
+<br />Level of involvement:
+<br />
+<br />Information given = information has been provided to stakeholders (e.g. web-sites, newsletter, reports, informative meetings)
+<br />Information gathered = information has been collected from stakeholders (e.g. online-survey)
+<br />Consultation = feedback on policy draft proposals has been obtained from stakeholders (e.g. written feedback on policy drafts)
+<br />Active involvement = stakeholders have actively been involved in, and have had the possibility to shape decision-making in the adaptation policy (e.g. advisory committees)
+<br />Partnerships = decision-making power is redistributed through negotiation between responsible authority and stakeholders
+<br />Empowerment = final decision is in the hands of the stakeholders
+<br />
       {{ form.development_involvement }}
       <div class="other">
         <a href="" class="matrix-other"
@@ -355,7 +367,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row special">
       {{ form.implementation_involvement }}
       <div class="other">
         <a href="" class="matrix-other"
@@ -366,7 +378,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row special">
       {{ form.monitoring_involvement }}
       <div class="other">
         <a href="" class="matrix-other"
@@ -379,10 +391,6 @@
 
     <div class="row">
       {{ render_field(form.stakeholders_success) }}
-    </div>
-
-    <div class="row">
-      {{ render_field(form.part4_comments) }}
     </div>
 
     <div class="row">

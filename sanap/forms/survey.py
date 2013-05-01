@@ -255,23 +255,38 @@ class SurveyForm(_SurveyForm):
 
     regions_coordination = wtf.TextAreaField(Q['37'])
 
-    stakeholders_involved = CustomRadioField(choices=YES_NO,
+    ## part 4
+
+    stakeholders_involved = CustomRadioField(Q['38'], choices=YES_NO,
         validators=[wtf.validators.optional()])
 
-    stakeholders_contribution = CustomRadioField(choices=STAKEHOLDERS_CONTRIBUTION,
-        validators=[wtf.validators.optional()])
+    stakeholders_contribution = CustomRadioField(Q['39'],
+                                         choices=STAKEHOLDERS_CONTRIBUTION,
+                                         validators=[wtf.validators.optional()])
 
     development_involvement = wtf.FormField(InvolmentForm,
-        widget=MatrixCheckboxWidget(data=INVOLMENT))
+        widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='development-involvement',
+                                    label=Q['development_phase'],
+                                    title='Stakeholders / Format of involvement'))
 
     implementation_involvement = wtf.FormField(InvolmentForm,
-        widget=MatrixCheckboxWidget(data=INVOLMENT))
+        widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='implementation-involvement',
+                                    label=Q['implementation_phase'],
+                                    title='Stakeholders / Format of involvement'))
 
     monitoring_involvement = wtf.FormField(InvolmentForm,
-        widget=MatrixCheckboxWidget(data=INVOLMENT))
+        widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='monitoring-involvement',
+                                    label=Q['monitor_evaluate_phase'],
+                                    title='Stakeholders / Format of involvement'))
 
-    part4_files = CustomFileField(
+    stakeholders_success = wtf.TextAreaField(Q['41'])
+
+    part4_comments = wtf.TextAreaField(Q['p4comments'])
+
+    part4_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
+
+    ## part 5
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

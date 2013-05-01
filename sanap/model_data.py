@@ -259,15 +259,15 @@ STAKEHOLDERS_CONTRIBUTION_DATA = (
 STAKEHOLDERS_CONTRIBUTION = [(i, i) for i in STAKEHOLDERS_CONTRIBUTION_DATA]
 
 
-INVOLMENT_DATA = (
+INVOLVEMENT_DATA = (
     'Governmental stakeholders from national level (e.g. policy makers, public administration, governmental agencies)',
-    'Governmental stakeholders from sub- national level (including local level)',
+    'Governmental stakeholders from sub-national level (including local level)',
     'Private sector',
-    'Interest groups (e.g. chamber of agriculture, NGOs)',
-    'Scientists/researcher',
+    'Interest groups (e.g. farmers\' association, NGOs)',
+    'Scientists/researchers',
     'General public'
 )
-INVOLMENT = [(i, i) for i in INVOLMENT_DATA]
+INVOLVEMENT = [(i, i) for i in INVOLVEMENT_DATA]
 
 
 SECTORS_DATA = (
