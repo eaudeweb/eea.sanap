@@ -34,6 +34,21 @@ class ListTextWidget():
         page.ul.close()
         return str(page)
 
+class ListTextAreaWidget():
+
+    def __call__(self, field, **kwargs):
+        page = markup.page()
+        page.ul(id=field.id)
+
+        for subfield in field:
+            page.li()
+            value = field.data.get(subfield.data, '') if field.data else ''
+            page.textarea(value, name=subfield.name, id=subfield.id,
+                          class_='cell')
+            page.textarea.close()
+            page.li.close()
+        page.ul.close()
+        return str(page)
 
 class MultiTextField(wtf.SelectMultipleField):
 
@@ -48,6 +63,10 @@ class MultiTextField(wtf.SelectMultipleField):
 
     def pre_validate(self, form):
         pass
+
+class MultiTextAreaField(MultiTextField):
+
+    widget = ListTextAreaWidget()
 
 
 class CustomFileField(wtf.FileField):
