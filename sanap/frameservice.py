@@ -27,13 +27,13 @@ def prepare_frame(frame_contents):
     """ Make it extendable by layout template in our app """
     assert MARKER in frame_contents
     baseurl = FRAME_URL.rsplit('/', 1)[0]
-    login_re = r"<a href=\"[^>]+>login</a>"
+    login_re = r"<a\s+href=\"[^>]+>Login</a>"
 
     frame_contents = frame_contents.replace(MARKER, '{% block frame_content %}{% endblock %}')\
         .replace('</title>', '{% block frame_title %}{% endblock %}</title>')\
         .replace('</head>', '{% block head %}{% endblock %}</head>')\
         .replace('<img src="misc_', '<img src="%s/misc_' % baseurl)
-    return re.sub(login_re, '{% block login %}{% endblock %}', frame_contents)
+    return re.sub(login_re, '{% block login %}{% endblock %}', frame_contents, re.MULTILINE)
 
 
 def load_template(name):
