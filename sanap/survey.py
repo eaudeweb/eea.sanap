@@ -1,5 +1,5 @@
 from flask import (Blueprint, redirect, render_template, flash, views,
-                   url_for, g, send_file, current_app)
+                   url_for, g, send_file, current_app, request)
 from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
@@ -47,7 +47,10 @@ class Edit(views.MethodView):
         if form.validate():
             obj = form.save(survey=survey)
             flash('Survey added successfully')
+            if request.form['export_pdf']:
+                return export(survey_id)
             return redirect(url_for('.edit', survey_id=obj.id))
+
         return render_template('edit.html', form=form)
 
 survey.add_url_rule('/add', view_func=Edit.as_view('edit'))
