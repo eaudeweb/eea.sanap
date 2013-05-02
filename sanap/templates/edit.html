@@ -159,6 +159,13 @@
 
     <div class="row">
       {{ form.sectors_assessments }}
+
+      <div class="other">
+        <a href="" class="matrix-other sectors_assessments-other"
+           data-name="sectors_assessments"
+           data-fields='["national", "public_sector", "private_sector"]'>
+          Add another</a>
+      </div>
     </div>
 
     <div class="row">
@@ -276,7 +283,14 @@
 
       <p>Use the arrows or the keyboard to input digits from 0 to 6.</p>
       {{ form.sectors }}
-      <!-- #TODO: add other -->
+<!--
+# TODO: copy widgets (tr) instead of using checkboxes
+<div class="other">
+        <a href="" class="matrix-other sectors-other"
+           data-name="sectors"
+           data-fields='["national", "sub_national", "local", "priority_sectors", "examples"]'>
+          Add another</a>
+      </div>-->
     </div>
 
     <div class="row">

@@ -119,7 +119,7 @@ class Survey(db.Document):
     assessment_subnational_files = db.ListField(db.StringField(max_length=512),
                                                 default=[])
 
-    #TODO sectors_assessments
+    sectors_assessments = db.DictField(default={})
 
     assessment_coordination = db.StringField(max_length=512)
 
