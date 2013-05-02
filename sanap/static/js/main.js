@@ -13,6 +13,7 @@ $(function () {
     var next_id = input.attr('id').replace(/\d+$/, function(n){ return (++n) });
 
     input.attr({'id': next_id,
+                'checked': 'checked',
                 'value': value});
     label.text(value);
     label.attr({'for': next_id})

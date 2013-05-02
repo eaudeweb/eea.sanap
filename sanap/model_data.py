@@ -90,6 +90,10 @@ AGREEMENT = (
 )
 
 
+LEVEL_DATA = ('very high', 'high', 'medium', 'low', 'very low', 'don\'t know')
+LEVEL = [(i, i) for i in LEVEL_DATA]
+
+
 TRIGGER_DATA = (
     'Extreme weather events',
     'Damage costs',

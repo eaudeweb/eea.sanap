@@ -120,7 +120,7 @@ class SurveyForm(_SurveyForm):
     triggers = MultiCheckboxField(Q['3'], choices=TRIGGERS,
         validators=[wtf.validators.optional()])
 
-    willingness = CustomRadioField(Q['4'], choices=AGREEMENT,
+    willingness = CustomRadioField(Q['4'], choices=LEVEL,
         validators=[wtf.validators.optional()])
 
     knowledge = CustomRadioField(Q['5'], choices=AGREEMENT,
@@ -321,6 +321,12 @@ class SurveyForm(_SurveyForm):
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)
         expand_choices(self.triggers)
+        expand_choices(self.barriers)
+        expand_choices(self.assessment_scale)
+        expand_choices(self.needed_info)
+        expand_choices(self.adaptation_scale)
+        expand_choices(self.identified_options)
+        expand_choices(self.adaptation_actions)
 
     def save(self, survey):
         user = g.user._get_current_object()

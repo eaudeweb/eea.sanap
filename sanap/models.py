@@ -66,7 +66,7 @@ class Survey(db.Document):
 
     adaptation_need = db.StringField(choices=AGREEMENT)
 
-    willingness = db.StringField(choices=AGREEMENT)
+    willingness = db.StringField(choices=LEVEL)
 
     triggers = db.ListField(db.StringField(max_length=512), default=[])
 

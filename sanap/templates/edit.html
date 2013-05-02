@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% from "_formhelpers.html" import render_field, render_other %}
 
-
 {% block content %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir">
@@ -14,6 +13,10 @@
       <p>We encourage involving other stakeholders with whom you work in filling out this self-assessment (e.g. researchers, EPAs, NGOs).</p>
       {{ render_field(form.organisations, class_='tagit') }}
     </div>
+  </fieldset>
+  <fieldset>
+    You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
+    as a Word file, but we kindly ask you to submit it online
   </fieldset>
   <fieldset>
 
