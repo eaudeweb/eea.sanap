@@ -47,6 +47,7 @@ class Edit(views.MethodView):
         if form.validate():
             obj = form.save(survey=survey)
             flash('Survey added successfully')
+            # hackish, but users might export the form before saving it
             if request.form['export_pdf']:
                 return export(survey_id)
             return redirect(url_for('.edit', survey_id=obj.id))
