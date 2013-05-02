@@ -1,8 +1,9 @@
 from flask import (Blueprint, redirect, render_template, flash, views,
-                   url_for, g)
+                   url_for, g, send_file, current_app)
 from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
+from sanap import assets as sanap_assets
 
 
 survey = Blueprint('survey', __name__)
@@ -52,4 +53,52 @@ class Edit(views.MethodView):
 survey.add_url_rule('/add', view_func=Edit.as_view('edit'))
 survey.add_url_rule('/edit/<string:survey_id>', view_func=Edit.as_view('edit'))
 
+@survey.route("/download_docx")
+def download_docx():
+    import os
+    fname = "Adaptation Policy Process Self-Assessment 2013.docx"
+    survey_file = os.path.join(os.path.dirname(__file__), "static", fname)
+    response = send_file(survey_file, mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response.headers[u"Content-Disposition"] = ('attachment; filename="%s"' %
+                                                fname)
+    return response
 
+@survey.route("/export/<string:survey_id>")
+@login_required
+def export(survey_id):
+    import subprocess
+    import os
+    from tempfile import NamedTemporaryFile
+    from datetime import datetime
+
+    proj_dir = os.path.dirname(__file__)
+    source = Edit().get(survey_id)
+    survey = Survey.objects.get_or_404(id=survey_id)
+    filename = 'sanap-%s-%s' % (survey.country,
+                                datetime.now().strftime("%Y-%m-%d %H:%M"))
+
+    inject_css = ''
+    for css in sanap_assets.BUNDLE_CSS:
+        css_file = open(os.path.join(proj_dir, "static", css), "r")
+        inject_css += css_file.read()
+        css_file.close()
+    source = source.replace("<head>",
+                """<head><style type='text/css'>
+                #left_port{ display: none; }
+                %s</style>""" % inject_css)
+    html_infile = NamedTemporaryFile(suffix='.html')
+    html_infile.write(source.encode("utf-8"))
+    html_infile.flush()
+
+    pdf_outfile = NamedTemporaryFile(suffix='.pdf')
+
+    retcode = subprocess.call(['wkhtmltopdf',
+                                html_infile.name, pdf_outfile.name])
+    response = send_file(pdf_outfile.name, mimetype='application/pdf')
+    response.headers['Content-Disposition'] = ('attachment; filename=' +
+                                       filename + '.pdf')
+
+    pdf_outfile.close()
+    html_infile.close()
+
+    return response

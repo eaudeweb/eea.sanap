@@ -133,6 +133,3 @@ def configure_sentry(app):
     sentry_handler = SentryHandler(sentry.client)
     sentry_handler.setLevel(logging.WARN)
     setup_logging(sentry_handler)
-
-
-
