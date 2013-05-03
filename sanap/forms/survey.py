@@ -317,6 +317,7 @@ class SurveyForm(_SurveyForm):
 
     adaptation_support_eu_level = wtf.TextAreaField(Q['44'])
 
+    feedback = wtf.TextAreaField(Q['feedback'])
 
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)

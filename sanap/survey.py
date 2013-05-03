@@ -96,7 +96,7 @@ def export(survey_id):
 
     pdf_outfile = NamedTemporaryFile(suffix='.pdf')
 
-    retcode = subprocess.call(['wkhtmltopdf',
+    retcode = subprocess.call(['wkhtmltopdf', '-O', 'Landscape', '-q',
                                 html_infile.name, pdf_outfile.name])
     response = send_file(pdf_outfile.name, mimetype='application/pdf')
     response.headers['Content-Disposition'] = ('attachment; filename=' +

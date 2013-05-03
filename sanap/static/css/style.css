@@ -11,6 +11,18 @@ textarea {
     height: 80px;
 }
 
+#left_port {
+    display: none;
+}
+
+#middle_port{
+    width: 100%;
+}
+
+#outer_wrapper {
+    background: none;
+}
+
 .hide {
     display: none;
 }
@@ -230,6 +242,7 @@ textarea {
 .ecoAsVir #next_step_others,
 .ecoAsVir #adaptation_key_issues,
 .ecoAsVir #adaptation_support_eu_level,
+.ecoAsVir #feedback,
 .ecoAsVir .field ul {
   width: 600px;
   padding-left: 0px;

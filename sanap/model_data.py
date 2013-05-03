@@ -364,4 +364,5 @@ Q = {
     'others': 'Others',
     '43': '43. In your opinion, what are the key issues that will shape the adaptation policy process in your country in the coming years? Please provide a maximum of three issues:',
     '44': '44. What kind of adaptation support (e.g. knowledge, information, decision support tools) would you need from the European level?',
+    'feedback': 'You can enter your feedback for this survey - your opinion is kindly appreciated!'
 }

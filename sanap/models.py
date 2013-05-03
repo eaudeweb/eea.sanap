@@ -213,6 +213,8 @@ class Survey(db.Document):
 
     adaptation_support_eu_level = db.StringField(max_length=512)
 
+    feedback = db.StringField(max_length=512)
+
     def __unicode__(self):
         return self.country
 
