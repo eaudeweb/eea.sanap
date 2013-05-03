@@ -1,5 +1,7 @@
 from flask import (Blueprint, redirect, render_template, flash, views,
                    url_for, g, send_file, current_app, request, abort)
+from flask.ext import login as flask_login
+
 from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
@@ -34,7 +36,14 @@ class Edit(views.MethodView):
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
         else:
-            form = SurveyForm()
+            # see if user already has one
+            try:
+                survey = Survey.objects.get(user=flask_login.current_user.id)
+            except Survey.DoesNotExist:
+                form = SurveyForm()
+            else:
+                return redirect(url_for('.edit', survey_id=survey.id))
+
         return render_template('edit.html', form=form)
 
     def post(self, survey_id=None):
