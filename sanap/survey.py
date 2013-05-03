@@ -87,9 +87,7 @@ def export(survey_id):
         inject_css += css_file.read()
         css_file.close()
     source = source.replace("<head>",
-                """<head><style type='text/css'>
-                #left_port{ display: none; }
-                %s</style>""" % inject_css)
+                         "<head><style type='text/css'>%s</style>" % inject_css)
     html_infile = NamedTemporaryFile(suffix='.html')
     html_infile.write(source.encode("utf-8"))
     html_infile.flush()
