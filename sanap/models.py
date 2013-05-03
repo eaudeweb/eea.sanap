@@ -43,6 +43,14 @@ class User(db.Document, UserMixin):
     def name(self):
         return '%s %s' % (self.first_name, self.last_name)
 
+    @property
+    def is_coordinator(self):
+        return bool(self.country and not self.invitee)
+
+    @property
+    def is_contact(self):
+        return bool(self.invitee)
+
 
 class Survey(db.Document):
 

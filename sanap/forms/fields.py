@@ -20,7 +20,7 @@ class MultiCheckboxField(wtf.SelectMultipleField):
     option_widget = wtf.widgets.CheckboxInput()
 
 
-class ListTextWidget():
+class ListTextWidget(object):
 
     def __call__(self, field, **kwargs):
         page = markup.page()
@@ -34,7 +34,8 @@ class ListTextWidget():
         page.ul.close()
         return str(page)
 
-class ListTextAreaWidget():
+
+class ListTextAreaWidget(object):
 
     def __call__(self, field, **kwargs):
         page = markup.page()

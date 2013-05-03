@@ -1,9 +1,10 @@
 import base64
 from functools import wraps
 import datetime
+import uuid
 
 from flask import (Blueprint, request, render_template, redirect, url_for,
-                   flash, g, abort)
+                   flash, g)
 from flask.ext.login import LoginManager
 from flask.ext import wtf
 from flask.ext import login as flask_login
@@ -52,6 +53,16 @@ def get_user(userid):
         else:
             return None
 login_manager.user_loader(get_user)
+
+
+def seed_users(invited_coordinators):
+    """ Helper function to import initial list of coordinators """
+    for uid, country in invited_coordinators:
+        user = get_user(uid)
+        user.country = country
+        if not user.token:
+            user.token = str(uuid.uuid4())
+        user.save()
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -103,14 +114,6 @@ def logout():
     resp = redirect(url_for('survey.home'))
     resp.set_cookie('__ac', '')
     return resp
-
-
-@auth.route('/invite')
-@login_required
-def invite():
-    if not g.user.token or g.user.invite:
-        abort(403)
-    return render_template('invite.html')
 
 
 @auth.route('/unauthorized')

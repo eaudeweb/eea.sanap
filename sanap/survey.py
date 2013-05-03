@@ -1,5 +1,5 @@
 from flask import (Blueprint, redirect, render_template, flash, views,
-                   url_for, g, send_file, current_app, request)
+                   url_for, g, send_file, current_app, request, abort)
 from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
@@ -57,6 +57,7 @@ class Edit(views.MethodView):
 survey.add_url_rule('/add', view_func=Edit.as_view('edit'))
 survey.add_url_rule('/edit/<string:survey_id>', view_func=Edit.as_view('edit'))
 
+
 @survey.route("/download_docx")
 def download_docx():
     import os
@@ -66,6 +67,7 @@ def download_docx():
     response.headers[u"Content-Disposition"] = ('attachment; filename="%s"' %
                                                 fname)
     return response
+
 
 @survey.route("/export/<string:survey_id>")
 @login_required
@@ -104,3 +106,11 @@ def export(survey_id):
     html_infile.close()
 
     return response
+
+
+@survey.route("/contacts")
+@login_required
+def contacts():
+    if not g.user.token:
+        abort(403)
+    return render_template('contacts.html')

@@ -2,6 +2,8 @@
 {% from "_formhelpers.html" import render_field, render_other %}
 
 {% block content %}
+  {% set active_page = 'assessment' -%}
+  {% include "navigation.html" %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir">
   <fieldset>

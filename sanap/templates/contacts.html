@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+{% set active_page = 'contacts' -%}
+{% include "navigation.html" %}
+
+{% set url = url_for('auth.register', token=g.user.token, _external=True) %}
+
+<h2>Spread the questionnaire and collect the answers</h2>
+<p>Send the following URL to your country contacts; they will be able to fill in
+the same self-assessment. Their answers will be listed here,
+grouped by questions, so that you can compile easier the final answer to the EEA.
+</p>
+
+<p>
+  <a href="{{ url }}">{{ url }}</a>
+</p>
+
+<h2>Answers so far from your country contacts</h2>
+
+{% endblock %}

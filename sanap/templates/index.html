@@ -2,7 +2,8 @@
 
 
 {% block content %}
-
+{% set active_page = 'home' -%}
+{% include "navigation.html" %}
 
 {% if surveys.count() > 0 %}
 <table cellspaging="1" cellpadding="0">
@@ -34,7 +35,6 @@
       </td>
       <td>{{ survey.user }}</td>
     </tr>
-
     {% endfor %}
 
   </tbody>
