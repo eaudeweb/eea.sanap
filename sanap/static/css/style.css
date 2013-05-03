@@ -297,8 +297,14 @@ textarea {
 }
 
 .ecoAsVir .row.special {
-	overflow-x: scroll;
+  overflow-x: scroll;
   width: 95%;
+}
+
+.ecoAsVir .row.has-follower {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  border-bottom: none;
 }
 
 .ecoAsVir .category-left:empty {
@@ -398,12 +404,12 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     padding-bottom: 0px;
 }
 #sectors th#sectors-4{
-    width: 300px;
+    width: 400px;
 }
 textarea.cell{
-    font-size: 11px;
+    font-size: 12px;
     height: 30px;
-    width: 296px;
+    width: 396px;
 }
 
 #financing-mechanisms tr td div,
@@ -431,4 +437,12 @@ textarea.cell{
 
 #sectors-assessments .category-left div{
     width: 200px;
+}
+
+td.term{
+    text-align: right;
+    font-weight: bold;
+}
+td.definition{
+    color: #666;
 }

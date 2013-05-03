@@ -56,27 +56,27 @@
       {{ render_field(form.objectives) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.integration) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.integration_examples) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.mitigation) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.mitigation_examples) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.transnational_cooperation) }}
     </div>
 
-    <div class="row">
+    <div class="row nested">
       {{ render_field(form.transnational_cooperation_examples) }}
     </div>
 
@@ -115,34 +115,34 @@
       {{ render_field(form.vertical_integration) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       <label>15. Please give a short description of the horizontal and vertical coordination of adaptation policy in your country. Please also indicate who has been involved and what mechanism for coordination has been used (please also indicate if these mechanisms have changed in the different stages of the process, e.g. from formulation to implementation).
       </label>
     </div>
 
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.horizontal_coordination) }}
     </div>
 
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.vertical_coordination) }}
     </div>
 
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.crucial_in_coordination) }}
     </div>
 
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.challenging_in_coordination) }}
     </div>
 
     <p><strong>Identify risks and explore options</strong></p>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.assessment) }}
     </div>
 
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.assessment_scale) }}
       <div class="other">
         <a class="add-item" data-title="Add other scale">
@@ -219,7 +219,7 @@
       {{ render_field(form.identified_options) }}
       <div class="other">
         <a class="add-item" data-title="Add more identified options">
-          Add more identified options</a>
+          Add more methodological approaches</a>
       </div>
     </div>
 
@@ -227,7 +227,7 @@
       {{ render_field(form.adaptation_actions) }}
       <div class="other">
         <a class="add-item" data-title="Add more adaptation actions">
-          Add more adaptation actions</a>
+          Add other options</a>
       </div>
     </div>
 
@@ -274,16 +274,16 @@
 
     <div class="row special">
       <label>31. Please highlight the relevant sectors/areas in your country and assess the current state of adaptation at various levels:</label>
-      <p>Please score the state of adaptation using the following scale:
-<br />0= adaptation is not relevant for my country
-<br />1= need for adaptation not recognised and no measures implemented yet
-<br />2= coordination activities for adaptation started
-<br />3= some adaptation measures identified for the sector but not yet implemented
-<br />4= portfolio of adaptation measures identified and implementation (of some) launched
-<br />5= portfolio of adaptation measures implemented
-<br />6= portfolio of adaptation measures in place and monitored/evaluated
-</p>
-
+      <p>Please score the state of adaptation using the following scale:</p>
+        <table><tr><th>Selected Value</th><th>Meaning</th><tr/>
+        <tr><td class="term">0 </td><td class="definition">= adaptation is not relevant for my country                                         </tr>
+        <tr><td class="term">1 </td><td class="definition">= need for adaptation not recognised and no measures implemented yet                </tr>
+        <tr><td class="term">2 </td><td class="definition">= coordination activities for adaptation started                                    </tr>
+        <tr><td class="term">3 </td><td class="definition">= some adaptation measures identified for the sector but not yet implemented        </tr>
+        <tr><td class="term">4 </td><td class="definition">= portfolio of adaptation measures identified and implementation (of some) launched </tr>
+        <tr><td class="term">5 </td><td class="definition">= portfolio of adaptation measures implemented                                      </tr>
+        <tr><td class="term">6 </td><td class="definition">= portfolio of adaptation measures in place and monitored/evaluated                 </tr>
+        </table>
       <p>Use the arrows or the keyboard to input digits from 0 to 6.</p>
       {{ form.sectors }}
 <!--
@@ -369,13 +369,17 @@
 
 <br />Level of involvement:
 <br />
-<br />Information given = information has been provided to stakeholders (e.g. web-sites, newsletter, reports, informative meetings)
-<br />Information gathered = information has been collected from stakeholders (e.g. online-survey)
-<br />Consultation = feedback on policy draft proposals has been obtained from stakeholders (e.g. written feedback on policy drafts)
-<br />Active involvement = stakeholders have actively been involved in, and have had the possibility to shape decision-making in the adaptation policy (e.g. advisory committees)
-<br />Partnerships = decision-making power is redistributed through negotiation between responsible authority and stakeholders
-<br />Empowerment = final decision is in the hands of the stakeholders
-<br />
+
+    <table id="level-involvement">
+    <tr><td class="term">Information given </td><td class="definition"> information has been provided to stakeholders (e.g. web-sites, newsletter, reports, informative meetings)</td></tr>
+    <tr><td class="term">Information gathered </td><td class="definition"> information has been collected from stakeholders (e.g. online-survey)</td></tr>
+    <tr><td class="term">Consultation </td><td class="definition"> feedback on policy draft proposals has been obtained from stakeholders (e.g. written feedback on policy drafts)</td></tr>
+    <tr><td class="term">Active involvement </td><td class="definition">stakeholders have actively been involved in, and have had the possibility to shape decision-making in the adaptation policy (e.g. advisory committees)</td></tr>
+    <tr><td class="term">Partnerships </td><td class="definition">decision-making power is redistributed through negotiation between responsible authority and stakeholders</td></tr>
+    <tr><td class="term">Empowerment </td><td class="definition">final decision is in the hands of the stakeholders </td></tr>
+    </table>
+    <br />
+
       {{ form.development_involvement }}
       <div class="other">
         <a href="" class="matrix-other"

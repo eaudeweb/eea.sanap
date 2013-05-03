@@ -342,7 +342,7 @@ Q = {
     '29': '29. What are your plans for integrating new information and insights into existing adaptation policies',
     '30': u'30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …',
     'p2comments': 'Please insert text and upload documents (e.g. vulnerability assessment, risk assessment, adaptation options, M&E, etc.)',
-    '32': '32. Are you using policy instruments (see question 31 below for examples) for implementing adaptation actions?',
+    '32': '32. Are you using policy instruments (see question 33 below for examples) for implementing adaptation actions?',
     '33': '33. If you are already using instruments for implementing adaptation, what are the main instruments in the different sectors in your country?',
     '34': '34. If (additional) instruments for implementation are planned in your country, what are the main instruments you are considering?',
     '35': '35. What are the most important financing mechanisms currently in place (or the mechanisms that will be considered in the future) for implementing adaptation in the sectors you have identified as relevant in your country?',
