@@ -4,49 +4,16 @@
 {% block content %}
 {% set active_page = 'home' -%}
 {% include "navigation.html" %}
-
-{% if surveys.count() > 0 %}
-<table cellspaging="1" cellpadding="0">
-
-  <thead>
-
-    <tr>
-      <th>Country</th>
-      <th>Status</th>
-      <th>User</th>
-    </tr>
-
-  </thead>
-
-  <tbody>
-
-    {% for survey in surveys %}
-    <tr>
-      <td>
-        <a href="{{ url_for('.edit', survey_id=survey.id) }}">
-          {{ COUNTRIES[survey.country] }}</a>
-      </td>
-      <td>
-        {% if survey.draft %}
-          Draft
-        {% else %}
-          Final
-        {% endif %}
-      </td>
-      <td>{{ survey.user }}</td>
-    </tr>
-    {% endfor %}
-
-  </tbody>
-
-</table>
-
-{% else %}
+<h1>
+  Welcome to the Self-Assessment of National Adaptation Policy Process in Europe
+</h1>
 
 <div>
-  <a href="{{ url_for('.edit') }}">Add a survey</a>
+  This platform is designed to easily collect the information about your country.
+  <br /><br />
+  Moreover, this not only helps the EEA to easier get the responses from the
+  EU countries, but also 
 </div>
 
-{% endif %}
 
 {% endblock %}
