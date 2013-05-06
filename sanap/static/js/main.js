@@ -61,4 +61,21 @@ $(function () {
     min: 0, max: 6
   });
 
+
+  // Ask user about leaving page when changes are unsaved
+  $("form.ecoAsVir :input").change(function() {
+    $('form.ecoAsVir').data('changed', true);
+  });
+  $("form.ecoAsVir button").mouseup(function() {
+    $('form.ecoAsVir').data('changed', false);
+  });
+  window.onbeforeunload = function() {
+    var assessment_form = $('form.ecoAsVir');
+      if (assessment_form && assessment_form.data('changed')) {
+        return 'You have unsaved changes in the assessment!';
+      }
+      return undefined;
+  };
+
+
 });
