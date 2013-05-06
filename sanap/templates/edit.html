@@ -11,7 +11,7 @@
       {{ render_field(form.lead_organisation) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       <p>We encourage involving other stakeholders with whom you work in filling out this self-assessment (e.g. researchers, EPAs, NGOs).</p>
       {{ render_field(form.organisations, class_='tagit') }}
     </div>
@@ -134,7 +134,7 @@
       {{ render_field(form.crucial_in_coordination) }}
     </div>
 
-    <div class="row has-follower nested">
+    <div class="row nested">
       {{ render_field(form.challenging_in_coordination) }}
     </div>
 
@@ -152,7 +152,7 @@
       </div>
     </div>
 
-    <div class="row nested2">
+    <div class="row has-follower nested2">
       <label>If available at sub-national level - </label>
       <label>What assessments are available at sub-national (e.g. Länder, provinces, regions, communities) level?</label>
       {{ render_field(form.assessment_subnational_info) }}
@@ -173,12 +173,12 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       <label>
         18. In relation to the national assessment, how is/was the risk or vulnerability assessment process coordinated (e.g. who commissioned the work; who carried it out)? What methodological approach (e.g. literature review, modelling, expert appraisal) has been used? How have uncertainties been addressed?
       </label>
     </div>
-    <div class="row nested">
+    <div class="row has-follower nested">
       {{ render_field(form.assessment_coordination) }}
     </div>
     <div class="row nested">
@@ -197,7 +197,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.assessment_update) }}
     </div>
 
@@ -205,7 +205,7 @@
       {{ render_field(form.assessment_update_info) }}
     </div>
 
-    <div class="row">
+    <div class="row has-follower">
       {{ render_field(form.adaptation_options) }}
     </div>
 
@@ -432,27 +432,27 @@
 
     <legend>Part V: Open questions on next steps</legend>
 
-    <div class="row">
+    <div class="row has-follower">
       <label>42. What are the next steps your country is planning? Please provide information on the following issues and the related timing (addressing both national and sub-national levels):
       </label>
     </div>
-    <div class="row nested">
+    <div class="row nested has-follower">
       {{ render_field(form.next_step_vulnerability) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested has-follower">
       {{ render_field(form.next_step_legislation) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested has-follower">
       {{ render_field(form.next_step_implementation) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested has-follower">
       {{ render_field(form.next_step_monitoring) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested has-follower">
       {{ render_field(form.next_step_strategy) }}
     </div>
 
