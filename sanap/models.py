@@ -126,7 +126,7 @@ class Survey(db.Document):
 
     assessment = db.StringField(choices=STATUS)
 
-    assessment_scale = db.StringField(choices=ASSESSMENT_SCALE)
+    assessment_scale = db.ListField(db.StringField(), default=[])
 
     assessment_subnational_info = db.StringField(max_length=512)
 
