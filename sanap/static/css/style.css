@@ -149,6 +149,7 @@ textarea {
 	color: #333;
 	margin-left: 8px;
 	font-weight: bold;
+	font-size: 1.1em;
 }
 
 .ecoAsVir label {
@@ -455,9 +456,12 @@ textarea.cell{
     width: 200px;
 }
 
-td.term{
+td.term, td.term-left{
     text-align: right;
     font-weight: bold;
+}
+td.term-left{
+    text-align:left;
 }
 td.definition{
     color: #666;

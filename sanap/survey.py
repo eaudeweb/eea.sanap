@@ -65,7 +65,10 @@ class Edit(views.MethodView):
             form = SurveyForm()
         if form.validate():
             obj = form.save(survey=survey)
-            flash('Survey added successfully')
+            if obj.draft:
+                flash('Your self-assessment has been saved.')
+            else:
+                flash('Your self-assessment has been submitted.')
             # hackish, but users might export the form before saving it
             if request.form.get('export_pdf'):
                 return export(survey_id)
