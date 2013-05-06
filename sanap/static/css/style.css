@@ -53,6 +53,9 @@ textarea {
 .row .other input {
     width: 600px;
 }
+.row>label{
+    cursor: text;
+}
 
 .required {
     font-size: 12px;
