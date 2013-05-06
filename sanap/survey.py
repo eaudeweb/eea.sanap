@@ -32,17 +32,27 @@ class Edit(views.MethodView):
     decorators = (login_required,)
 
     def get(self, survey_id=None):
+
+        survey = None
+
         if survey_id:
             survey = Survey.objects.get_or_404(id=survey_id)
+        else:
+            crt_user = flask_login.current_user
+            if crt_user.is_coordinator:
+                # see if coordinated country has one
+                survey = Survey.objects.filter(country=crt_user.country,
+                                               for_eea=True).first()
+            else:
+                # see if user already has one
+                survey = Survey.objects.filter(user=crt_user.id).first()
+
+        if not survey_id and survey:
+            return redirect(url_for('.edit', survey_id=survey.id))
+        elif survey:
             form = SurveyForm(obj=survey)
         else:
-            # see if user already has one
-            try:
-                survey = Survey.objects.get(user=flask_login.current_user.id)
-            except Survey.DoesNotExist:
-                form = SurveyForm()
-            else:
-                return redirect(url_for('.edit', survey_id=survey.id))
+            form = SurveyForm()
 
         return render_template('edit.html', form=form)
 
