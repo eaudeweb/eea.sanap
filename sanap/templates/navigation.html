@@ -1,8 +1,8 @@
 <div id="tabbedmenu">
   {% set navigation_bar = [
       (url_for('survey.home'), 'about', 'About this Self-Assessment', 'About'),
-      (url_for('survey.edit'), 'assessment', 'Self-Assessment', 'Self-Assessment'),
       (url_for('survey.contacts'), 'contacts', 'Your Contacts', 'Your Contacts'),
+      (url_for('survey.edit'), 'assessment', 'Self-Assessment', 'Self-Assessment'),
   ] -%}
   {% set active_page = active_page|default('unset') -%}
   <ul id="navigation">
