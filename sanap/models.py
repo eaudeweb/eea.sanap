@@ -51,6 +51,12 @@ class User(db.Document, UserMixin):
     def is_contact(self):
         return bool(self.invitee)
 
+    @property
+    def other_coordinators(self):
+        """ if is_coordinator, returns the other coordinators, if any """
+        return User.objects.filter(country=self.country, invitee=None,
+                                   id__ne=self.id)
+
 
 class Survey(db.Document):
 

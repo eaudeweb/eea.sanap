@@ -2,18 +2,72 @@
 
 
 {% block content %}
-{% set active_page = 'home' -%}
+{% set active_page = 'about' -%}
 {% include "navigation.html" %}
 <h1>
   Welcome to the Self-Assessment of National Adaptation Policy Process in Europe
 </h1>
 
-<div>
+<div class="tutorial">
+  <p>
   This platform is designed to easily collect the information about your country.
-  <br /><br />
+  Designated country coordinators are able to fill in the self-assessment survey
+  and instantly deliver it online to the EEA using this online tool.
+  </p><p>
   Moreover, this not only helps the EEA to easier get the responses from the
-  EU countries, but also 
+  EU countries, but it also helps the country coordinators gather responses
+  from the contacts (experts) inside one's country.
+  </p>
 </div>
 
+<div class="tutorial">
+  {% if g.user.is_coordinator %}
+    {% if g.user.other_coordinators %}
+      <p>You are one of the coordinators for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.
+      The other coordinators are:
+      <ul class="contacts">
+        {% for couser in g.user.other_coordinators %}
+          <li>{{ couser.first_name }} {{ couser.last_name|upper }}, {{ couser.phone_number }},
+          <a href="mailto:{{ couser.email }}">{{ couser.email }}</a></li>
+        {% endfor %}
+      </ul>
+      </p>
+      <p>Any of you can send this online questionnaire to your contacts.
+      All of you will be able to see
+      all the answers by these contacts, in one place. Any of you can
+      fill in or edit the answer for the EEA.
+      <strong>Only one of you will send the final answer and close the self-assessment</strong>.
+      Once the final answer is sent, none of you can amend the information.
+      <strong>You will need to coordinate and decide which of you will review and send the final answer.</strong></p>
+    {% else %}
+      <p>You are the coordinator for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.</p>
+      <p>You can send this online questionnaire to any of your contacts.
+      You will be able to see all their answers in one place. You can use these answers
+      to fill in the final response to the EEA. Once you are ready, you can send this response
+      and close the survey.</p>
+    {% endif %}
+    <h3>Spreading the survey</h3>
+    <p>
+      Use "Your Contacts"-tab to send the survey and see the answers filled in by your contacts.
+      There you will see a special generated URL you can spread (e.g. via Email). Your
+      contacts/country experts can only access and fill in the survey using that URL.<br />
+      In the same page you will be able to see those answers, grouped by question.
+    </p>
+    <h3>Submitting the self-assessment to the EEA</h3>
+    <p>
+      Use "Self Assessment"-tab to see your answer to the EEA. You can anytime
+      save drafts (edit) this answer, but once you <strong>Submit the final answer</strong>
+      to the EEA, the questionnaire will be closed for editing.
+      <br />
+      Each time you save a draft, you can also download a PDF containing the assessment questions
+      and your answers, so that you can print it and discuss it in meetings.
+    </p>
+  {% else %}
+      <p>You are a country contact for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.
+      Your answers for the questions in the self-assessment will be sent to your country coordinator.
+      He/She will take them in count when filling in the final answer to the EEA.
+      </p>
+  {% endif %}
+</div>
 
 {% endblock %}

@@ -16,7 +16,7 @@ textarea {
 }
 
 #middle_port{
-    width: 100%;
+    width: 99%;
 }
 
 #outer_wrapper {
@@ -458,4 +458,8 @@ td.term{
 }
 td.definition{
     color: #666;
+}
+
+.country{
+    font-weight: bold;
 }
