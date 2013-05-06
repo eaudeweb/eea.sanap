@@ -16,9 +16,14 @@
       {{ render_field(form.organisations, class_='tagit') }}
     </div>
   </fieldset>
+
   <fieldset>
-    You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
-    as a Word file, but we kindly ask you to submit it online
+    <p>You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
+    as a Word file, but we kindly ask you to submit it online.</p>
+    <p>Here you can find the glossary of related terms:
+    <a href="{{ url_for("survey.glossary") }}" target="_blank">online</a>,
+    <a href="{{ url_for("survey.download_glossary", fmt="docx") }}">DOCX</a>
+    or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}">PDF</a>.</p>
   </fieldset>
   <fieldset>
 

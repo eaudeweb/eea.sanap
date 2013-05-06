@@ -91,6 +91,26 @@ def download_docx():
     return response
 
 
+@survey.route("/download_glossary/<string:fmt>")
+def download_glossary(fmt):
+    mimetypes = {'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                 'pdf': 'application/pdf'}
+    assert fmt in mimetypes, "Incorrect file format"
+    import os
+    fname = "Self-Assessment Glossary.%s" % fmt
+    glossary_file = os.path.join(os.path.dirname(__file__), "static", fname)
+
+    response = send_file(glossary_file, mimetype=mimetypes[fmt])
+    response.headers[u"Content-Disposition"] = ('attachment; filename="%s"' %
+                                                fname)
+    return response
+
+
+@survey.route("/glossary")
+def glossary():
+    return render_template('glossary.html')
+
+
 @survey.route("/export/<string:survey_id>")
 @login_required
 def export(survey_id):

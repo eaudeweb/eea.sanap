@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    
+    {% if not g.user.is_anonymous() %}
+        {%endif%}
+        {% include "navigation.html" %}
+        
+    
+<h1>Self-Assessment Glossary</h1>
+
+(taken mainly from CLIMATE-ADAPT and EEA’s 2013 Adaptation Report)
+
+<h2>Adaptation</h2>
+<p>Adjustment in natural or human systems in response to actual or expected climatic stimuli or their effects, which moderates harm or exploits beneficial opportunities (IPCC). Various types of adaptation can be distinguished, including anticipatory, autonomous and planned adaptation. Adaptation is defined by UNDP as a process by which strategies to moderate, cope with and take advantage of the consequences of climatic events are enhanced, developed, and implemented. The European Commission 2009 Adaptation White Paper states that adaptation aims at reducing the risk and damage from current and future harmful impacts cost-effectively or exploiting potential benefits.</p>
+
+<h2>Adaptation measures</h2>
+<p>Adaptation measures are implemented technologies, processes, and activities directed at enhancing our capacity to adapt (building adaptive capacity) and at minimising, adjusting to and taking advantage of the consequences of climatic change (delivering adaptation).</p>
+
+<h2>Adaptation options</h2>
+<p>Adaptation options are generic adaptation measures, i.e. they are adaptation measures considered for implementation. </p>
+
+<h2>Adaptation policy process</h2>
+<p>The adaptation policy process consists of the initiatives undertaken by government or administration at various levels of governance and during the different phases of the policy cycle with the aim to foster adaptation to climate change. The adaptation policy process will often led to developing adaptation strategies and action plans.</p>
+
+<h2>Adaptive capacity</h2>
+<p>The IPCC defines 'adaptive capacity' as the ability of a system to adjust to climate change (including climate variability and extremes) to moderate potential damages, to take advantage of opportunities, or to cope with the consequences.</p>
+
+<h2>Capacity building</h2>
+<p>The IPCC defines 'capacity building' as developing the technical skills and institutional capabilities in countries to enable their participation in all aspects of adaptation to, mitigation of, and research on climate change.</p>
+
+<h2>Resilience</h2>
+<p>The IPCC defines 'resilience' as the ability of a social or ecological system to absorb disturbances while retaining the same basic structure and ways of functioning, the capacity for self-organisation, and the capacity to adapt to stress and change.</p>
+
+<h2>Risk</h2>
+<p>The combination of the probability of an event and its negative consequences. The word "risk" has two distinctive connotations: in popular usage the emphasis is usually placed on the concept of chance or possibility, such as in "the risk of an accident"; whereas in technical settings the emphasis is usually placed on the consequences, in terms of "potential losses" for some particular cause, place and period. It can be noted that people do not necessarily share the same perceptions of the significance and underlying causes of different risks.</p>
+
+<h2>Uncertainty </h2>
+<p>An expression of the degree to which a value (e.g. the future state of the climate system) is unknown. Uncertainty can result from lack of information or from disagreement about what is known or even knowable. It may have many types of sources, from quantifiable errors in the data to ambiguously defined concepts or terminology, or uncertain projections of human behaviour. Uncertainty can therefore be represented by quantitative measures, for example, a range of values calculated by various models, or by qualitative statements, for example, reflecting the judgement of a team of experts.</p>
+
+<h2>Vulnerability </h2>
+<p>Vulnerability is the degree to which a system is susceptible to, and unable to cope with, adverse effects of climate change, including climate variability and extremes. Vulnerability is a function of the character, magnitude, and rate of climate change and variation to which a system is exposed, its sensitivity, and its adaptive capacity.
+There are different ways in which vulnerability can be framed; an inventory has been made by the Dutch Climate Changes Spatial Planning research programme.</p>
+
+{% endblock content %}
