@@ -4,7 +4,7 @@ import datetime
 import uuid
 
 from flask import (Blueprint, request, render_template, redirect, url_for,
-                   flash, g)
+                   flash, g, views)
 from flask.ext.login import LoginManager
 from flask.ext import wtf
 from flask.ext import login as flask_login
@@ -86,24 +86,36 @@ def login():
     return render_template('login.html', form=form)
 
 
-@auth.route('/access/<string:token>', methods=['GET', 'POST'])
-def register(token):
-    if g.user.is_authenticated():
-        return redirect(url_for('survey.home'))
-    try:
-        user_invitee = User.objects.get(token=token)
-    except User.DoesNotExist:
-        flash(('Your access link appears to be incorrect.'
-               ' Please make you sure you copied the full URL.'))
-        return redirect(url_for('.unauthorized'))
+class Register(views.MethodView):
 
-    form = RegisterForm()
-    if form.validate():
-        user = form.save(user_invitee=user_invitee)
-        flask_login.login_user(user)
-        return redirect(url_for('survey.edit'))
+    def get(self, token):
+        if g.user.is_authenticated():
+            return redirect(url_for('survey.home'))
+        try:
+            user_invitee = User.objects.get(token=token)
+        except User.DoesNotExist:
+            flash(('Your access link appears to be incorrect.'
+                   ' Please make you sure you copied the full URL.'))
+            return redirect(url_for('.unauthorized'))
+        return render_template('register.html', form=RegisterForm())
 
-    return render_template('register.html', form=form)
+    def post(self, token):
+        if g.user.is_authenticated():
+            return redirect(url_for('survey.home'))
+        try:
+            user_invitee = User.objects.get(token=token)
+        except User.DoesNotExist:
+            flash(('Your access link appears to be incorrect.'
+                   ' Please make you sure you copied the full URL.'))
+            return redirect(url_for('.unauthorized'))
+        form = RegisterForm()
+        if form.validate():
+            user = form.save(user_invitee=user_invitee)
+            flask_login.login_user(user)
+            return redirect(url_for('survey.home'))
+        return render_template('register.html', form=form)
+
+auth.add_url_rule('/access/<string:token>', view_func=Register.as_view('register'))
 
 
 @auth.route('/logout')

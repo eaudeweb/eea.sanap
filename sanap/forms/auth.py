@@ -12,7 +12,8 @@ class LoginForm(wtf.Form):
 
 class RegisterForm(wtf.Form):
 
-    email = wtf.TextField('E-mail', validators=[wtf.validators.Email()])
+    email = wtf.TextField('E-mail', validators=[wtf.validators.Required(),
+                                                wtf.validators.Email()])
 
     first_name = wtf.TextField('First Name', validators=[wtf.validators.Required()])
 
