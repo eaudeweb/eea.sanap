@@ -470,3 +470,8 @@ td.definition{
 .country{
     font-weight: bold;
 }
+
+.tutorial .highlight{
+    background-color: #ddd;
+    padding: 10px;
+}

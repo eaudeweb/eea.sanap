@@ -23,7 +23,7 @@
 <div class="tutorial">
   {% if g.user.is_coordinator %}
     {% if g.user.other_coordinators %}
-      <p>You are one of the coordinators for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.
+      <p class="highlight">You are one of the coordinators for <span class="country">{{ COUNTRIES[g.user.country] }}</span>.
       The other coordinators are:
       <ul class="contacts">
         {% for couser in g.user.other_coordinators %}
@@ -40,7 +40,7 @@
       Once the final answer is sent, none of you can amend the information.
       <strong>You will need to coordinate and decide which of you will review and send the final answer.</strong></p>
     {% else %}
-      <p>You are the coordinator for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.</p>
+      <p class="highlight">You are the coordinator for <span class="country">{{ COUNTRIES[g.user.country] }}</span>.</p>
       <p>You can send this online questionnaire to any of your contacts.
       You will be able to see all their answers in one place. You can use these answers
       to fill in the final response to the EEA. Once you are ready, you can send this response
@@ -63,7 +63,7 @@
       and your answers, so that you can print it and discuss it in meetings.
     </p>
   {% else %}
-      <p>You are a country contact for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.
+      <p class="highlight">You are a country contact for <span class="countr">{{ COUNTRIES[g.user.country] }}</span>.
       Your answers for the questions in the self-assessment will be sent to your country coordinator.
       He/She will take them in count when filling in the final answer to the EEA.
       </p>
