@@ -103,7 +103,7 @@ class SectorsAssessmentsForm(wtf.Form):
 
 class SurveyForm(_SurveyForm):
 
-    draft = CustomBoolean()
+    draft = CustomBoolean(default=True)
 
     lead_organisation = wtf.TextField(Q['lead_organisation'])
 

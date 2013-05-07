@@ -60,6 +60,10 @@ class Edit(views.MethodView):
         if survey_id:
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
+            if not survey.draft:
+                flash(('Your changes were not saved. This self-assessment'
+                       ' has been previously submitted and closed.'), 'error')
+                return render_template('edit.html', form=form)
         else:
             survey = None
             form = SurveyForm()

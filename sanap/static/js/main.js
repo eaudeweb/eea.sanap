@@ -78,4 +78,7 @@ $(function () {
   };
 
 
+  // disabled inputs on submitted self-assessment
+  $("form.ecoAsVir.final :input").attr("disabled", "disabled");
+
 });
