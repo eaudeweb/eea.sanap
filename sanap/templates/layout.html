@@ -1,7 +1,7 @@
 {% extends "frame" %}
 {% from "_bits.html" import flash_messages %}
 
-{% block frame_title %} - Self-assessment of the adaptation policy process in EEA member countries{% block title %}{% endblock %}{% endblock %}
+{% block frame_title %} {% block title %}{% endblock %}{% endblock %}
 
     {% block head %}
 
@@ -10,6 +10,10 @@
 
     {% assets "packed_css" %}
       <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+
+    {% assets "packed_print_css" %}
+      <link rel="stylesheet" media="print" href="{{ ASSET_URL }}" />
     {% endassets %}
 
     {% assets "packed_ie_css" %}

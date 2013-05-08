@@ -10,29 +10,28 @@
     {% endif %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
-  <fieldset>
+  <fieldset class="meta-info">
     <div class="row">
       {{ render_field(form.lead_organisation) }}
     </div>
 
-    <div class="row has-follower">
+    <div class="row">
       <p>We encourage involving other stakeholders with whom you work in filling out this self-assessment (e.g. researchers, EPAs, NGOs).</p>
       {{ render_field(form.organisations, class_='tagit') }}
     </div>
-  </fieldset>
 
-  <fieldset>
-    <p>You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
-    as a Word file, but we kindly ask you to submit it online.</p>
-    <p>Here you can find the glossary of related terms:
-    <a href="{{ url_for("survey.glossary") }}" target="_blank">online</a>,
-    <a href="{{ url_for("survey.download_glossary", fmt="docx") }}">DOCX</a>
-    or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}">PDF</a>.</p>
+    <div class="row has-follower hide">
+      <p>You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
+      as a Word file, but we kindly ask you to submit it online.</p>
+      <p>Here you can find the glossary of related terms:
+      <a href="{{ url_for("survey.glossary") }}" target="_blank">online</a>,
+      <a href="{{ url_for("survey.download_glossary", fmt="docx") }}">DOCX</a>
+      or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}">PDF</a>.</p>
+    </div>
   </fieldset>
+  
   <fieldset>
-
     <legend>Part I: General statements on adaptation</legend>
-
 
     <div class="row">
       {{ render_field(form.public_awareness) }}
@@ -103,7 +102,7 @@
       {{ render_field(form.part1_comments) }}
     </div>
 
-    <div class="row lastOfType">
+    <div class="row lastOfType hide">
       {{ render_field(form.part1_files) }}
     </div>
 
@@ -473,34 +472,34 @@
       {{ render_field(form.adaptation_key_issues) }}
     </div>
 
-    <div class="row">
+    <div class="row lastOfType">
       {{ render_field(form.adaptation_support_eu_level) }}
     </div>
 
   </fieldset>
-  <fieldset>
+  
+  <fieldset class="meta-info">
     <legend>Thank you for your contribution!</legend>
-  <div class="row">
-    We are looking forward to getting your feedback on this self-assessment. Thanks a lot.
-  </div>
+    <div class="row">
+      We are looking forward to getting your feedback on this self-assessment. Thanks a lot.
+    </div>
 
     <div class="row">
       {{ render_field(form.feedback) }}
     </div>
 
+    <div class="row">
+      {% if form.draft.data %}
+        <span class="export">
+          <input type="checkbox" name="export_pdf" value="1" /> I wish to have a PDF version of the self-assessment.
+        </span><br /><br />
+        <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
+        <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
+      {% else %}
+        <p class="closed">This self-assessment has been submitted. You can no longer contribute to this self-assessment.</p>
+      {% endif %}
+    </div>
   </fieldset>
-
-  <div class="row lastOfType">
-    {% if form.draft.data %}
-      <span class="export">
-      <input type="checkbox" name="export_pdf" value="1" /> I wish to have a PDF version of the self-assessment.
-      </span>
-      <button name="draft" value="y" type="submit">Save Draft</button>
-      <button name="draft" value="" type="submit">Submit Final Version</button>
-    {% else %}
-      <p class="closed">This self-assessment has been submitted. You can no longer contribute to this self-assessment.</p>
-    {% endif %}
-  </div>
 
 </form>
 
