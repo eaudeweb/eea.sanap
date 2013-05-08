@@ -130,7 +130,7 @@ def export(survey_id):
                                 datetime.now().strftime("%Y-%m-%d %H:%M"))
 
     inject_css = ''
-    for css in sanap_assets.BUNDLE_CSS:
+    for css in sanap_assets.BUNDLE_PRINT_CSS:
         css_file = open(os.path.join(proj_dir, "static", css), "r")
         inject_css += css_file.read()
         css_file.close()
