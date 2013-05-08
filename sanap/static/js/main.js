@@ -81,4 +81,33 @@ $(function () {
   // disabled inputs on submitted self-assessment
   $("form.ecoAsVir.final :input").attr("disabled", "disabled");
 
+  $('form.ecoAsVir').on('submit', function (e) {
+
+    var questions = [];
+    $('.question').each(function () {
+      var question = $(this);
+      question.data('answered', false);
+      question.find(':input').each(function () {
+        var input = $(this);
+        if((input.is(':text') && input.val() != '') ||
+           (input.is(':radio,:checkbox') && input.is(':checked'))) {
+          question.data('answered', true)
+        };
+      });
+      if(question.data('answered')) {
+        questions.push(question);
+      }
+
+    });
+
+    if(questions.length < 43) {
+      if(confirm('You have answered only ' + questions.length + ' questions')) {
+        return true;
+      } else {
+        e.preventDefault();
+      }
+    }
+
+  });
+
 });
