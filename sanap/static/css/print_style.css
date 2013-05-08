@@ -1,477 +1,67 @@
 
-/*  GENERAL */
-body {
-    font-family: Arial;
-    font-size: 13px;
-}
-
-textarea {
-    font-size: 12px;
-    font-family: arial, sans-serif;
-    height: 80px;
-}
-
-#left_port {
-    display: none;
-}
-
-#middle_port{
-    width: 99%;
-}
-
-#outer_wrapper {
-    background: none;
-}
-
-.hide {
-    display: none;
-}
-
-.error {
-    font-size: 12px;
-    color: red;
-}
-
-.row-simple .field {
-    margin-left: 100px;
-}
-
-.row-simple label {
-    float: left;
-    width: 90px;
-}
-
-.row-simple .field {
-    margin-left: 100px;
-}
-
-.row .other {
-    padding-top: 10px;
-    position: relative;
-    left: -5px;
-}
-.row .other input {
-    width: 600px;
-}
-.row>label{
-    cursor: text;
-}
-
-.required {
-    font-size: 12px;
-    color: red;
-}
-
-.ecosystem-types td {
-    vertical-align: top;
-}
-
-.ecosystem label {
-    display: none;
-}
-
-.reset-ul,
-.reset-ul li {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.matrix th {
-    padding: 5px 8px;
-    width: 120px;
-}
-
-.matrix .category {
-    text-align: left;
-    font-size: 14px;
-}
-
-.matrix .category-left {
-    text-align: left;
-}
-
-.matrix .check-column {
-    text-align: center;
-    width: 120px;
-}
-
-#lean_overlay {
-    position: fixed;
-    z-index:100;
-    top: 0px;
-    left: 0px;
-    height:100%;
-    width:100%;
-    background: #000;
-    display: none;
-}
-
-.resources {
-    background: #eee;
-    width: 600px;
-}
-
-.resources caption {
-    text-align: left;
-    font-weight: bold;
-    padding-bottom: 10px;
-}
-
-.resources th,
-.resources td {
-    background: #fff;
-    padding: 6px 10px;
-}
-
-.resources .label {
-    width: 160px;
-}
-
-
-/*  restyle the form */
-.ecoAsVir {
-    margin-top: 10px;
-}
-
-.ecoAsVir fieldset {
-	border: 2px solid rgb(165, 206, 209);
-	margin-bottom: 15px;
-	width: 96%;
-}
-
-.ecoAsVir .second {
-	margin-top: 30px;
-}
-
-.ecoAsVir legend {
-	padding: 0px 5px;
-	color: #333;
-	margin-left: 8px;
-	font-weight: bold;
-	font-size: 1.1em;
-}
-
-.ecoAsVir label {
-	display: block;
-	padding-bottom: 10px;
-	color: #5A5A5A;
-}
-
-.field label {
-	width: 155px;
-	float: left;
-	color: #5A5A5A;
-}
-
-.field {
-	display: inline-block;
-	margin: 0;
-}
-
-.ecoAsVir .field ul {
-    list-style-type: none;
-}
-
-.ecoAsVir .field ul li {
-    display: inline-block;
-    overflow: hidden;
-}
-
-.ecoAsVir #triggers li,
-.ecoAsVir #barriers li,
-.ecoAsVir #needed_info li,
-.ecoAsVir #adaptation_scale li,
-.ecoAsVir #identified_options li,
-.ecoAsVir #adaptation_actions li {
-    display: block;
-}
-
-.ecoAsVir .field ul label {
-    width: auto;
-    margin-right: 5px;
-}
-
-.field input {
-    float: left;
-}
-
-.row {
-	margin: 0px;
-	padding: 13px 5px;
-	border-bottom: 1px dashed #DDD;
-	overflow: hidden;
-}
-
-.ecoAsVir .row.lastOfType {
-	border-bottom: 0px;
-}
-
-.required {
-	color: red;
-	padding: 0px 3px;
-}
-
-.ecoAsVir #lead_organisation,
-.ecoAsVir #organisations,
-.ecoAsVir #integration_examples,
-.ecoAsVir #mitigation_examples,
-.ecoAsVir #transnational_cooperation_examples,
-.ecoAsVir #part1_comments,
-.ecoAsVir #horizontal_coordination,
-.ecoAsVir #vertical_coordination,
-.ecoAsVir #crucial_in_coordination,
-.ecoAsVir #challenging_in_coordination,
-.ecoAsVir #assessment_subnational_info,
-.ecoAsVir #assessment_coordination,
-.ecoAsVir #assessment_methodological_approach,
-.ecoAsVir #change_adaptation_costs,
-.ecoAsVir #assessment_update_info,
-.ecoAsVir #options_methodological,
-.ecoAsVir #action_plan_info,
-.ecoAsVir #practice_example,
-.ecoAsVir #integrating_plans,
-.ecoAsVir #part2_comments,
-.ecoAsVir #main_instruments_considered,
-.ecoAsVir #part3_comments,
-.ecoAsVir #transboundary_issues,
-.ecoAsVir #regions_coordination,
-.ecoAsVir #stakeholders_success,
-.ecoAsVir #part4_comments,
-.ecoAsVir #next_step_vulnerability,
-.ecoAsVir #next_step_legislation,
-.ecoAsVir #next_step_implementation,
-.ecoAsVir #next_step_monitoring,
-.ecoAsVir #next_step_strategy,
-.ecoAsVir #next_step_others,
-.ecoAsVir #adaptation_key_issues,
-.ecoAsVir #adaptation_support_eu_level,
-.ecoAsVir #feedback,
-.ecoAsVir .field ul {
-  width: 600px;
-  padding-left: 0px;
-  margin: 0;
-}
-
-.ecoAsVir .other {
-	margin-left: 20px;
-	margin-bottom: 5px;
-}
-
-.ecoAsVir .add-object {
-	padding: 5px 5px 0px 0px;
-	display: inline-block;
-}
-
-
-/*  TABLES */
-.ecoAsVir .matrix {
-    margin-left: 20px;
-}
-
-.ecoAsVir .matrix .category-left {
-	vertical-align: top;
-}
-
-.ecoAsVir .matrix .category-left div {
-    width: 130px;
-    border-bottom: 1px solid #FFF;
-    padding: 4px 3px 7px 10px;
-    color: #444;
-}
-
-.ecoAsVir .even ul,
-.ecoAsVir th.even {
-	background: #D4F1F1;
-}
-
-.ecoAsVir .odd ul,
-.ecoAsVir th.odd {
-	background: #B4DBDB;
-}
-
-/*  table after Integrating Plans */
-.ecoAsVir .matrix  .category-left div,
-.ecoAsVir #main-instruments .category-left div {
-    background: #ddd;
-}
-
-.ecoAsVir #main-instruments .category-left div {
-    width: 333px;
-}
-
-.ecoAsVir .matrix li {
-	border-bottom: 1px solid #fff;
-  padding: 4px 3px 4px 3px;
-  margin: 0;
-  width: 100%;
-}
-
-.ecoAsVir .matrix ul {
-	list-style-type: none;
-	padding: 0px;
-  margin: 0px;
-}
-
-.ecoAsVir .row.special {
-  overflow-x: scroll;
-  width: 95%;
-}
-
-.ecoAsVir .row.has-follower {
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  border-bottom: none;
-}
-
-.ecoAsVir .category-left:empty {
-	border: 0px;
-	background: #fff;
-}
-
-.ecoAsVir .add-item {
-    text-decoration: underline;
-    color: rgb(152, 89, 64);
-    cursor: pointer;
-}
-
-
-/* FIXINGS from jQuery */
-body .ui-dialog .ui-dialog-titlebar-close span {
-    margin-top: -7px;
-    margin-left: -7px; /* margin for span inside close button, from browser alert window */
-}
-
-.ui-spinner input{
-    width: 30px;
-}
-
-.row.nested{
-    padding-left: 50px;
-}
-
-.row.nested2{
-    padding-left: 100px;
-}
-
-.login-container,
-.login-title {
-    padding: 20px;
-    margin: 15px auto;
-    width: 500px;
-}
-
-.login-container {
-    -webkit-border-bottom-right-radius: 4px;
-    -webkit-border-bottom-left-radius: 4px;
-    -moz-border-radius-bottomright: 4px;
-    -moz-border-radius-bottomleft: 4px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border: 1px solid #ddd;
-    background: #DCF6F8;
-    margin-top: 0;
-}
-
-.login-container label {
-    width: 120px;
-    float: left;
-}
-.login-container .row {
-    overflow: hidden;
-    height: 40px;
-}
-
-.login-container input[type=text],
-.login-container input[type=password] {
-    padding: 4px;
-    width: 300px;
-}
-
-.login-title {
-    -webkit-border-top-left-radius: 4px;
-    -webkit-border-top-right-radius: 4px;
-    -moz-border-radius-topleft: 4px;
-    -moz-border-radius-topright: 4px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border: 1px solid #84ACAF;
-    background: #A5CED1;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 0;
-}
-
-.login-message {
-    font-size: 18px;
-    text-align: center;
-}
-
-.matrix label {
-    display: none;
-}
-
-#sectors tr td div{
-    height: 38px;
-}
-#sectors tr td ul li {
-    height: 38px;
-    padding-top: 11px;
-    padding-bottom: 0px;
-}
-#sectors th#sectors-4{
-    width: 400px;
-}
-textarea.cell{
-    font-size: 12px;
-    height: 30px;
-    width: 396px;
-}
-
-#financing-mechanisms tr td div,
-#financing-mechanisms tr td ul li {
-    height: 30px;
-    padding: 8px;
-}
-
-#development-involvement .category-left div,
-#implementation-involvement .category-left div,
-#monitoring-involvement .category-left div
-{
-    width: 300px;
-    height: 50px;
-    padding: 8px;
-}
-
-#development-involvement tr td ul li,
-#implementation-involvement tr td ul li,
-#monitoring-involvement tr td ul li
-{
-    height: 50px;
-    padding: 8px;
-}
-
-#sectors-assessments .category-left div{
-    width: 200px;
-}
-
-td.term, td.term-left{
-    text-align: right;
-    font-weight: bold;
-}
-td.term-left{
-    text-align:left;
-}
-td.definition{
-    color: #666;
-}
-
-.country{
-    font-weight: bold;
-}
-
-.tutorial .highlight{
-    background-color: #ddd;
-    padding: 10px;
+@media print {
+    
+    .other a, input[type="file"],
+    .saveDraft, .submitVersion {
+        display: none;
+    }
+    
+    .ecoAsVir fieldset,
+    .ecoAsVir .meta-info {
+        border: 0px;
+    }
+    
+    .ecoAsVir #main-instruments th,
+    .ecoAsVir #financing-mechanisms th,
+    .ecoAsVir .matrix th { 
+        font-weight: normal;
+        font-size: 11px;
+    }
+    
+    .row {
+        border-bottom: 0px;
+    }
+    
+    /*  horizontal align for cells from table 17 and 30 */
+    #sectors-assessments div,
+    #monitor-report-evaluate div {
+        border-bottom: 1px solid #555;
+        height: 15px;
+        padding-top: 5px;
+    }
+    
+     /*   horizontal align for cells from table 33 */
+    #main-instruments div,
+    #main-instruments li {
+        border-bottom: 1px solid #555;
+        height: 85px;
+    }
+    
+    .ecoAsVir #main-instruments .category-left div {
+        padding-top: 6px;
+        width: 100px;
+        height: 80px;
+    }
+    
+    .ecoAsVir .check-column li {
+        border-bottom: 1px solid #555;
+    }
+    
+        /*   horizontal align for cells from table 31 */
+    #sectors div {
+        border: 1px solid green;
+        width: 110px;
+    }
+    
+    #sectors li {
+        /*border: 1px solid #ddd;*/
+        padding: 0px;
+    }
+    
+    #sectors-priority_sectors li {
+        /*outline: 1px solid red;*/
+        border-bottom: 0px;
+        padding-top: 0px;
+    }
+ 
 }
