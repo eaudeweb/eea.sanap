@@ -23,10 +23,6 @@ textarea {
     background: none;
 }
 
-.hide {
-    display: none;
-}
-
 .error {
     font-size: 12px;
     color: red;
@@ -80,6 +76,7 @@ textarea {
 .matrix th {
     padding: 5px 8px;
     width: 120px;
+    vertical-align: top;
 }
 
 .matrix .category {
@@ -135,9 +132,16 @@ textarea {
 }
 
 .ecoAsVir fieldset {
-	border: 2px solid rgb(165, 206, 209);
-	margin-bottom: 15px;
+	border: 2px dotted rgb(165, 206, 209);
+	margin-bottom: 20px;
 	width: 96%;
+}
+
+.ecoAsVir  .meta-info {
+    background: rgb(226, 241, 241);
+    border: 1px solid rgb(165, 206, 209);
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 .ecoAsVir .second {
@@ -190,6 +194,7 @@ textarea {
 .ecoAsVir .field ul label {
     width: auto;
     margin-right: 5px;
+    font-size: 12px;
 }
 
 .field input {
@@ -201,6 +206,10 @@ textarea {
 	padding: 13px 5px;
 	border-bottom: 1px dashed #DDD;
 	overflow: hidden;
+}
+
+.meta-info .row {
+    border-bottom: 0px;
 }
 
 .ecoAsVir .row.lastOfType {
@@ -248,9 +257,13 @@ textarea {
 .ecoAsVir #adaptation_support_eu_level,
 .ecoAsVir #feedback,
 .ecoAsVir .field ul {
-  width: 600px;
+  width: 800px;
   padding-left: 0px;
   margin: 0;
+}
+
+.ecoAsVir .field ul {
+    padding-left: 16px;
 }
 
 .ecoAsVir .other {
@@ -289,6 +302,16 @@ textarea {
 .ecoAsVir th.odd {
 	background: #B4DBDB;
 }
+
+.ecoAsVir #level-involvement td {
+    border: 1px solid #999;
+    padding: 3px;
+}
+
+.ecoAsVir #level-involvement .term-left {
+    background: #ddd;
+}
+
 
 /*  table after Integrating Plans */
 .ecoAsVir .matrix  .category-left div,
@@ -333,6 +356,10 @@ textarea {
     text-decoration: underline;
     color: rgb(152, 89, 64);
     cursor: pointer;
+}
+
+.spaced {
+    margin-left: 50px;
 }
 
 
@@ -474,4 +501,21 @@ td.definition{
 .tutorial .highlight{
     background-color: #ddd;
     padding: 10px;
+}
+
+
+/*  alert messages*/
+.message .alert,
+.message .info {
+    color: green;
+    font-weight: bold;
+    border: 1px dotted rgb(0, 128, 0);
+    padding: 5px;
+}
+
+.message .error {
+    color: red;
+    font-weight: bold;
+    border: 1px dotted red;
+    padding: 5px;
 }
