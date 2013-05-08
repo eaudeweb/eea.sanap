@@ -126,11 +126,11 @@ def export(survey_id):
     proj_dir = os.path.dirname(__file__)
     source = Edit().get(survey_id)
     survey = Survey.objects.get_or_404(id=survey_id)
-    filename = 'sanap-%s-%s' % (survey.country,
-                                datetime.now().strftime("%Y-%m-%d %H:%M"))
+    filename = 'sanap-%s-%s.pdf' % (survey.country,
+                                datetime.now().strftime("%Y-%m-%d %H.%M"))
 
     inject_css = ''
-    for css in sanap_assets.BUNDLE_PRINT_CSS:
+    for css in sanap_assets.BUNDLE_CSS + sanap_assets.BUNDLE_PRINT_CSS:
         css_file = open(os.path.join(proj_dir, "static", css), "r")
         inject_css += css_file.read()
         css_file.close()
@@ -145,8 +145,8 @@ def export(survey_id):
     retcode = subprocess.call(['wkhtmltopdf', '-O', 'Landscape', '-q',
                                 html_infile.name, pdf_outfile.name])
     response = send_file(pdf_outfile.name, mimetype='application/pdf')
-    response.headers['Content-Disposition'] = ('attachment; filename=' +
-                                       filename + '.pdf')
+    response.headers['Content-Disposition'] = ('attachment; filename="%s"'
+                                               % filename)
 
     pdf_outfile.close()
     html_infile.close()
