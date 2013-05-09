@@ -1,4 +1,5 @@
 from flask.ext import wtf
+from flask import url_for
 from libs import markup
 from libs.markup import oneliner as e
 from sanap.model_data import SECTORS_DATA
@@ -70,7 +71,28 @@ class MultiTextAreaField(MultiTextField):
     widget = ListTextAreaWidget()
 
 
+class CustomFileInput(wtf.widgets.FileInput):
+
+    def __call__(self, field, **kwargs):
+       result = super(CustomFileInput, self).__call__(field, **kwargs)
+       values = field.data
+       if values and isinstance(values, list):
+            page = markup.page()
+            page.ul(_class='file-list')
+            for value in values:
+                page.li()
+                page.a(value,
+                       href=url_for('static', filename='files/%s' % value),
+                       target='_blank')
+                page.li.close()
+            page.ul.close()
+            result += str(page)
+       return wtf.widgets.core.HTMLString(result)
+
+
 class CustomFileField(wtf.FileField):
+
+    widget = CustomFileInput()
 
     def process_formdata(self, valuelist):
         if valuelist and valuelist[0]:
@@ -79,6 +101,9 @@ class CustomFileField(wtf.FileField):
             self.data = filestorage
         else:
             self.data = ''
+
+    def process_data(self, value):
+        self.data = list(value)
 
 
 class CustomRadioField(wtf.RadioField):
