@@ -54,7 +54,7 @@ class Edit(views.MethodView):
         else:
             form = SurveyForm()
 
-        return render_template('edit.html', form=form)
+        return render_template('edit.html', form=form, survey_id=survey_id)
 
     def post(self, survey_id=None):
         if survey_id:
@@ -159,4 +159,5 @@ def export(survey_id):
 def contacts():
     if not g.user.token:
         abort(403)
-    return render_template('contacts.html')
+    return render_template('contacts.html',
+                hostname=current_app.config.get('HOSTNAME', 'http://localhost'))

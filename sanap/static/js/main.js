@@ -84,24 +84,34 @@ $(function () {
   $('form.ecoAsVir').on('submit', function (e) {
 
     var questions = [];
+    var total_number = $('.question').length;
     $('.question').each(function () {
       var question = $(this);
-      question.data('answered', false);
+      var answered = false;
       question.find(':input').each(function () {
         var input = $(this);
         if((input.is(':text') && input.val() != '') ||
-           (input.is(':radio,:checkbox') && input.is(':checked'))) {
-          question.data('answered', true)
+           (input.is(':radio,:checkbox') && input.is(':checked')) ||
+           (input.is('textarea') && input.val() != '')) {
+          answered = true;
         };
       });
-      if(question.data('answered')) {
+      if(answered) {
         questions.push(question);
+        question.removeClass('unanswered');
+      }
+      else{
+        question.hasClass('unanswered') || question.addClass('unanswered');
       }
 
     });
 
-    if(questions.length < 43) {
-      if(confirm('You have answered only ' + questions.length + ' questions')) {
+    if(questions.length < total_number) {
+      if(confirm('You havn\'t answered ' + (total_number - questions.length) +
+                 ' questions out of a total of ' + total_number +
+                 '.\nWe have highlighted them for you.\n\nClick OK to continue '+
+                 'submitting final version without posibility of changing answers, '+
+                 'or Cancel to take another look at the questions.')) {
         return true;
       } else {
         e.preventDefault();
