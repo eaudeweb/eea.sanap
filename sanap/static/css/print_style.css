@@ -71,7 +71,8 @@ body,
 }
 
 .ecoAsVir .matrix {
-    break-inside: avoid-page !important; 
+    margin-left: 0px;
+    break-inside: avoid !important; 
 }
 
 .ecoAsVir .meta-info,
@@ -88,25 +89,11 @@ body,
 
 .ecoAsVir .matrix .category-left div,
 .ecoAsVir .matrix li {
-    border-bottom: 1px solid violet;
+    border-bottom: 1px solid green;
 }
 
-/*.ecoAsVir .matrix li,
-.ecoAsVir .matrix .category-left div,
-.ecoAsVir #level-involvement td {
-    border: 1px dotted #999;
-}*/
-
-/*#financing-mechanisms tr td div,
-#financing-mechanisms tr td ul li {
-    height: 30px;
-    padding: 8px;
-}*/
-
-/*  table 17 */
-/*#sectors-assessments div,
-#sectors-assessments li {
-    height: 10px;
-    padding: 4px 3px;
-    outline: 1px solid orange;
-}*/
+/*  table 33, which is very wide */
+.ecoAsVir #main-instruments .category-left div {
+    width: 80px;
+    outline: 1px solid red;
+}
