@@ -33,15 +33,15 @@
   <fieldset>
     <legend>Part I: General statements on adaptation</legend>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.public_awareness) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.adaptation_need) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.triggers) }}
 
       <div class="other">
@@ -50,47 +50,47 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.willingness) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.knowledge) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.uncertainties) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.objectives) }}
     </div>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.integration) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.integration_examples) }}
     </div>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.mitigation) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.mitigation_examples) }}
     </div>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.transnational_cooperation) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.transnational_cooperation_examples) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.barriers) }}
      <div class="other">
         <a class="add-item" data-title="Add barrier">
@@ -111,17 +111,17 @@
 
     <legend>Part II: The adaptation policy process</legend>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.process_stage) }}
     </div>
 
     <p><strong>Prepare the ground for adaptation</strong></p>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.horizontal_integration) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.vertical_integration) }}
     </div>
 
@@ -130,29 +130,29 @@
       </label>
     </div>
 
-    <div class="row has-follower nested">
+    <div class="row has-follower nested question">
       {{ render_field(form.horizontal_coordination) }}
     </div>
 
-    <div class="row has-follower nested">
+    <div class="row has-follower nested question">
       {{ render_field(form.vertical_coordination) }}
     </div>
 
-    <div class="row has-follower nested">
+    <div class="row has-follower nested question">
       {{ render_field(form.crucial_in_coordination) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.challenging_in_coordination) }}
     </div>
 
     <p><strong>Identify risks and explore options</strong></p>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.assessment) }}
     </div>
 
-    <div class="row has-follower nested">
+    <div class="row has-follower nested question">
       {{ render_field(form.assessment_scale) }}
       <div class="other">
         <a class="add-item" data-title="Add other scale">
@@ -160,17 +160,17 @@
       </div>
     </div>
 
-    <div class="row has-follower nested2">
+    <div class="row has-follower nested2 question">
       <label>If available at sub-national level - </label>
       <label>What assessments are available at sub-national (e.g. Länder, provinces, regions, communities) level?</label>
       {{ render_field(form.assessment_subnational_info) }}
     </div>
 
-    <div class="row nested2">
+    <div class="row nested2 question hide">
       {{ render_field(form.assessment_subnational_files) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ form.sectors_assessments }}
 
       <div class="other">
@@ -186,18 +186,18 @@
         18. In relation to the national assessment, how is/was the risk or vulnerability assessment process coordinated (e.g. who commissioned the work; who carried it out)? What methodological approach (e.g. literature review, modelling, expert appraisal) has been used? How have uncertainties been addressed?
       </label>
     </div>
-    <div class="row has-follower nested">
+    <div class="row has-follower nested question">
       {{ render_field(form.assessment_coordination) }}
     </div>
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.assessment_methodological_approach) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.change_adaptation_costs) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.needed_info) }}
       <div class="other">
         <a class="add-item" data-title="Add more info">
@@ -205,19 +205,19 @@
       </div>
     </div>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.assessment_update) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.assessment_update_info) }}
     </div>
 
-    <div class="row has-follower">
+    <div class="row has-follower question">
       {{ render_field(form.adaptation_options) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.adaptation_scale) }}
       <div class="other">
         <a class="add-item" data-title="Add more adaptation scale">
@@ -225,7 +225,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.identified_options) }}
       <div class="other">
         <a class="add-item" data-title="Add more identified options">
@@ -233,7 +233,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.adaptation_actions) }}
       <div class="other">
         <a class="add-item" data-title="Add more adaptation actions">
@@ -241,15 +241,15 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.prioritised_options) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.options_methodological) }}
     </div>
 
-    <div class="row">
+    <div class="row question hide">
       {{ render_field(form.action_plan_info) }}
       <br />
       {{ render_field(form.action_plan_files) }}
@@ -257,15 +257,15 @@
 
     <p><strong>Implementation, monitoring and evaluation</strong></p>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.practice_example) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.integrating_plans) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ form.monitor_report_evaluate }}
     </div>
 
@@ -273,7 +273,7 @@
       {{ render_field(form.part2_comments) }}
     </div>
 
-    <div class="row lastOfType">
+    <div class="row lastOfType hide">
       {{ render_field(form.part2_files) }}
     </div>
 
@@ -282,7 +282,7 @@
 
     <legend>Part III: Level of adaptation and policy instruments in sectors</legend>
 
-    <div class="row">
+    <div class="row question">
       <label>31. Please highlight the relevant sectors/areas in your country and assess the current state of adaptation at various levels:</label>
       <p>Please score the state of adaptation using the following scale:</p>
         <table><tr><th>Selected Value</th><th>Meaning</th><tr/>
@@ -306,11 +306,11 @@
       </div>-->
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.instruments) }}
     </div>
 
-    <div class="row special">
+    <div class="row special question">
       {{ form.main_instruments }}
       <div class="other">
         <a href="" class="matrix-other main-instruments-other"
@@ -324,11 +324,11 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.main_instruments_considered) }}
     </div>
 
-    <div class="row special">
+    <div class="row special question">
       {{ form.financing_mechanisms }}
 
       <div class="other">
@@ -351,11 +351,11 @@
       {{ render_field(form.part3_files) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.transboundary_issues) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.regions_coordination) }}
     </div>
 
@@ -365,15 +365,15 @@
 
     <legend>Part IV: Involvement of stakeholders </legend>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.stakeholders_involved) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.stakeholders_contribution) }}
     </div>
 
-    <div class="row special">
+    <div class="row special question">
         <label>40. The three tables below allow you to identify the stakeholders involved and the format of their involvement for the development (1st table), implementation (2nd table) and monitoring and evaluation (3rd table) phases of the adaptation process.   
 </label>
 
@@ -400,7 +400,7 @@
       </div>
     </div>
 
-    <div class="row special">
+    <div class="row special question">
       {{ form.implementation_involvement }}
       <div class="other">
         <a href="" class="matrix-other"
@@ -411,7 +411,7 @@
       </div>
     </div>
 
-    <div class="row special">
+    <div class="row special question">
       {{ form.monitoring_involvement }}
       <div class="other">
         <a href="" class="matrix-other"
@@ -422,7 +422,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.stakeholders_success) }}
     </div>
 
@@ -430,7 +430,7 @@
       {{ render_field(form.part4_comments) }}
     </div>
 
-    <div class="row">
+    <div class="row hide">
       {{ render_field(form.part4_files) }}
     </div>
 
@@ -444,35 +444,35 @@
       <label>42. What are the next steps your country is planning? Please provide information on the following issues and the related timing (addressing both national and sub-national levels):
       </label>
     </div>
-    <div class="row nested has-follower">
+    <div class="row nested has-follower question">
       {{ render_field(form.next_step_vulnerability) }}
     </div>
 
-    <div class="row nested has-follower">
+    <div class="row nested has-follower question">
       {{ render_field(form.next_step_legislation) }}
     </div>
 
-    <div class="row nested has-follower">
+    <div class="row nested has-follower question">
       {{ render_field(form.next_step_implementation) }}
     </div>
 
-    <div class="row nested has-follower">
+    <div class="row nested has-follower question">
       {{ render_field(form.next_step_monitoring) }}
     </div>
 
-    <div class="row nested has-follower">
+    <div class="row nested has-follower question">
       {{ render_field(form.next_step_strategy) }}
     </div>
 
-    <div class="row nested">
+    <div class="row nested question">
       {{ render_field(form.next_step_others) }}
     </div>
 
-    <div class="row">
+    <div class="row question">
       {{ render_field(form.adaptation_key_issues) }}
     </div>
 
-    <div class="row lastOfType">
+    <div class="row lastOfType question">
       {{ render_field(form.adaptation_support_eu_level) }}
     </div>
 

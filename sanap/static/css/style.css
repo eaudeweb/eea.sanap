@@ -519,3 +519,7 @@ td.definition{
     border: 1px dotted red;
     padding: 5px;
 }
+
+.unanswered {
+    background-color: rgb(253, 252, 231);
+}
