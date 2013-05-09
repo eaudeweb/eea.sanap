@@ -5,7 +5,7 @@
 {% set active_page = 'contacts' -%}
 {% include "navigation.html" %}
 
-{% set url = url_for('auth.register', token=g.user.token, _external=True) %}
+{% set url = url_for('auth.register', token=g.user.token) %}
 
 <h2>Spread the questionnaire and collect the answers</h2>
 <p>Send the following URL to your country contacts; they will be able to fill in
@@ -14,7 +14,7 @@ grouped by questions, so that you can easier compile the final answer to the EEA
 </p>
 
 <p>
-  <a href="{{ url }}">{{ url }}</a>
+  <a href="{{ hostname }}{{ url }}">{{ hostname }}{{ url }}</a>
 </p>
 
 <h2>Answers so far from your country contacts</h2>
