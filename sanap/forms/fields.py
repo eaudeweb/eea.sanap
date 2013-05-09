@@ -155,7 +155,7 @@ class MatrixCheckboxWidget(MatrixBaseWidget):
         page.tr()
         page.th(self.title, class_='category-left')
         for i, f in enumerate(fields):
-            page.th(f.label.text, class_=i%2 and 'odd' or 'even',
+            page.th(f.label.text.capitalize(), class_=i%2 and 'odd' or 'even',
                     id="%s-%d" % (self.id, i))
         page.tr.close()
         page.thead.close()
