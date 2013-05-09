@@ -63,8 +63,6 @@ body,
     font-size: 12pt;
 }
 
-.ecoAsVir #main-instruments th,
-.ecoAsVir #financing-mechanisms th,
 .ecoAsVir .matrix th { 
     font-weight: normal;
     font-size: 11px;
@@ -81,7 +79,7 @@ body,
 .ecoAsVir .odd ul,
 .ecoAsVir th.odd,
 .ecoAsVir .matrix .category-left div,
-.ecoAsVir #main-instruments .category-left div {
+.ecoAsVir #main-instruments .category-left div  {
     background: #fff;
     font-weight: normal;
     font-size: 11px;
@@ -89,11 +87,36 @@ body,
 
 .ecoAsVir .matrix .category-left div,
 .ecoAsVir .matrix li {
-    border-bottom: 1px solid green;
+    outline: 1px solid #ddd;
 }
 
-/*  table 33, which is very wide */
-.ecoAsVir #main-instruments .category-left div {
-    width: 80px;
+/*  table 33 and 35, which are very wide */
+.ecoAsVir #main-instruments .category-left div,
+.ecoAsVir #financing-mechanisms .category-left div {
+    width: 70px;
     outline: 1px solid red;
+}
+
+#main-instruments th,
+#financing-mechanisms th {
+    font-weight: normal;
+    font-size: 7px;
+    padding: 0;
+    color: #222;
+}
+
+#financing-mechanisms div,
+#financing-mechanisms li {
+    height: 30px;
+    padding: 8px;
+}
+
+#main-instruments .check-column,
+#financing-mechanisms .check-column {
+    padding: 0;
+    outline: 1px solid green;
+}
+
+.ecoAsVir .matrix li input {
+    margin: 0; /*helps standardize the cells' height */
 }
