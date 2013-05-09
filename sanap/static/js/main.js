@@ -120,4 +120,14 @@ $(function () {
 
   });
 
+  var scrollTo = function (top) {
+     $('html, body').animate({scrollTop: top}, 'fast');
+  };
+  $('#scroll-top').on('click', function () {
+    scrollTo(0);
+  });
+  $('#scroll-bottom').on('click', function () {
+    scrollTo($(document).height());
+  });
+
 });
