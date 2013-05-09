@@ -81,7 +81,7 @@ $(function () {
   // disabled inputs on submitted self-assessment
   $("form.ecoAsVir.final :input").attr("disabled", "disabled");
 
-  $('form.ecoAsVir').on('submit', function (e) {
+  $('.submitVersion').on('click', function (e) {
 
     var questions = [];
     var total_number = $('.question').length;
