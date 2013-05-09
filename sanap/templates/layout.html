@@ -17,7 +17,7 @@
     {% endassets %}
 
     {% assets "packed_ie_css" %}
-     <!--[if IE 7]> 
+     <!--[if IE 7]>
         <link rel="stylesheet" href="{{ ASSET_URL }}" />
       <![endif]-->
     {% endassets %}
@@ -42,5 +42,12 @@
     <div class="message information">
       {% block flash_messages %} {{ flash_messages() }} {% endblock %}
     </div>
+
+    <!--[if lte IE 7]>
+    <div class="message ie-error-message">
+      Your browser is not supported. Please upgrade to <a class=”firefox” href=”http://www.getfirefox.com ” target=”_new”>Mozilla Firefox</a>, <a class=”chrome” href=”http://www.google.com/chrome/ ” target=”_new”>Chrome</a>,<a class=”ie” href=”http://www.microsoft.com/windows/ie/ ” target=”_new”>IE</a>
+    </div>
+    <![endif]-->
+
     {% block content %}{% endblock %}
     {% endblock frame_content %}
