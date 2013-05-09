@@ -54,7 +54,7 @@ class Edit(views.MethodView):
         else:
             form = SurveyForm()
 
-        return render_template('edit.html', form=form)
+        return render_template('edit.html', form=form, survey_id=survey_id)
 
     def post(self, survey_id=None):
         if survey_id:

@@ -6,7 +6,11 @@
   {% include "navigation.html" %}
 
     {% if not form.draft.data %}
-      <p class="closed">This self-assessment has been submitted. You can no longer contribute to this self-assessment.</p>
+      <p class="closed">
+        This self-assessment has been submitted. You can no longer contribute to this self-assessment.
+        <br />
+        You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.
+      </p>
     {% endif %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
@@ -496,7 +500,11 @@
         <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
         <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
       {% else %}
-        <p class="closed">This self-assessment has been submitted. You can no longer contribute to this self-assessment.</p>
+        <p class="closed">
+          This self-assessment has been submitted. You can no longer contribute to this self-assessment.
+          <br />
+          You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.
+        </p>
       {% endif %}
     </div>
   </fieldset>
