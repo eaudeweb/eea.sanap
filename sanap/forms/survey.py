@@ -347,7 +347,7 @@ class SurveyForm(_SurveyForm):
 
         organisations = self.data['organisations'].split(',')
         if organisations:
-            survey.organisations = organisations
+            survey.organisations = list(set(organisations))
 
         for field_name in FILE_FIELDS:
             uploaded = self.data[field_name]
