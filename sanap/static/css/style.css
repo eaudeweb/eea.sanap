@@ -276,66 +276,6 @@ textarea {
 	display: inline-block;
 }
 
-
-/*  TABLES */
-.ecoAsVir .matrix {
-    margin-left: 20px;
-}
-
-.ecoAsVir .matrix .category-left {
-	vertical-align: top;
-}
-
-.ecoAsVir .matrix .category-left div {
-    width: 130px;
-    border-bottom: 1px solid #FFF;
-    padding: 4px 3px 7px 10px;
-    color: #444;
-}
-
-.ecoAsVir .even ul,
-.ecoAsVir th.even {
-	background: #D4F1F1;
-}
-
-.ecoAsVir .odd ul,
-.ecoAsVir th.odd {
-	background: #B4DBDB;
-}
-
-.ecoAsVir #level-involvement td {
-    border: 1px solid #999;
-    padding: 3px;
-}
-
-.ecoAsVir #level-involvement .term-left {
-    background: #ddd;
-}
-
-
-/*  table after Integrating Plans */
-.ecoAsVir .matrix  .category-left div,
-.ecoAsVir #main-instruments .category-left div {
-    background: #ddd;
-}
-
-.ecoAsVir #main-instruments .category-left div {
-    width: 333px;
-}
-
-.ecoAsVir .matrix li {
-	border-bottom: 1px solid #fff;
-  padding: 4px 3px 4px 3px;
-  margin: 0;
-  width: 100%;
-}
-
-.ecoAsVir .matrix ul {
-	list-style-type: none;
-	padding: 0px;
-  margin: 0px;
-}
-
 .ecoAsVir .row.special {
   overflow-x: scroll;
   width: 95%;
@@ -361,6 +301,147 @@ textarea {
 .spaced {
     margin-left: 50px;
 }
+
+
+/*  TABLES */
+.ecoAsVir .matrix {
+    margin-left: 20px;
+}
+
+.ecoAsVir .matrix .category-left {
+	vertical-align: top;
+}
+
+.ecoAsVir .matrix .category-left div,
+.ecoAsVir .matrix li {
+    border-bottom: 1px solid violet;
+    margin: 0;
+    padding: 4px 3px;
+    color: #444;
+}
+
+.ecoAsVir .matrix li {
+  width: 100%;
+}
+
+.ecoAsVir .matrix .category-left div {
+    width: 120px; 
+}
+
+.ecoAsVir .matrix li input {
+    margin: 0; /*helps standardize the cells' height */
+}
+
+.ecoAsVir .even ul,
+.ecoAsVir th.even {
+	background: #D4F1F1;
+}
+
+.ecoAsVir .odd ul,
+.ecoAsVir th.odd {
+	background: #B4DBDB;
+}
+
+.ecoAsVir #level-involvement td {
+    border: 1px solid #999;
+    padding: 3px;
+}
+
+.ecoAsVir #level-involvement .term-left {
+    background: #ddd;
+}
+
+/*  table after Integrating Plans */
+.ecoAsVir .matrix  .category-left div {
+    background: #ddd;
+}
+
+.ecoAsVir .matrix ul {
+	list-style-type: none;
+	padding: 0px;
+  margin: 0px;
+}
+
+.matrix label {
+    display: none;
+}
+
+
+/* table  31 */
+#sectors li {
+    height: 38px;
+    padding-top: 11px;
+    padding-bottom: 0px;
+}
+
+#sectors div {
+    height: 41px;
+}
+
+
+#sectors th#sectors-4 {
+    width: 400px;
+}
+
+textarea.cell {
+    font-size: 12px;
+    height: 30px;
+    width: 396px;
+}
+
+#financing-mechanisms div,
+#financing-mechanisms li {
+    height: 30px;
+    padding: 8px;
+}
+
+#main-instruments div,
+#main-instruments li {
+    height: 70px;
+    padding: 8px;
+}
+
+#development-involvement .category-left div,
+#implementation-involvement .category-left div,
+#monitoring-involvement .category-left div {
+    width: 300px;
+    height: 50px;
+    padding: 8px;
+}
+
+#development-involvement tr td ul li,
+#implementation-involvement tr td ul li,
+#monitoring-involvement tr td ul li {
+    height: 50px;
+    padding: 8px;
+}
+
+#sectors-assessments .category-left div{
+    width: 200px;
+}
+
+td.term, td.term-left{
+    text-align: right;
+    font-weight: bold;
+}
+
+td.term-left{
+    text-align:left;
+}
+
+td.definition{
+    color: #666;
+}
+
+.country{
+    font-weight: bold;
+}
+
+.tutorial .highlight{
+    background-color: #ddd;
+    padding: 10px;
+}
+/* end tables */
 
 
 /* FIXINGS from jQuery */
@@ -434,77 +515,10 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     font-size: 18px;
     text-align: center;
 }
-
-.matrix label {
-    display: none;
-}
-
-#sectors tr td div{
-    height: 38px;
-}
-#sectors tr td ul li {
-    height: 38px;
-    padding-top: 11px;
-    padding-bottom: 0px;
-}
-#sectors th#sectors-4{
-    width: 400px;
-}
-textarea.cell{
-    font-size: 12px;
-    height: 30px;
-    width: 396px;
-}
-
-#financing-mechanisms tr td div,
-#financing-mechanisms tr td ul li {
-    height: 30px;
-    padding: 8px;
-}
-
-#development-involvement .category-left div,
-#implementation-involvement .category-left div,
-#monitoring-involvement .category-left div
-{
-    width: 300px;
-    height: 50px;
-    padding: 8px;
-}
-
-#development-involvement tr td ul li,
-#implementation-involvement tr td ul li,
-#monitoring-involvement tr td ul li
-{
-    height: 50px;
-    padding: 8px;
-}
-
-#sectors-assessments .category-left div{
-    width: 200px;
-}
-
-td.term, td.term-left{
-    text-align: right;
-    font-weight: bold;
-}
-td.term-left{
-    text-align:left;
-}
-td.definition{
-    color: #666;
-}
-
-.country{
-    font-weight: bold;
-}
-
-.tutorial .highlight{
-    background-color: #ddd;
-    padding: 10px;
-}
+/*end  fixings */
 
 
-/*  alert messages*/
+/*  ALERT messages*/
 .message .alert,
 .message .info {
     color: green;
@@ -521,5 +535,5 @@ td.definition{
 }
 
 .unanswered {
-    background-color: rgb(253, 252, 231);
+    background-color: #ddd;
 }
