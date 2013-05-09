@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import g
 from flask.ext import wtf
 from flask.ext.mongoengine.wtf import model_form
@@ -355,6 +356,10 @@ class SurveyForm(_SurveyForm):
                 value = getattr(survey, field_name, False) or []
                 value.append(files.save(uploaded))
                 setattr(survey, field_name, value)
+
+        if not survey.date_created:
+            survey.date_created = datetime.now()
+        survey.date_saved = datetime.now()
 
         survey.save()
         return survey

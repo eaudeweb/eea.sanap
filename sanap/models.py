@@ -72,6 +72,10 @@ class Survey(db.Document):
 
     draft = db.BooleanField(default=True)
 
+    date_created = db.DateTimeField()
+
+    date_saved = db.DateTimeField()
+
     lead_organisation = db.StringField(max_length=512)
 
     organisations = db.ListField(db.StringField(), default=[])
