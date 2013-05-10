@@ -1,9 +1,4 @@
 
-@page {
-    size: A4;
-    layout: landscape;
-}
-
 a:link, a:visited {
     color: #520;
     background: transparent;

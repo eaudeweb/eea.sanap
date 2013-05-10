@@ -3,3 +3,14 @@
 .ecoAsVir fieldset legend {
   background: #fff;
 }
+
+/* table 17  and 30 */
+#sectors-assessments li,
+#monitor-report-evaluate li {
+  padding-bottom: 0px;
+}
+
+.ecoAsVir .field ul label {
+  padding-top: 3px;
+  padding-bottom: 0px;
+}

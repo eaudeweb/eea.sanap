@@ -33,7 +33,7 @@ class ListTextWidget(object):
             page.input(name=subfield.name, id=subfield.id, value=value)
             page.li.close()
         page.ul.close()
-        return str(page)
+        return page()
 
 
 class ListTextAreaWidget(object):
@@ -50,7 +50,7 @@ class ListTextAreaWidget(object):
             page.textarea.close()
             page.li.close()
         page.ul.close()
-        return str(page)
+        return page()
 
 class MultiTextField(wtf.SelectMultipleField):
 
@@ -78,6 +78,7 @@ class CustomFileInput(wtf.widgets.FileInput):
        values = field.data
        if values and isinstance(values, list):
             page = markup.page()
+            page.p('Currently uploaded files', class_="file-storage")
             page.ul(_class='file-list')
             for value in values:
                 page.li()
@@ -86,7 +87,7 @@ class CustomFileInput(wtf.widgets.FileInput):
                        target='_blank')
                 page.li.close()
             page.ul.close()
-            result += str(page)
+            result += page()
        return wtf.widgets.core.HTMLString(result)
 
 

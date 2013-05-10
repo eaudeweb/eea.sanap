@@ -90,9 +90,9 @@ def configure_assets(app):
     js = Bundle(*BUNDLE_JS, filters='jsmin', output='output/packed.js')
     css = Bundle(*BUNDLE_CSS, filters=('cssrewrite', 'cssmin'),
                  output='output/packed.css')
-    ie7_css = Bundle(*BUNDLE_IE7_CSS, filters='cssmin', output='output/ie7.css')
-    ie8_css = Bundle(*BUNDLE_IE8_CSS, filters='cssmin', output='output/ie8.css')
-    ie9_css = Bundle(*BUNDLE_IE9_CSS, filters='cssmin', output='output/ie9.css')
+    ie7_css = Bundle(*BUNDLE_IE7_CSS, filters='cssmin', output='output/packed_ie7.css')
+    ie8_css = Bundle(*BUNDLE_IE8_CSS, filters='cssmin', output='output/packed_ie8.css')
+    ie9_css = Bundle(*BUNDLE_IE9_CSS, filters='cssmin', output='output/packed_ie9.css')
     print_css = Bundle(*BUNDLE_PRINT_CSS, filters='cssmin', output='output/packed_print.css')
 
     assets.register('packed_js', js)
