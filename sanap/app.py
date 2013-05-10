@@ -16,6 +16,7 @@ from sanap.auth import login_manager
 from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
 from sanap.context_processor import model_data_context
+from sanap.templatetags import pretty
 
 from .assets import *
 
@@ -47,7 +48,6 @@ BLUEPRINTS = (
 CONTEXT_PROCESSORS = (
     model_data_context,
 )
-
 
 sentry = Sentry()
 
@@ -133,7 +133,7 @@ def configure_templating(app):
     original_loader = app.jinja_env.loader
     func_loader = jinja2.FunctionLoader(frameservice.load_template)
     app.jinja_env.loader = jinja2.ChoiceLoader([func_loader, original_loader])
-
+    app.jinja_env.filters['pretty'] = pretty
 
 def configure_sentry(app):
     sentry.init_app(app)
