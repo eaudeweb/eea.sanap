@@ -1,6 +1,13 @@
 from libs import markup
 
 
+def is_not_empty(value):
+    if value:
+        if isinstance(value, dict):
+            return any(value.values())
+        return True
+    return False
+
 
 def pretty(value):
     if isinstance(value, dict):

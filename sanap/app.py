@@ -16,7 +16,7 @@ from sanap.auth import login_manager
 from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
 from sanap.context_processor import model_data_context
-from sanap.templatetags import pretty
+from sanap.templatetags import pretty, is_not_empty
 
 from .assets import *
 
@@ -134,6 +134,7 @@ def configure_templating(app):
     func_loader = jinja2.FunctionLoader(frameservice.load_template)
     app.jinja_env.loader = jinja2.ChoiceLoader([func_loader, original_loader])
     app.jinja_env.filters['pretty'] = pretty
+    app.jinja_env.filters['is_not_empty'] = is_not_empty
 
 def configure_sentry(app):
     sentry.init_app(app)

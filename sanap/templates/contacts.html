@@ -31,7 +31,7 @@ grouped by questions, so that you can easier compile the final answer to the EEA
     {% for survey in surveys %}
     <ul>
       {% set value = survey[field.name] %}
-      {% if value %}
+      {% if value|is_not_empty %}
         <li><strong>{{ survey.user.name }}</strong> {{ value|pretty|safe }}</li>
       {% endif %}
     </ul>
