@@ -17,7 +17,7 @@ from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
 from sanap.context_processor import model_data_context
 
-from .assets import BUNDLE_JS, BUNDLE_CSS, BUNDLE_IE_CSS, BUNDLE_PRINT_CSS
+from .assets import *
 
 
 DEFAULT_CONFIG = {
@@ -90,12 +90,16 @@ def configure_assets(app):
     js = Bundle(*BUNDLE_JS, filters='jsmin', output='output/packed.js')
     css = Bundle(*BUNDLE_CSS, filters=('cssrewrite', 'cssmin'),
                  output='output/packed.css')
-    ie_css = Bundle(*BUNDLE_IE_CSS, filters='cssmin', output='output/ie7.css')
+    ie7_css = Bundle(*BUNDLE_IE7_CSS, filters='cssmin', output='output/ie7.css')
+    ie8_css = Bundle(*BUNDLE_IE8_CSS, filters='cssmin', output='output/ie8.css')
+    ie9_css = Bundle(*BUNDLE_IE9_CSS, filters='cssmin', output='output/ie9.css')
     print_css = Bundle(*BUNDLE_PRINT_CSS, filters='cssmin', output='output/packed_print.css')
 
     assets.register('packed_js', js)
     assets.register('packed_css', css)
-    assets.register('packed_ie_css', ie_css)
+    assets.register('packed_ie7_css', ie7_css)
+    assets.register('packed_ie8_css', ie8_css)
+    assets.register('packed_ie9_css', ie9_css)
     assets.register('packed_print_css', print_css)
 
 

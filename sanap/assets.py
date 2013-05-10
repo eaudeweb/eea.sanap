@@ -11,8 +11,16 @@ BUNDLE_CSS = (
     'js/select2/select2.css',
 )
 
-BUNDLE_IE_CSS = (
+BUNDLE_IE7_CSS = (
     'css/ie7.css',
+)
+
+BUNDLE_IE8_CSS = (
+    'css/ie8.css',
+)
+
+BUNDLE_IE9_CSS = (
+    'css/ie9.css',
 )
 
 
