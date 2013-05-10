@@ -301,11 +301,21 @@ textarea {
 	background: #fff;
 }
 
-.ecoAsVir .add-item,
+.ecoAsVir .add-item a,
 .scroll-top a {
     text-decoration: underline;
     color: rgb(152, 89, 64);
     cursor: pointer;
+}
+
+.scroll-top {
+    position: fixed;
+    top: 50%;
+    left: 79%;
+    border: 2px solid #008000;
+    background: #FFF;
+    margin: 0;
+    padding: 5px 5px 5px 3px;
 }
 
 .spaced {
@@ -424,7 +434,6 @@ textarea.cell {
 #implementation-involvement li,
 #monitoring-involvement li {
     height: 58px;
-    /*padding: 8px;*/
 }
 
 #sectors-assessments .category-left div{
