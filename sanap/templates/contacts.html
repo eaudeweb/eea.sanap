@@ -25,19 +25,18 @@ grouped by questions, so that you can easier compile the final answer to the EEA
 <table class="contact-answers">
 {% for field in form.get_fields(exclude=exclude) %}
 <tr>
-  <td>{{ field.label }}</td>
+  <td class="question-row">
+    <p class="question-title">{{ field.label.text }}</p>
 
-  <td>
-  {% for survey in surveys %}
+    {% for survey in surveys %}
     <ul>
-    {% set value = survey[field.name] %}
-    {% if value %}
-      <li><strong>{{ survey.user.name }}</strong> {{ value }}</li>
-    {% endif %}
+      {% set value = survey[field.name] %}
+      {% if value %}
+        <li><strong>{{ survey.user.name }}</strong> {{ value }}</li>
+      {% endif %}
     </ul>
-  {% endfor %}
+    {% endfor %}
   </td>
-
 </tr>
 {% endfor %}
 </table>

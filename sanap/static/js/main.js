@@ -130,4 +130,22 @@ $(function () {
     scrollTo($(document).height());
   });
 
+
+  $('.contact-answers').find('.question-row').each(function () {
+    var ul_count = $(this).find('ul').length;
+    var ul_empty_count = 0;
+    $(this).find('ul').each(function () {
+      if(!$.trim($(this).html())) {
+        ul_empty_count = ul_empty_count + 1;
+      }
+    });
+
+    if(ul_empty_count == ul_count) {
+      var p = $('<p />');
+      p.attr({'class': 'no-answer'});
+      p.text('No answers for this question');
+      $(this).append(p);
+    }
+  });
+
 });
