@@ -103,7 +103,7 @@ class CustomFileField(wtf.FileField):
             self.data = ''
 
     def process_data(self, value):
-        self.data = list(value)
+        self.data = list(value) if value else None
 
 
 class CustomRadioField(wtf.RadioField):
