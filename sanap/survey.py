@@ -1,3 +1,8 @@
+import subprocess
+import os
+from tempfile import NamedTemporaryFile
+from datetime import datetime
+
 from flask import (Blueprint, redirect, render_template, flash, views,
                    url_for, g, send_file, current_app, request, abort)
 from flask.ext import login as flask_login
@@ -86,7 +91,6 @@ survey.add_url_rule('/edit/<string:survey_id>', view_func=Edit.as_view('edit'))
 
 @survey.route("/download_docx")
 def download_docx():
-    import os
     fname = "Adaptation Policy Process Self-Assessment 2013.docx"
     survey_file = os.path.join(os.path.dirname(__file__), "static", fname)
     response = send_file(survey_file, mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
@@ -99,8 +103,8 @@ def download_docx():
 def download_glossary(fmt):
     mimetypes = {'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                  'pdf': 'application/pdf'}
-    assert fmt in mimetypes, "Incorrect file format"
-    import os
+    if fmt not in mimetypes:
+        abort(403)
     fname = "Self-Assessment Glossary.%s" % fmt
     glossary_file = os.path.join(os.path.dirname(__file__), "static", fname)
 
@@ -118,11 +122,6 @@ def glossary():
 @survey.route("/export/<string:survey_id>")
 @login_required
 def export(survey_id):
-    import subprocess
-    import os
-    from tempfile import NamedTemporaryFile
-    from datetime import datetime
-
     proj_dir = os.path.dirname(__file__)
     source = Edit().get(survey_id)
     survey = Survey.objects.get_or_404(id=survey_id)
@@ -159,5 +158,6 @@ def export(survey_id):
 def contacts():
     if not g.user.token:
         abort(403)
+
     return render_template('contacts.html',
                 hostname=current_app.config.get('HOSTNAME', 'http://localhost'))
