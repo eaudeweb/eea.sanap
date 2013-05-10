@@ -4,7 +4,6 @@
 {% block content %}
 {% set active_page = 'contacts' -%}
 {% include "navigation.html" %}
-
 {% set url = url_for('auth.register', token=g.user.token) %}
 
 <h2>Spread the questionnaire and collect the answers</h2>
@@ -18,5 +17,30 @@ grouped by questions, so that you can easier compile the final answer to the EEA
 </p>
 
 <h2>Answers so far from your country contacts</h2>
+
+
+{% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved',
+  'draft', 'country') %}
+
+<table class="contact-answers">
+{% for field in form.get_fields(exclude=exclude) %}
+<tr>
+  <td>{{ field.label }}</td>
+
+  <td>
+  {% for survey in surveys %}
+    <ul>
+    {% set value = survey[field.name] %}
+    {% if value %}
+      <li><strong>{{ survey.user.name }}</strong> {{ value }}</li>
+    {% endif %}
+    </ul>
+  {% endfor %}
+  </td>
+
+</tr>
+{% endfor %}
+</table>
+
 
 {% endblock %}

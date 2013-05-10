@@ -330,6 +330,11 @@ class SurveyForm(_SurveyForm):
         expand_choices(self.identified_options)
         expand_choices(self.adaptation_actions)
 
+    def get_fields(self, exclude=[]):
+        for field in self:
+            if field.name not in exclude:
+                yield field
+
     def save(self, survey):
         user = g.user._get_current_object()
 

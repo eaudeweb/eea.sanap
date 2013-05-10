@@ -160,4 +160,6 @@ def contacts():
         abort(403)
 
     form = SurveyForm()
-    return render_template('contacts.html', form=form)
+    surveys = Survey.objects.filter(country=g.user.country, for_eea=False)
+    return render_template('contacts.html',
+        form=form, surveys=surveys)
