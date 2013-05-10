@@ -1,0 +1,5 @@
+/* CSS fixes for IE8*/
+
+.ecoAsVir fieldset legend {
+  background: #fff;
+}
