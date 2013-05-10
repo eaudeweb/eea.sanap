@@ -159,5 +159,5 @@ def contacts():
     if not g.user.token:
         abort(403)
 
-    return render_template('contacts.html',
-                hostname=current_app.config.get('HOSTNAME', 'http://localhost'))
+    form = SurveyForm()
+    return render_template('contacts.html', form=form)

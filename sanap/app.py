@@ -35,7 +35,8 @@ DEFAULT_CONFIG = {
         'phone_number': 'telephoneNumber',
         'organisation': 'o',
         'uid': 'uid',
-    }
+    },
+    'HOSTNAME': 'http://localhost:5000',
 }
 
 BLUEPRINTS = (
