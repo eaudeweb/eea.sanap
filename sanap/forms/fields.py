@@ -79,7 +79,6 @@ class CustomFileInput(wtf.widgets.FileInput):
        if values and isinstance(values, list):
             page = markup.page()
             page.p('Currently uploaded files', class_="file-storage")
-            page.p.close()
             page.ul(_class='file-list')
             for value in values:
                 page.li()
