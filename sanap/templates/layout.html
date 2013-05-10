@@ -16,8 +16,18 @@
       <link rel="stylesheet" media="print" href="{{ ASSET_URL }}" />
     {% endassets %}
 
-    {% assets "packed_ie_css" %}
+    {% assets "packed_ie7_css" %}
      <!--[if IE 7]>
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+      <![endif]-->
+    {% endassets %}
+    {% assets "packed_ie8_css" %}
+     <!--[if IE 8]>
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+      <![endif]-->
+    {% endassets %}
+    {% assets "packed_ie9_css" %}
+     <!--[if IE 9]>
         <link rel="stylesheet" href="{{ ASSET_URL }}" />
       <![endif]-->
     {% endassets %}
