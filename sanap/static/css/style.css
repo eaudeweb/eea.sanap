@@ -164,8 +164,17 @@ textarea {
 
 .field label {
 	width: 155px;
-	float: left;
+	float: left; 
 	color: #5A5A5A;
+}
+
+#adaptation_actions label,
+#process_stage label {
+    float: none;
+}
+
+#process_stage li {
+    width: 100%;
 }
 
 .field {
@@ -292,7 +301,8 @@ textarea {
 	background: #fff;
 }
 
-.ecoAsVir .add-item {
+.ecoAsVir .add-item,
+.scroll-top a {
     text-decoration: underline;
     color: rgb(152, 89, 64);
     cursor: pointer;
@@ -328,7 +338,10 @@ textarea {
     width: 120px; 
 }
 
-
+#monitor-report-evaluate li input,
+#sectors-assessments li input {
+    margin: 0; /*helps standardize the cells' height */
+}
 
 .ecoAsVir .even ul,
 .ecoAsVir th.even {
@@ -407,11 +420,11 @@ textarea.cell {
     padding: 8px;
 }
 
-#development-involvement tr td ul li,
-#implementation-involvement tr td ul li,
-#monitoring-involvement tr td ul li {
-    height: 50px;
-    padding: 8px;
+#development-involvement li,
+#implementation-involvement li,
+#monitoring-involvement li {
+    height: 58px;
+    /*padding: 8px;*/
 }
 
 #sectors-assessments .category-left div{

@@ -28,7 +28,8 @@ input[type="file"],
 #tabbedmenu,
 #footer,
 .hide,
-.export {
+.export,
+.scroll-top {
     display: none;
 }
 
@@ -63,14 +64,14 @@ body,
     font-size: 12pt;
 }
 
-.ecoAsVir .matrix th { 
-    font-weight: normal;
-    font-size: 11px;
-}
-
 .ecoAsVir .matrix {
     margin-left: 0px;
     break-inside: avoid !important; 
+}
+
+.ecoAsVir .matrix th { 
+    font-weight: normal;
+    font-size: 11px;
 }
 
 .ecoAsVir .meta-info,
@@ -94,29 +95,30 @@ body,
 .ecoAsVir #main-instruments .category-left div,
 .ecoAsVir #financing-mechanisms .category-left div {
     width: 70px;
-    outline: 1px solid red;
+    outline: 1px solid #ddd;
 }
 
 #main-instruments th,
 #financing-mechanisms th {
     font-weight: normal;
-    font-size: 7px;
+    font-size: 9px;
     padding: 0;
     color: #222;
 }
 
 #financing-mechanisms div,
 #financing-mechanisms li {
-    height: 30px;
+    height: 40px;
     padding: 8px;
 }
 
 #main-instruments .check-column,
 #financing-mechanisms .check-column {
     padding: 0;
-    outline: 1px solid green;
 }
 
-.ecoAsVir .matrix li input {
-    margin: 0; /*helps standardize the cells' height */
+#main-instruments li,
+#financing-mechanisms li {
+    padding-left: 0;
+    padding-right: 0;
 }
