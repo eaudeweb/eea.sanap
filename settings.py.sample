@@ -14,3 +14,5 @@ LDAP_SERVERS = [('ldap.eionet.europa.eu', 389),
                 ('ldap3.eionet.europa.eu', 389),]
 
 HOSTNAME = 'http://projects.eionet.europa.eu/sanap/self-assessment'
+
+MAIL_DEFAULT_SENDER = ("Eionet Projects", "no-reply@eea.europa.eu")

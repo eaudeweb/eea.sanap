@@ -11,6 +11,7 @@ from sanap.auth import login_required
 from sanap.models import Survey
 from sanap.forms import SurveyForm
 from sanap import assets as sanap_assets
+from sanap import emails
 
 
 survey = Blueprint('survey', __name__)
@@ -77,7 +78,12 @@ class Edit(views.MethodView):
             if obj.draft:
                 flash('Your self-assessment has been saved.')
             else:
-                flash('Your self-assessment has been submitted.')
+                if obj.for_eea:
+                    flash('The final version of the self-assessment (%s) has been submitted.' % obj.country)
+                    emails.country_submitted(obj)
+                else:
+                    flash('Your self-assessment has been submitted.')
+                    emails.contact_submitted(obj)
             # hackish, but users might export the form before saving it
             if request.form.get('export_pdf'):
                 return export(survey_id)
