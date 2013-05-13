@@ -1,3 +1,5 @@
 include *.txt *.rst
 recursive-include sanap *
 global-exclude *py[co]
+exclude sanap/static/.webassets-cache/*
+exclude sanap/static/output/*

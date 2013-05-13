@@ -21,6 +21,7 @@ setup(
                       'Flask-Assets==0.8',
                       'Flask-Uploads==0.1.3',
                       'Flask-Login==0.1.3',
+                      'Flask-Mail==0.8.2',
                       'webassets==0.8',
                       'pymongo==2.4.2',
                       'mongoengine==0.7.9',
