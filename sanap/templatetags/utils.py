@@ -18,9 +18,9 @@ def pretty(value):
                 pretty_value = ', '.join(v)
             elif isinstance(v, dict) and v:
                 subul = markup.page()
-                subul.ul()
+                subul.ul(_class='subdict')
                 subul.li()
-                subul.strong(v.keys()[0])
+                subul.span('- %s: ' % v.keys()[0])
                 subul.span(v.values()[0])
                 subul.li.close()
                 subul.ul.close()
@@ -30,7 +30,7 @@ def pretty(value):
             else:
                 continue
             page.li()
-            page.strong(k.capitalize().replace('_', ' '))
+            page.strong('%s:' % k.capitalize().replace('_', ' '))
             page.span(pretty_value)
             page.li.close()
         page.ul.close()

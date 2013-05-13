@@ -148,6 +148,4 @@ $(function () {
     }
   });
 
-  $('.contact-answers').find('.question-row .dict:first').addClass('first-dict');
-
 });

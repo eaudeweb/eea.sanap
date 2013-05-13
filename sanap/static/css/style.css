@@ -599,17 +599,28 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     overflow: hidden;
 }
 
-.contact-answers .dict {
+.contact-answers .question-row .dict {
+    border-bottom: 1px dashed #ccc;
+    margin-right: 35px;
+    padding-top: 7px;
+    padding-bottom: 7px;
     float: left;
-    width: 240px;
-    margin: 0;
-}
-.contact-answers .first-dict {
-    margin-bottom: 15px!important;
+    width: 220px;
 }
 
+.contact-answers .lirowfirst .dict {
+    padding-top: 0;
+}
 
+.contact-answers .lirowlast .dict {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
 
 .contact-answers .dict li {
     padding-bottom: 3px;
+}
+
+.contact-answers .subdict {
+    padding-left: 15px!important;
 }
