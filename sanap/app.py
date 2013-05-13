@@ -6,6 +6,7 @@ from werkzeug import SharedDataMiddleware
 
 from flask.ext.assets import Environment, Bundle
 from flask.ext.uploads import configure_uploads
+from flask_mail import Mail
 
 from raven.contrib.flask import Sentry
 from raven.conf import setup_logging
@@ -17,6 +18,7 @@ from sanap import auth, frameservice, survey
 from sanap.forms.survey import files
 from sanap.context_processor import model_data_context
 from sanap.templatetags import pretty, is_not_empty
+from sanap.emails import mail
 
 from .assets import *
 
@@ -51,6 +53,7 @@ CONTEXT_PROCESSORS = (
 
 sentry = Sentry()
 
+
 def create_app(instance_path=None, config={}):
     app = flask.Flask(__name__, instance_path=instance_path,
                       instance_relative_config=True)
@@ -63,6 +66,7 @@ def create_app(instance_path=None, config={}):
     configure_error_pages(app)
     configure_uploads(app, files)
     configure_context_processor(app)
+    configure_email(app)
     if app.config.get('SENTRY_DSN'):
         configure_sentry(app)
     db.init_app(app)
@@ -135,6 +139,11 @@ def configure_templating(app):
     app.jinja_env.loader = jinja2.ChoiceLoader([func_loader, original_loader])
     app.jinja_env.filters['pretty'] = pretty
     app.jinja_env.filters['is_not_empty'] = is_not_empty
+
+
+def configure_email(app):
+    mail.init_app(app)
+
 
 def configure_sentry(app):
     sentry.init_app(app)

@@ -6,6 +6,9 @@
   {% set active_page = 'assessment' -%}
   {% include "navigation.html" %}
 
+
+<form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
+  <fieldset class="meta-info">
     {% if not form.draft.data %}
       <p class="closed">
         This self-assessment has been submitted. You can no longer contribute to this self-assessment.
@@ -14,8 +17,6 @@
       </p>
     {% endif %}
 
-<form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
-  <fieldset class="meta-info">
     <div class="row">
       {{ render_field(form.lead_organisation) }}
     </div>
