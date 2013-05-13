@@ -1,0 +1,30 @@
+<table class="contact-answers">
+{% for field in form.get_fields(exclude=exclude) %}
+<tr>
+  <td class="question-row">
+    <div class="question-title">{{ field.label.text }}</div>
+
+    <div class="question-container">
+      <ul>
+      {% for survey in surveys %}
+        {% set value = survey[field.name] %}
+        {% if value|is_not_empty %}
+          <li class="lirow {% if loop.last %}lirowlast{% endif %} {% if loop.first %}lirowfirst{% endif %}">
+            {{ value|pretty|safe }}
+            <span class="user">by
+            {% if groupby == 'user' %}
+              {{ survey.user.name  }}
+            {% endif %}
+            {% if groupby == 'country' %}
+              {{ survey.country_verbose }}
+            {% endif %}
+            </span>
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+  </td>
+</tr>
+{% endfor %}
+</table>

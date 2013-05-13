@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 
-
 {% block content %}
 {% set active_page = 'contacts' -%}
 {% include "navigation.html" %}
@@ -19,32 +18,10 @@ grouped by questions, so that you can easier compile the final answer to the EEA
 <h2>Answers so far from your country contacts</h2>
 
 
-{% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved',
-  'draft', 'country') %}
+{% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved', 'draft', 'country') %}
+{% set groupby = 'user' %}
+{% include '_answers.html' with context %}
 
-<table class="contact-answers">
-{% for field in form.get_fields(exclude=exclude) %}
-<tr>
-  <td class="question-row">
-    <div class="question-title">{{ field.label.text }}</div>
-
-    <div class="question-container">
-      <ul>
-      {% for survey in surveys %}
-        {% set value = survey[field.name] %}
-        {% if value|is_not_empty %}
-          <li class="lirow {% if loop.last %}lirowlast{% endif %}">
-            {{ value|pretty|safe }}
-            <span class="user">by {{ survey.user.name }}</span>
-          </li>
-        {% endif %}
-      {% endfor %}
-      </ul>
-    </div>
-
-  </td>
-</tr>
-{% endfor %}
 </table>
 
 

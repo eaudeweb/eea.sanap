@@ -3,13 +3,15 @@
       (url_for('survey.home'), 'about', 'About this Self-Assessment', 'About'),
       (url_for('survey.contacts'), 'contacts', 'Your Contacts', 'Your Contacts'),
       (url_for('survey.edit'), 'assessment', 'Self-Assessment', 'Self-Assessment'),
+      (url_for('survey.dashboard'), 'dashboard', 'Dashboard', 'Dashboard'),
   ] -%}
   {% set active_page = active_page|default('unset') -%}
   <ul id="navigation">
   {% for href, id, title, caption in navigation_bar %}
-    {% if g.user.is_coordinator or id != 'contacts' %}
-    <li{% if id == active_page %} id="currenttab"{% endif
-    %}><a href="{{ href|e }}" title="{{ title }}">{{ caption|e }}</a></li>
+    {% if g.user.is_coordinator or id not in ('contacts', 'dashboard') %}
+      <li {% if id == active_page %}id="currenttab"{% endif %}>
+        <a href="{{ href|e }}" title="{{ title }}">{{ caption|e }}</a>
+      </li>
     {% endif %}
   {% endfor %}
   </ul>

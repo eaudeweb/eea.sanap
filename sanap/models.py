@@ -236,6 +236,10 @@ class Survey(db.Document):
     def __unicode__(self):
         return self.country
 
+    @cached_property
+    def country_verbose(self):
+        return dict(COUNTRIES).get(self.country, self.country)
+
 
 _punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.]+')
 def slugify(text, delim=u'-'):

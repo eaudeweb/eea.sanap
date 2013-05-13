@@ -159,13 +159,30 @@ def export(survey_id):
     return response
 
 
-@survey.route("/contacts")
-@login_required
-def contacts():
-    if not g.user.token:
-        abort(403)
+class Contacts(views.MethodView):
 
-    form = SurveyForm()
-    surveys = Survey.objects.filter(country=g.user.country, for_eea=False)
-    return render_template('contacts.html',
-        form=form, surveys=surveys)
+    decorators = (login_required, )
+
+    def get(self):
+        if not g.user.token:
+            abort(403)
+
+        form = SurveyForm()
+        surveys = Survey.objects.filter(country=g.user.country, for_eea=False)
+        return render_template('contacts.html', form=form, surveys=surveys)
+
+survey.add_url_rule('/contacts', view_func=Contacts.as_view('contacts'))
+
+
+class Dashboard(views.MethodView):
+
+    decorators = (login_required, )
+
+    def get(self):
+        form = SurveyForm()
+        surveys = Survey.objects.filter(for_eea=True)
+        return render_template('dashboard.html', form=form, surveys=surveys)
+
+survey.add_url_rule('/dashboard', view_func=Dashboard.as_view('dashboard'))
+
+

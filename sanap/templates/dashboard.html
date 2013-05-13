@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% set active_page = 'dashboard' -%}
+{% include "navigation.html" %}
+
+<h2>Dashboard</h2>
+
+
+{% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved', 'draft', 'country') %}
+{% set groupby = 'country' %}
+{% include '_answers.html' with context %}
+
+{% endblock %}
