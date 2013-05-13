@@ -12,7 +12,7 @@ def is_not_empty(value):
 def pretty(value):
     if isinstance(value, dict):
         page = markup.page()
-        page.ul()
+        page.ul(_class='dict')
         for k, v in value.items():
             if isinstance(v, list) and v:
                 pretty_value = ', '.join(v)
@@ -37,4 +37,7 @@ def pretty(value):
         return page()
     elif isinstance(value, list):
         return ', '.join(value)
-    return value
+    else:
+        page = markup.page()
+        page.strong('- %s' % value, _class='simple')
+        return page()

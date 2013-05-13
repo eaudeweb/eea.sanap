@@ -141,11 +141,13 @@ $(function () {
     });
 
     if(ul_empty_count == ul_count) {
-      var p = $('<p />');
-      p.attr({'class': 'no-answer'});
-      p.text('No answers for this question');
-      $(this).append(p);
+      var div = $('<div />');
+      div.attr({'class': 'no-answer'});
+      div.text('No answers for this question');
+      $(this).find('.question-container').append(div);
     }
   });
+
+  $('.contact-answers').find('.question-row .dict:first').addClass('first-dict');
 
 });

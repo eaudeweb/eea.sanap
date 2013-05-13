@@ -164,7 +164,7 @@ textarea {
 
 .field label {
 	width: 155px;
-	float: left; 
+	float: left;
 	color: #5A5A5A;
 }
 
@@ -345,7 +345,7 @@ textarea {
 }
 
 .ecoAsVir .matrix .category-left div {
-    width: 120px; 
+    width: 120px;
 }
 
 #monitor-report-evaluate li input,
@@ -556,4 +556,60 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 
 .unanswered {
     background-color: #ddd;
+}
+
+.contact-answers {
+    font-size: 12px;
+}
+
+.contact-answers .question-title {
+    border: 1px solid #b4dbdb;
+    background: #d4f1f1;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+.contact-answers .question-row ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-answers .question-row {
+    padding-bottom: 15px;
+}
+
+.contact-answers .question-row .lirow {
+    padding-left: 10px;
+    padding-bottom: 3px;
+    overflow: hidden;
+}
+
+.contact-answers .no-answer {
+    padding-left: 10px;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.contact-answers .question-container {
+    border: 1px solid #d9eaea;
+    background: #f0f8f8;
+    padding: 10px 5px;
+    border-top: none;
+    overflow: hidden;
+}
+
+.contact-answers .dict {
+    float: left;
+    width: 240px;
+    margin: 0;
+}
+.contact-answers .first-dict {
+    margin-bottom: 15px!important;
+}
+
+
+
+.contact-answers .dict li {
+    padding-bottom: 3px;
 }
