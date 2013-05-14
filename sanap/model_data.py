@@ -77,6 +77,7 @@ COUNTRIES = (
     ('SI', 'Slovenia'),
     ('SK', 'Slovakia'),
     ('TR', 'Turkey'),
+    ('EEA', 'EEA'),
 )
 
 

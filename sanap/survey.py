@@ -7,7 +7,7 @@ from flask import (Blueprint, redirect, render_template, flash, views,
                    url_for, g, send_file, current_app, request, abort)
 from flask.ext import login as flask_login
 
-from sanap.auth import login_required
+from sanap.auth import login_required, eea_admin
 from sanap.models import Survey
 from sanap.forms import SurveyForm
 from sanap import assets as sanap_assets
@@ -176,7 +176,7 @@ survey.add_url_rule('/contacts', view_func=Contacts.as_view('contacts'))
 
 class Dashboard(views.MethodView):
 
-    decorators = (login_required, )
+    decorators = (login_required, eea_admin)
 
     def get(self):
         form = SurveyForm()

@@ -48,6 +48,10 @@ class User(db.Document, UserMixin):
         return bool(self.country and not self.invitee)
 
     @property
+    def is_eea_admin(self):
+        return self.country == 'EEA'
+
+    @property
     def is_contact(self):
         return bool(self.invitee)
 

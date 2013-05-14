@@ -4,7 +4,7 @@ import datetime
 import uuid
 
 from flask import (Blueprint, request, render_template, redirect, url_for,
-                   flash, g, views)
+                   flash, g, views, abort)
 from flask.ext.login import LoginManager
 from flask.ext import wtf
 from flask.ext import login as flask_login
@@ -27,6 +27,15 @@ def login_required(fn):
     def decorated_view(*args, **kwargs):
         if not g.user.country:
             return redirect(url_for('auth.unauthorized'))
+        return fn(*args, **kwargs)
+    return decorated_view
+
+
+def eea_admin(fn):
+    @wraps(fn)
+    def decorated_view(*args, **kwargs):
+        if not g.user.country == 'EEA':
+            abort(401)
         return fn(*args, **kwargs)
     return decorated_view
 
