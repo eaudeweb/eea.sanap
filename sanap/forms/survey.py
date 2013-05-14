@@ -30,7 +30,7 @@ class SectorsForm(wtf.Form):
 
 class MonitorReportEvaluateForm(wtf.Form):
 
-    not_planed = MultiCheckboxField()
+    not_planned = MultiCheckboxField()
 
     planned = MultiCheckboxField()
 

@@ -458,8 +458,9 @@ td.definition{
 }
 
 .tutorial .highlight{
-    background-color: #ddd;
+    background-color: #f0f8f8;
     padding: 10px;
+    border: 1px solid #d9eaea;
 }
 /* end tables */
 
