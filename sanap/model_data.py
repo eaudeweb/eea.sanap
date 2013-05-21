@@ -229,7 +229,7 @@ MAIN_INSTRUMENTS_DATA = (
     'Information (e.g. dissemination, education, guidelines)',
     'Main-streaming',
     'Financial support (e.g. subsidies, taxes)',
-    'Regulation',
+    'Legislation',
     'Partnering instruments (e.g. PPPs)',
     'Action plans',
 )
@@ -344,7 +344,7 @@ Q = {
     '28': u'28. Please provide a maximum of three examples of what you would consider as ‘good practices’ in adaptation that have already been put in place in your country. Please indicate why they are considered to be ‘good practice’?',
     '29': '29. What are your plans for integrating new information and insights into existing adaptation policies',
     '30': u'30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …',
-    'p2comments': 'Please insert text and upload documents (e.g. vulnerability assessment, risk assessment, adaptation options, M&E, etc.)',
+    'p2comments': 'In case you have selected "Under development" or "Currently being implemented", please provide additional info and upload related documents',
     '32': '32. Are you using policy instruments (see question 33 below for examples) for implementing adaptation actions?',
     '33': '33. If you are already using instruments for implementing adaptation, what are the main instruments in the different sectors in your country?',
     '34': '34. If (additional) instruments for implementation are planned in your country, what are the main instruments you are considering?',

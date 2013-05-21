@@ -72,7 +72,7 @@ $(function () {
   window.onbeforeunload = function() {
     var assessment_form = $('form.ecoAsVir');
       if (assessment_form && assessment_form.data('changed')) {
-        return 'You have unsaved changes in the assessment!';
+        return 'You have unsaved changes in the assessment! Scroll to the bottom and use the "Save Draft" button to save your answers.';
       }
       return undefined;
   };
@@ -108,8 +108,7 @@ $(function () {
 
     if(questions.length < total_number) {
       if(confirm('You havn\'t answered ' + (total_number - questions.length) +
-                 ' questions out of a total of ' + total_number +
-                 '.\nWe have highlighted them for you.\n\nClick OK to continue '+
+                 ' questions.\nWe have highlighted them for you.\n\nClick OK to continue '+
                  'submitting final version without posibility of changing answers, '+
                  'or Cancel to take another look at the questions.')) {
         return true;

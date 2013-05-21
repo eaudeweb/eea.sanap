@@ -188,7 +188,7 @@ class SurveyForm(_SurveyForm):
 
     sectors_assessments = wtf.FormField(SectorsAssessmentsForm,
         widget=MatrixCheckboxWidget(data=SECTORS_EXTENDED, label=Q['17'],
-                                    title='Sectors', id='sectors-assessments'))
+                     title='Coverage /<br />Sectors', id='sectors-assessments'))
 
     assessment_coordination = wtf.TextAreaField(Q['coordination'])
 
@@ -243,14 +243,14 @@ class SurveyForm(_SurveyForm):
     ## part3
 
     sectors = wtf.FormField(SectorsForm, widget=MatrixCheckboxWidget(
-        data=SECTORS, id='sectors', title='Sectors / Areas'))
+        data=SECTORS, id='sectors', title='Levels /<br />Sectors'))
 
     instruments = CustomRadioField(Q['32'], choices=INSTRUMENTS,
         validators=[wtf.validators.optional()])
 
     main_instruments = wtf.FormField(MainInstrumentsForm,
         widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments',
-                                    title="Instruments / Sectors",
+                                    title="Sectors / Instruments",
                                     label=Q['33']))
 
     main_instruments_considered = wtf.TextAreaField(Q['34'])
