@@ -272,11 +272,23 @@
       {{ render_field(form.integrating_plans) }}
     </div>
 
-    <div class="row question">
-      {{ form.monitor_report_evaluate }}
+    <div class="row question has-follower">
+      30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …
     </div>
 
-    <div class="row">
+    <div class="row question has-follower nested">
+      {{ render_field(form.monitoring_state) }}
+    </div>
+
+    <div class="row question has-follower nested">
+      {{ render_field(form.reporting_state) }}
+    </div>
+
+    <div class="row question has-follower nested">
+      {{ render_field(form.evaluation_state) }}
+    </div>
+
+    <div class="row has-follower">
       {{ render_field(form.part2_comments) }}
     </div>
 

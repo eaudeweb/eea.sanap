@@ -160,6 +160,15 @@ PLANNING_DATA = (
 PLANNING = [(i, i) for i in PLANNING_DATA]
 
 
+STATE_OF_WORK_DATA = (
+    'not planned',
+    'planned',
+    'under development',
+    'currently being implemented'
+)
+STATE_OF_WORK = [(i, i) for i in STATE_OF_WORK_DATA]
+
+
 NEEDED_INFO_DATA = (
     'Uncertainty estimates',
     'Local/community level information',
@@ -343,7 +352,9 @@ Q = {
     '27': '27. Have the adaptation options been included in an action plan?',
     '28': u'28. Please provide a maximum of three examples of what you would consider as ‘good practices’ in adaptation that have already been put in place in your country. Please indicate why they are considered to be ‘good practice’?',
     '29': '29. What are your plans for integrating new information and insights into existing adaptation policies',
-    '30': u'30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …',
+    '30a': '<b>Monitoring</b>',
+    '30b': '<b>Reporting</b>',
+    '30c': '<b>Evaluation</b>',
     'p2comments': 'In case you have selected "Under development" or "Currently being implemented", please provide additional info and upload related documents',
     '32': '32. Are you using policy instruments (see question 33 below for examples) for implementing adaptation actions?',
     '33': '33. If you are already using instruments for implementing adaptation, what are the main instruments in the different sectors in your country?',

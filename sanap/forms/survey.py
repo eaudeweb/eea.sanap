@@ -28,17 +28,6 @@ class SectorsForm(wtf.Form):
     examples = MultiTextAreaField('Please provide some examples if you have indicated that the adaptation state is 4, 5 or 6')
 
 
-class MonitorReportEvaluateForm(wtf.Form):
-
-    not_planned = MultiCheckboxField()
-
-    planned = MultiCheckboxField()
-
-    under_development = MultiCheckboxField()
-
-    currently_being_implemented = MultiCheckboxField()
-
-
 class MainInstrumentsForm(wtf.Form):
 
     agriculture = MultiCheckboxField()
@@ -230,10 +219,14 @@ class SurveyForm(_SurveyForm):
 
     integrating_plans = wtf.TextAreaField(Q['29'])
 
-    monitor_report_evaluate = wtf.FormField(MonitorReportEvaluateForm,
-        widget=MatrixCheckboxWidget(data=MONITOR_REPORT_EVALUATE, label=Q['30'],
-                                    title='Current state of work',
-                                    id='monitor-report-evaluate'))
+    monitoring_state = CustomRadioField(Q['30a'], choices=STATE_OF_WORK,
+                                        validators=[wtf.validators.optional()])
+
+    reporting_state = CustomRadioField(Q['30b'], choices=STATE_OF_WORK,
+                                        validators=[wtf.validators.optional()])
+
+    evaluation_state = CustomRadioField(Q['30c'], choices=STATE_OF_WORK,
+                                        validators=[wtf.validators.optional()])
 
     part2_comments = wtf.TextAreaField(Q['p2comments'])
 
