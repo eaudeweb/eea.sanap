@@ -310,8 +310,8 @@ textarea {
 
 .scroll-top {
     position: fixed;
-    top: 50%;
-    left: 79%;
+    right: 10px;
+    bottom: 10px;
     border: 2px solid #008000;
     background: #FFF;
     margin: 0;
