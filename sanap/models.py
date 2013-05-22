@@ -80,7 +80,7 @@ class Survey(db.Document):
 
     date_saved = db.DateTimeField()
 
-    lead_organisation = db.StringField(max_length=512)
+    lead_organisation = db.StringField(max_length=2048)
 
     organisations = db.ListField(db.StringField(), default=[])
 
@@ -90,7 +90,7 @@ class Survey(db.Document):
 
     willingness = db.StringField(choices=LEVEL)
 
-    triggers = db.ListField(db.StringField(max_length=512), default=[])
+    triggers = db.ListField(db.StringField(max_length=2048), default=[])
 
     knowledge = db.StringField(choices=AGREEMENT)
 
@@ -100,21 +100,21 @@ class Survey(db.Document):
 
     integration = db.StringField(choices=AGREEMENT)
 
-    integration_examples = db.StringField(max_length=2056)
+    integration_examples = db.StringField(max_length=2048)
 
     mitigation = db.StringField(choices=AGREEMENT)
 
-    mitigation_examples = db.StringField(max_length=2056)
+    mitigation_examples = db.StringField(max_length=2048)
 
     transnational_cooperation = db.StringField(choices=AGREEMENT)
 
-    transnational_cooperation_examples = db.StringField(max_length=2056)
+    transnational_cooperation_examples = db.StringField(max_length=2048)
 
     barriers = db.ListField(db.StringField(), default=[])
 
-    part1_comments = db.StringField(max_length=2056)
+    part1_comments = db.StringField(max_length=2048)
 
-    part1_files = db.ListField(db.StringField(max_length=512), default=[])
+    part1_files = db.ListField(db.StringField(max_length=2048), default=[])
 
     # part 2
 
@@ -124,36 +124,36 @@ class Survey(db.Document):
 
     vertical_integration = db.StringField(choices=EFFECTIVENESS)
 
-    horizontal_coordination = db.StringField(max_length=512)
+    horizontal_coordination = db.StringField(max_length=2048)
 
-    vertical_coordination = db.StringField(max_length=512)
+    vertical_coordination = db.StringField(max_length=2048)
 
-    crucial_in_coordination = db.StringField(max_length=512)
+    crucial_in_coordination = db.StringField(max_length=2048)
 
-    challenging_in_coordination = db.StringField(max_length=512)
+    challenging_in_coordination = db.StringField(max_length=2048)
 
     assessment = db.StringField(choices=STATUS)
 
     assessment_scale = db.ListField(db.StringField(), default=[])
 
-    assessment_subnational_info = db.StringField(max_length=512)
+    assessment_subnational_info = db.StringField(max_length=2048)
 
-    assessment_subnational_files = db.ListField(db.StringField(max_length=512),
+    assessment_subnational_files = db.ListField(db.StringField(max_length=2048),
                                                 default=[])
 
     sectors_assessments = db.DictField(default={})
 
-    assessment_coordination = db.StringField(max_length=512)
+    assessment_coordination = db.StringField(max_length=2048)
 
-    assessment_methodological_approach = db.StringField(max_length=512)
+    assessment_methodological_approach = db.StringField(max_length=2048)
 
-    change_adaptation_costs = db.StringField(max_length=512)
+    change_adaptation_costs = db.StringField(max_length=2048)
 
     needed_info = db.ListField(db.StringField(), default=[])
 
     assessment_update = db.StringField(choices=PLANNING)
 
-    assessment_update_info = db.StringField(max_length=512)
+    assessment_update_info = db.StringField(max_length=2048)
 
     adaptation_options = db.StringField(choices=STATUS)
 
@@ -165,15 +165,15 @@ class Survey(db.Document):
 
     prioritised_options = db.StringField(choices=STATUS)
 
-    options_methodological = db.StringField(max_length=512)
+    options_methodological = db.StringField(max_length=2048)
 
-    action_plan_info = db.StringField(max_length=512)
+    action_plan_info = db.StringField(max_length=2048)
 
-    action_plan_files = db.ListField(db.StringField(max_length=512), default=[])
+    action_plan_files = db.ListField(db.StringField(max_length=2048), default=[])
 
-    practice_example = db.StringField(max_length=512)
+    practice_example = db.StringField(max_length=2048)
 
-    integrating_plans = db.StringField(max_length=512)
+    integrating_plans = db.StringField(max_length=2048)
 
     monitoring_state = db.StringField(choices=STATE_OF_WORK)
 
@@ -181,9 +181,9 @@ class Survey(db.Document):
 
     evaluation_state = db.StringField(choices=STATE_OF_WORK)
 
-    part2_comments = db.StringField(max_length=512)
+    part2_comments = db.StringField(max_length=2048)
 
-    part2_files = db.ListField(db.StringField(max_length=512), default=[])
+    part2_files = db.ListField(db.StringField(max_length=2048), default=[])
 
     # part 3
     sectors = db.DictField(default={})
@@ -192,17 +192,17 @@ class Survey(db.Document):
 
     main_instruments = db.DictField(default={})
 
-    main_instruments_considered = db.StringField(max_length=512)
+    main_instruments_considered = db.StringField(max_length=2048)
 
     financing_mechanisms = db.DictField(default={})
 
-    part3_comments = db.StringField(max_length=512)
+    part3_comments = db.StringField(max_length=2048)
 
-    part3_files = db.ListField(db.StringField(max_length=512), default=[])
+    part3_files = db.ListField(db.StringField(max_length=2048), default=[])
 
-    transboundary_issues = db.StringField(max_length=512)
+    transboundary_issues = db.StringField(max_length=2048)
 
-    regions_coordination = db.StringField(max_length=512)
+    regions_coordination = db.StringField(max_length=2048)
 
     # part 4
 
@@ -216,30 +216,30 @@ class Survey(db.Document):
 
     monitoring_involvement = db.DictField(default={})
 
-    stakeholders_success = db.StringField(max_length=512)
+    stakeholders_success = db.StringField(max_length=2048)
 
-    part4_comments = db.StringField(max_length=512)
+    part4_comments = db.StringField(max_length=2048)
 
-    part4_files = db.ListField(db.StringField(max_length=512), default=[])
+    part4_files = db.ListField(db.StringField(max_length=2048), default=[])
 
     # part 5
-    next_step_vulnerability = db.StringField(max_length=512)
+    next_step_vulnerability = db.StringField(max_length=2048)
 
-    next_step_legislation = db.StringField(max_length=512)
+    next_step_legislation = db.StringField(max_length=2048)
 
-    next_step_implementation = db.StringField(max_length=512)
+    next_step_implementation = db.StringField(max_length=2048)
 
-    next_step_monitoring = db.StringField(max_length=512)
+    next_step_monitoring = db.StringField(max_length=2048)
 
-    next_step_strategy = db.StringField(max_length=512)
+    next_step_strategy = db.StringField(max_length=2048)
 
-    next_step_others = db.StringField(max_length=512)
+    next_step_others = db.StringField(max_length=2048)
 
-    adaptation_key_issues = db.StringField(max_length=512)
+    adaptation_key_issues = db.StringField(max_length=2048)
 
-    adaptation_support_eu_level = db.StringField(max_length=512)
+    adaptation_support_eu_level = db.StringField(max_length=2048)
 
-    feedback = db.StringField(max_length=512)
+    feedback = db.StringField(max_length=2048)
 
     def __unicode__(self):
         return self.country
