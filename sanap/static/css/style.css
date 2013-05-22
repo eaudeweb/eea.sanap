@@ -639,3 +639,7 @@ p.file-storage {
     display: block;
     margin-left: 40px;
 }
+
+#export_pdf_label{
+    display: inline;
+}
