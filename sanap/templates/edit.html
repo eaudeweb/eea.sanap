@@ -6,11 +6,17 @@
   {% set active_page = 'assessment' -%}
   {% include "navigation.html" %}
 
+{% if pdf_ready %}
+  <p class="highlight">
+    The PDF of the last version of your self-assessment is ready;
+    you can <a href="{{ url_for("survey.export", survey_id=survey_id) }}" target="_blank">click here to download it</a>.
+  </p>
+{% endif %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
   <fieldset class="meta-info">
     {% if not form.draft.data %}
-      <p class="closed">
+      <p class="highlight">
         This self-assessment has been submitted. You can no longer contribute to this self-assessment.
         <br />
         You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.
@@ -27,12 +33,12 @@
     </div>
 
     <div class="row has-follower hide">
-      <p>You can <a href="{{ url_for("survey.download_docx") }}">download the questionnaire</a>
+      <p>You can <a href="{{ url_for("survey.download_docx") }}" target="_blank">download the questionnaire</a>
       as a Word file, but we kindly ask you to submit it online.</p>
       <p>Here you can find the glossary of related terms:
       <a href="{{ url_for("survey.glossary") }}" target="_blank">online</a>,
-      <a href="{{ url_for("survey.download_glossary", fmt="docx") }}">DOCX</a>
-      or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}">PDF</a>.</p>
+      <a href="{{ url_for("survey.download_glossary", fmt="docx") }}" target="_blank">DOCX</a>
+      or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}" target="_blank">PDF</a>.</p>
     </div>
   </fieldset>
 
@@ -510,7 +516,8 @@
     <div class="row">
       {% if form.draft.data %}
         <span class="export">
-          <input type="checkbox" name="export_pdf" value="1" /> I wish to have a PDF version of the self-assessment.
+          <input type="checkbox" name="export_pdf" id="export_pdf" value="1" />
+          <label for="export_pdf">I wish to have a PDF version of the self-assessment.</label>
         </span><br /><br />
         <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
         <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>

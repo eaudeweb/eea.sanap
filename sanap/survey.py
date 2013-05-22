@@ -40,6 +40,7 @@ class Edit(views.MethodView):
     def get(self, survey_id=None):
 
         survey = None
+        pdf_ready = request.args.get('pdf', False)
 
         if survey_id:
             survey = Survey.objects.get_or_404(id=survey_id)
@@ -54,13 +55,15 @@ class Edit(views.MethodView):
                 survey = Survey.objects.filter(user=crt_user.id).first()
 
         if not survey_id and survey:
-            return redirect(url_for('.edit', survey_id=survey.id))
+            return redirect(url_for('.edit', survey_id=survey.id,
+                                    pdf=pdf_ready))
         elif survey:
             form = SurveyForm(obj=survey)
         else:
             form = SurveyForm()
 
-        return render_template('edit.html', form=form, survey_id=survey_id)
+        return render_template('edit.html', form=form, survey_id=survey_id,
+                               pdf_ready=pdf_ready)
 
     def post(self, survey_id=None):
         if survey_id:
@@ -85,9 +88,8 @@ class Edit(views.MethodView):
                     flash('Your self-assessment has been submitted.')
                     emails.contact_submitted(obj)
             # hackish, but users might export the form before saving it
-            if request.form.get('export_pdf'):
-                return export(survey_id)
-            return redirect(url_for('.edit', survey_id=obj.id))
+            pdf = request.form.get('export_pdf', False)
+            return redirect(url_for('.edit', survey_id=obj.id, pdf=pdf))
 
         return render_template('edit.html', form=form)
 
