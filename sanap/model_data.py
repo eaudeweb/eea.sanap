@@ -326,7 +326,7 @@ Q = {
     '10': '10. In my country, transnational co-operation is considered as an element in our adaptation policy process',
     '11': '11. In my country, the following barriers for adaptation have been identified (Please select the three most important barriers)',
     'p1comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references)',
-    'files': 'Upload documents. If more than one, compress them in one zip file, or upload one at a time. Files are uploaded when you click the Save button at the end of this page.',
+    'files': 'Upload documents. Select files from your computer - they will be uploaded when you click the Save button at the end of this page.',
     '12': '12. In what stage of the adaptation policy process is your country in?',
     '13': '13. How would you assess the mechanism put in place at national level to coordinate the horizontal integration (i.e. integration into sectors) of the adaptation policy process?',
     '14': '14. How would you assess the mechanism put in place at national level to coordinate the vertical integration (from national to local level) of the adaptation policy process?',
