@@ -626,3 +626,16 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 .contact-answers .subdict {
     padding-left: 15px!important;
 }
+
+p.file-storage {
+    clear: left;
+    font-style: italic;
+    margin-left: 40px;
+    margin-top: 40px;
+    padding-bottom: 4px;
+}
+
+.ecoAsVir div.field ul.file-list li {
+    display: block;
+    margin-left: 40px;
+}

@@ -147,4 +147,22 @@ $(function () {
     }
   });
 
+  function multiple_upload_handler() {
+    var changed = $(this);
+    var last_input = $("input[type=file]", $(this).parent()).last();
+    if (last_input.val()) {
+      var new_input = changed.clone();
+      new_input.change(function(){multiple_upload_handler.call(new_input[0])});
+      new_input.css({float: "none", display: "block"});
+      last_input.css({float: "none", display: "block"});
+      last_input.after(new_input);
+    }
+  }
+
+  // Multiple file input
+  $('input[type=file]').change(function(){
+    console.log("XX "+this);
+    multiple_upload_handler.call(this);
+  })
+
 });

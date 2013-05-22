@@ -356,7 +356,8 @@ class SurveyForm(_SurveyForm):
             uploaded = self.data[field_name]
             if uploaded:
                 value = getattr(survey, field_name, False) or []
-                value.append(files.save(uploaded))
+                new_values = [files.save(upfile) for upfile in uploaded]
+                value.extend(new_values)
                 setattr(survey, field_name, value)
 
         if not survey.date_created:
