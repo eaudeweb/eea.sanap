@@ -1,16 +1,24 @@
 <p>Dear country coordinator,</p>
 <br />
 
-<p>You are receiving this email because you are coordinating the <b>Self-assessment of the adaptation policy process in {{ COUNTRIES[survey.country] }}</b>.
+<p>You are receiving this email because you are coordinating the <b>Self-assessment of the adaptation policy process sent out by the European Environment Agency (EEA) for {{ COUNTRIES[survey.country] }}</b>.
 </p>
 <br />
-<p>We are informing you that the final version of your country self-assessment has just been submitted
-to the EEA by <b>{{user.first_name}} {{user.last_name|upper}}</b>, phone: {{user.phone_number}}, email: {{user.email}}<br />
-The self-assessment is still available for you to see the answers -
-  <a href="{{ config.HOSTNAME }}{{url_for("survey.home")}}">{{ config.HOSTNAME }}{{url_for("survey.home")}}</a>
+<p>We would like to inform you that the final version of your country Self-assessment
+has just been successfully sent and submitted to the EEA by
+<b>{{user.first_name}} {{user.last_name|upper}}</b>, phone: {{user.phone_number}}, email: {{user.email}}<br />
+Although the Self-assessment is now definitively closed for further editing, it can still be consulted at -
+<a href="{{ config.HOSTNAME }}{{url_for("survey.home")}}">{{ config.HOSTNAME }}{{url_for("survey.home")}}</a>
 <br />
-<p>If you believe this is an error, please contact Stéphane ISOARD, stephane.isoard@eea.europa.eu</p>
+<p>If you believe this is an error, please contact Stéphane Isoard (stephane.isoard@eea.europa.eu)
+or André Jol (andre.jol@eea.europa.eu) at the EEA.<br />
+For technical/access issues please use the following email address: helpdesk@eaudeweb.ro</p>
 <br />
-<p>Have a nice day,<br />
-Eionet
+<p>
+The European Environment Agency thank you again for your support on this matter
+and will keep you informed about the progress of this project
+(e.g. country consultation on the results prior to publication).
+</p>
+<p>Best regards,<br />
+The European Environment Agency
 </p>

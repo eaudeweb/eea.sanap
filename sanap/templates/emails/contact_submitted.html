@@ -1,23 +1,26 @@
 <p>Dear country coordinator,</p>
 <br />
 
-<p>You are receiving this email because you are coordinating the <b>Self-assessment of the adaptation policy process in {{ COUNTRIES[survey.country] }}</b>.
+<p>You are receiving this email because you are coordinating the Self-assessment
+of the adaptation policy process sent out by the European Environment Agency (EEA) for {{ COUNTRIES[survey.country] }}</b>.
 </p>
 <br />
-<p>We are informing you that a country contact/expert (<b>{{user.first_name}} {{user.last_name|upper}}</b>, phone: {{user.phone_number}}, email: {{user.email}})
-has just submitted answers for the self-assessment.<br />
+<p>We would like to inform you that one of your country contacts (<b>{{user.first_name}} {{user.last_name|upper}}</b>, phone: {{user.phone_number}}, email: {{user.email}})
+has just submitted responses to the Self-assessment.<br />
 <br />
-You can see his/her answers in "Your Contacts" page -
+You can see their answers in "Your Contacts" page -
    <a href="{{ config.HOSTNAME }}{{url_for("survey.contacts")}}">{{ config.HOSTNAME }}{{url_for("survey.contacts")}}</a>
 <br />
 <p>
-You can make use of these answers to fill-in the final self-assessment of the adaptation
-policy process you are going to submit to the EEA. More details on the main page of the Self-Assessment:
+The European Environment Agency (EEA) hopes responses provided by your contacts
+will assist you in submitting the final version of the Self-assessment to the EEA.
+<br />More details on this can be found on the main page of the Self-Assessment:
    <a href="{{ config.HOSTNAME }}{{url_for("survey.home")}}">{{ config.HOSTNAME }}{{url_for("survey.home")}}</a>
 </p><br />
-<p>For any inquiries, please contact Stéphane ISOARD, stephane.isoard@eea.europa.eu<br />
-For technical/access issues, please contact helpdesk@eaudeweb.ro</p>
+<p>For any inquiries, please contact Stéphane Isoard (stephane.isoard@eea.europa.eu)
+or André Jol (andre.jol@eea.europa.eu) at the EEA.<br />
+For technical/access issues please use the following email address: helpdesk@eaudeweb.ro</p>
 <br />
-<p>Have a nice day,<br />
-Eionet
+<p>Best regards,<br />
+The European Environment Agency
 </p>
