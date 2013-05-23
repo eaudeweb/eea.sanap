@@ -20,7 +20,7 @@ def pretty(value):
                 subul = markup.page()
                 subul.ul(_class='subdict')
                 subul.li()
-                subul.span('- %s: ' % v.keys()[0])
+                subul.span('%s: ' % v.keys()[0])
                 subul.span(v.values()[0])
                 subul.li.close()
                 subul.ul.close()
@@ -39,5 +39,5 @@ def pretty(value):
         return ', '.join(value)
     else:
         page = markup.page()
-        page.span('- %s' % value, _class='simple')
+        page.span(value, _class='simple')
         return page()

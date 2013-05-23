@@ -2,7 +2,7 @@
 {% for field in form.get_fields(exclude=exclude) %}
 <tr>
   <td class="question-row">
-    <div class="question-title">{{ field.label.text }}</div>
+    <div class="question-title">{{ field.label.text|safe }}</div>
 
     <div class="question-container">
       <ul>
