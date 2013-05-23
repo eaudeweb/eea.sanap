@@ -5,17 +5,23 @@
 {% include "navigation.html" %}
 {% set url = url_for('auth.register', token=g.user.token) %}
 
-<h2>Spread the questionnaire and collect the answers</h2>
-<p>Send the following URL to your country contacts; they will be able to fill in
-the same self-assessment. Their answers will be listed here,
-grouped by questions, so that you can easier compile the final answer to the EEA.
+<h2>Sending on the Self-assessment to your contacts and collecting their responses</h2>
+<p>This platform is designed in such a way that country coordinators can easily
+use it to gather responses from their contacts (e.g. researchers, EPAs, NGOs)
+within their country.<br /><br />
+Simply copy and send (e.g. via Email) the generated URL below to your contacts:
 </p>
 
 <p>
   <a href="{{ config.HOSTNAME }}{{ url }}">{{ config.HOSTNAME }}{{ url }}</a>
 </p>
-
-<h2>Answers so far from your country contacts</h2>
+<p>
+  Your contacts can only access and fill-in the survey using that URL.
+  Their responses will be listed below, grouped by questions, so that you can more
+  easily compile the final version of the Self-assessment
+  and submit it to the European Environment Agency (EEA).
+</p>
+<h2>Responses received so far from your country contacts</h2>
 
 
 {% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved', 'draft', 'country') %}
