@@ -33,8 +33,8 @@ LANGUAGES = (
 
 
 YES_NO = (
-    ('0', 'No'),
-    ('1', 'Yes'),
+    ('no', 'No'),
+    ('yes', 'Yes'),
 )
 
 
