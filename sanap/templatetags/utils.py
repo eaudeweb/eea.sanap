@@ -30,7 +30,7 @@ def pretty(value):
             else:
                 continue
             page.li()
-            page.strong('%s:' % k.capitalize().replace('_', ' '))
+            page.span('%s:' % k.capitalize().replace('_', ' '))
             page.span(pretty_value)
             page.li.close()
         page.ul.close()
@@ -39,5 +39,5 @@ def pretty(value):
         return ', '.join(value)
     else:
         page = markup.page()
-        page.strong('- %s' % value, _class='simple')
+        page.span('- %s' % value, _class='simple')
         return page()
