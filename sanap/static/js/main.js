@@ -109,8 +109,8 @@ $(function () {
     if(questions.length < total_number) {
       if(confirm('You havn\'t answered ' + (total_number - questions.length) +
                  ' questions.\nWe have highlighted them for you.\n\nClick OK to continue '+
-                 'submitting final version without posibility of changing answers, '+
-                 'or Cancel to take another look at the questions.')) {
+                 'submitting the final version without the possibility of changing the answers, '+
+                 'or Cancel to go back to the questions.')) {
         return true;
       } else {
         e.preventDefault();
