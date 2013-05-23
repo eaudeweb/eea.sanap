@@ -6,22 +6,35 @@
 
     <div class="question-container">
       <ul>
+
       {% for survey in surveys %}
+
         {% set value = survey[field.name] %}
         {% if value|is_not_empty %}
           <li class="lirow {% if loop.last %}lirowlast{% endif %} {% if loop.first %}lirowfirst{% endif %}">
-            {{ value|pretty|safe }}
+            {% if field.name in ('part1_files', 'assessment_subnational_files',
+              'assessment_subnational_files', 'action_plan_files',
+              'part2_files', 'part3_files', 'part4_files') %}
+              <ul>
+              {% for file in value %}
+                <li>
+                  <a href="{{ url_for('static', filename='files/' ~ file) }}">
+                    {{ file }}</a>
+                </li>
+              {% endfor %}
+              </ul>
+            {% else %}
+              {{ value|pretty|safe }}
+            {% endif %}
             <span class="user">by
-            {% if groupby == 'user' %}
-              {{ survey.user.name  }}
-            {% endif %}
-            {% if groupby == 'country' %}
-              {{ survey.country_verbose }}
-            {% endif %}
+              {% if groupby == 'user' %}{{ survey.user.name  }}{% endif %}
+              {% if groupby == 'country' %}{{ survey.country_verbose }}{% endif %}
             </span>
           </li>
         {% endif %}
+
       {% endfor %}
+
       </ul>
     </div>
   </td>
