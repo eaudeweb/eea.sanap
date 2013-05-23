@@ -5,18 +5,21 @@
 {% set active_page = 'about' -%}
 {% include "navigation.html" %}
 <h1>
-  Welcome to the Self-assessment of the adaptation policy process in EEA member countries
+  Welcome to the Self-assessment of the adaptation policy process in EEA member countries.
 </h1>
 
 <div class="tutorial">
   <p>
-  This platform is designed to easily collect the information about your country.
-  Designated country coordinators are able to fill in the self-assessment survey
-  and instantly deliver it online to the EEA using this online tool.
+  Country coordinators are able to fill in the Self-assessment and
+  submit it online to the European Environment Agency (EEA) using this online platform.
   </p><p>
-  Moreover, this not only helps the EEA to easier get the responses from the
-  EU countries, but it also helps the country coordinators gather responses
-  from the contacts (experts) inside one's country.
+  Moreover, this platform is designed in such a way that country coordinators
+  can easily use it to gather responses from their contacts
+  (e.g. researchers, EPAs, NGOs) within their country.
+  </p><p>
+  The invitation letter sent out by the EEA to its member countries
+  can be downloaded as a PDF file here.
+  The deadline for filling-in this Self-assessment is YY June 2013.
   </p>
 </div>
 
@@ -32,40 +35,67 @@
         {% endfor %}
       </ul>
       </p>
-      <p>Any of you can send this online questionnaire to your contacts.
-      All of you will be able to see
-      all the answers by these contacts, in one place. Any of you can
-      fill in or edit the answer for the EEA.
-      <strong>Only one of you will send the final answer and close the self-assessment</strong>.
-      Once the final answer is sent, none of you can amend the information.
-      <strong>You will need to coordinate and decide which of you will review and send the final answer.</strong></p>
+      <p>Anyone of you can send on this online Self-assessment to your contacts
+      (e.g. researchers, EPAs, NGOs) within your country.
+      In the ‘Your Contacts’ tab you will be able to see the answers provided by your contacts.
+      Any of you can fill-in or edit the Self-assessment and submit the final version of it to the EEA.
+      </p>
+      <p>
+        When one of you submit the final version of the Self-assessment to the EEA,
+        the Self-assessment will be closed and none of you will be able to amend the information anymore.
+      </p>
+      <p>
+      <strong>Therefore you will need to coordinate amongst yourselves
+      and decide who of you will review the final version and submit it to the EEA.</strong>
+      You can download and save a PDF file which shows all your responses after submitting.
+      </p>
     {% else %}
       <p class="highlight">You are the coordinator for <span class="country">{{ COUNTRIES[g.user.country] }}</span>.</p>
-      <p>You can send this online questionnaire to any of your contacts.
-      You will be able to see all their answers in one place. You can use these answers
-      to fill in the final response to the EEA. Once you are ready, you can send this response
-      and close the survey.</p>
+      <p>You can send on this online Self-assessment to your contacts
+      (e.g. researchers, EPAs, NGOs) within your country.
+      In the ‘Your Contacts’ tab you will be able to see the answers provided by your contacts.
+      </p>
+      <p>
+        You can fill-in or edit the Self-assessment and submit the
+        final version of it to the EEA. When you submit the final version
+        of the Self-assessment to the EEA, the Self-assessment will be closed
+        and you will not be able to amend the information anymore.
+        You can download and save a PDF file which shows all your responses after submitting. 
+      </p>
     {% endif %}
-    <h3>Spreading the survey</h3>
+    <h3>Sending on the Self-assessment</h3>
     <p>
-      Use "Your Contacts"-tab to send the survey and see the answers filled in by your contacts.
-      There you will see a special generated URL you can spread (e.g. via Email). Your
-      contacts/country experts can only access and fill in the survey using that URL.<br />
-      In the same page you will be able to see those answers, grouped by question.
+      This platform is designed in such a way that country coordinators
+      can easily use it to gather responses from their contacts
+      (e.g. researchers, EPAs, NGOs) within their country.
+      Please use "Your Contacts" tab to send on the Self-assessment and gather responses.
+      <br />You will see the responses from your contacts grouped by question in the "Your Contacts" tab.
     </p>
-    <h3>Submitting the self-assessment to the EEA</h3>
     <p>
-      Use "Self Assessment"-tab to see your answer to the EEA. You can anytime
-      save drafts (edit) this answer, but once you <strong>Submit the final answer</strong>
-      to the EEA, the questionnaire will be closed for editing.
+      Please copy and send (e.g. via Email) the generated URL to your contacts.
+      Your contacts can only access and fill-in the survey using that URL
+      and a password is not needed in this case.
+    </p>
+    <h3>Submitting the final version of the Self-assessment to the European Environment Agency (EEA)</h3>
+    <p>
+      Use the "Self-Assessment" tab to fill-in the Self-assessment for the EEA.
+      You can save drafts of the Self-assessment and edit it at any time,
+      but once you <strong>Submit the final version of the Self-assessment</strong> to the EEA,
+      the Self-assessment will be definitively closed for editing.
       <br />
-      Each time you save a draft, you can also download a PDF containing the assessment questions
-      and your answers, so that you can print it and discuss it in meetings.
+      Each time you save a draft of the Self-assessment, you can also download
+      a PDF file of it, so that you can print it and send it to colleagues
+      if necessary.
+      When you submit the final version of the Self-assessment to the EEA,
+      you can also download and save a PDF file of it.
     </p>
   {% else %}
       <p class="highlight">You are a country contact for <span class="country">{{ COUNTRIES[g.user.country] }}</span>.
-      Your answers for the questions in the self-assessment will be sent to your country coordinator.
-      He/She will take them in count when filling in the final answer to the EEA.
+      This Self-assessment has been sent out by the European Environment Agency (EEA)
+      to its member countries. You have received this Self-assessment from your country coordinator.
+      Your answers to the questions of the Self-assessment will be sent
+      to your country coordinator who will coordinate all answers
+      from country contacts and submit the final version to the EEA.
       </p>
       <p>
         <a href="{{ url_for("survey.edit") }}">Proceed to self-assessment &rarr;</a>
