@@ -565,7 +565,7 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 
 .contact-answers .question-title {
     border: 1px solid #b4dbdb;
-    background: #d4f1f1;
+    background: #C7E2E2;
     padding: 4px 10px;
     font-weight: bold;
 }
@@ -581,9 +581,9 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 }
 
 .contact-answers .question-row .lirow {
-    padding-left: 10px;
     padding-bottom: 3px;
-    overflow: hidden;
+    clear: both;
+    /*overflow: hidden;*/
 }
 
 .contact-answers .no-answer {
@@ -600,13 +600,25 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     overflow: hidden;
 }
 
+.contact-answers .question-container ul {
+    list-style-type: circle;
+    padding-left: 30px;
+}
+
+.contact-answers .question-container ul ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 .contact-answers .question-row .dict {
-    border-bottom: 1px dashed #ccc;
-    margin-right: 35px;
+    width: 70%;
+    margin-right: 20px;
+    margin-bottom: 7px;
     padding-top: 7px;
     padding-bottom: 7px;
+    padding-right: 5px;
     float: left;
-    width: 220px;
+    border-right: 2px solid #B4DBDB;
 }
 
 .contact-answers .lirowfirst .dict {
@@ -622,9 +634,12 @@ body .ui-dialog .ui-dialog-titlebar-close span {
     padding-bottom: 3px;
 }
 
-
 .contact-answers .subdict {
     padding-left: 15px!important;
+}
+
+.contact-answers .user {
+    color: #C2931A;
 }
 
 p.file-storage {
