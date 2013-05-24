@@ -12,9 +12,16 @@ within their country.<br /><br />
 Simply copy and send (e.g. via Email) the generated URL below to your contacts:
 </p>
 
-<p>
+<p class="clippy">
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="14" height="14">
+    <param name="movie" value="../static/clippy.swf">
+    <param name="allowScriptAccess" value="always">
+    <param name="quality" value="high"><param name="scale" value="noscale">
+    <param name="bgcolor" value="#ffffff"><param name="FlashVars" value="text={{ config.HOSTNAME|urlencode }}{{ url|urlencode }}">
+    <embed allowscriptaccess="always" quality="high" scale="noscale" bgcolor="#ffffff" width="14" height="14" src="../static/clippy.swf" flashvars="text={{ config.HOSTNAME|urlencode }}{{ url|urlencode }}"></object>
   <a href="{{ config.HOSTNAME }}{{ url }}">{{ config.HOSTNAME }}{{ url }}</a>
 </p>
+
 <p>
   Your contacts can only access and fill-in the survey using that URL.
   Their responses will be listed below, grouped by questions, so that you can more
