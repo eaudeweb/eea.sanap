@@ -40,7 +40,6 @@ class Edit(views.MethodView):
     def get(self, survey_id=None):
 
         survey = None
-        pdf_ready = request.args.get('pdf', '')
 
         if survey_id:
             survey = Survey.objects.get_or_404(id=survey_id)
@@ -55,15 +54,13 @@ class Edit(views.MethodView):
                 survey = Survey.objects.filter(user=crt_user.id).first()
 
         if not survey_id and survey:
-            return redirect(url_for('.edit', survey_id=survey.id,
-                                    pdf=pdf_ready))
+            return redirect(url_for('.edit', survey_id=survey.id))
         elif survey:
             form = SurveyForm(obj=survey)
         else:
             form = SurveyForm()
 
-        return render_template('edit.html', form=form, survey_id=survey_id,
-                               pdf_ready=pdf_ready)
+        return render_template('edit.html', form=form, survey_id=survey_id)
 
     def post(self, survey_id=None):
         if survey_id:
@@ -78,18 +75,24 @@ class Edit(views.MethodView):
             form = SurveyForm()
         if form.validate():
             obj = form.save(survey=survey)
+            pdf = request.form.get('export_pdf', '')
             if obj.draft:
-                flash('Your self-assessment has been saved.')
+                flash_msg = 'Your self-assessment has been saved.'
+                
             else:
                 if obj.for_eea:
-                    flash('The final version of the self-assessment (%s) has been submitted.' % obj.country)
+                    flash_msg = 'The final version of the self-assessment (%s) has been submitted.' % obj.country
                     emails.country_submitted(obj)
                 else:
-                    flash('Your self-assessment has been submitted.')
+                    flash_msg = 'Your self-assessment has been submitted.'
                     emails.contact_submitted(obj)
-            # hackish, but users might export the form before saving it
-            pdf = request.form.get('export_pdf', '')
-            return redirect(url_for('.edit', survey_id=obj.id, pdf=pdf))
+            if pdf:
+                flash_msg += ("""<br />The <img src="../static/img/pdf.png" /> PDF
+                              of your latest version of the self-assessment is ready;
+                                you can <a href="%s" target="_blank">click here to download it</a>.
+                              """ % url_for("survey.export", survey_id=obj.id))
+            flash(flash_msg)
+            return redirect(url_for('.edit', survey_id=obj.id))
 
         return render_template('edit.html', form=form)
 

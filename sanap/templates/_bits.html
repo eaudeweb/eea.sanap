@@ -2,7 +2,7 @@
 {% macro flash_messages() -%}
 
   {% for categ, msg in get_flashed_messages(with_categories=True) %}
-    <p class="alert hide {{ categ }}">{{ msg }}</p>
+    <p class="alert hide {{ categ }}">{{ msg|safe }}</p>
   {% endfor %}
 
 {%- endmacro %}
