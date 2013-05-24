@@ -77,8 +77,13 @@ class Edit(views.MethodView):
             obj = form.save(survey=survey)
             pdf = request.form.get('export_pdf', '')
             if obj.draft:
-                flash_msg = 'Your self-assessment has been saved.'
-                
+                flash_msg = 'Your self-assessment has been saved as a draft. '
+                if obj.for_eea:
+                    flash_msg += ('When it is final, don\'t forget to submit the'
+                                  ' final version to the EEA.')
+                else:
+                    flash_msg += ('When it is final, don\'t forget to submit the'
+                                  ' final version to your country coordinator.')
             else:
                 if obj.for_eea:
                     flash_msg = 'The final version of the self-assessment (%s) has been submitted.' % obj.country

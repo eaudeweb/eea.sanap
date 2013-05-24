@@ -504,8 +504,13 @@
           <input type="checkbox" name="export_pdf" id="export_pdf" value="1" />
           <label for="export_pdf" id="export_pdf_label">I wish to have a PDF version of the self-assessment.</label>
         </span><br /><br />
-        <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
-        <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
+        {% if g.user.is_coordinator %}
+          <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
+          <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
+        {% else %}
+          <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
+          <button name="draft" value="" type="submit" class="submitVersion spaced">Send to my country coordinator</button>
+        {% endif %}
       {% else %}
         <p class="closed">
           This self-assessment has been submitted. You can no longer contribute to this self-assessment.
