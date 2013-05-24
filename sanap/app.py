@@ -4,6 +4,8 @@ import jinja2
 
 from werkzeug import SharedDataMiddleware
 
+from webassets.filter import get_filter
+
 from flask.ext.assets import Environment, Bundle
 from flask.ext.uploads import configure_uploads
 from flask_mail import Mail
@@ -92,7 +94,8 @@ def configure_context_processor(app):
 def configure_assets(app):
     assets = Environment(app)
     js = Bundle(*BUNDLE_JS, filters='jsmin', output='output/packed.js')
-    css = Bundle(*BUNDLE_CSS, filters=('cssrewrite', 'cssmin'),
+    css_rewrite = get_filter('cssrewrite', replace={'/static/':'../'})
+    css = Bundle(*BUNDLE_CSS, filters=(css_rewrite, 'cssmin'),
                  output='output/packed.css')
     ie7_css = Bundle(*BUNDLE_IE7_CSS, filters='cssmin', output='output/packed_ie7.css')
     ie8_css = Bundle(*BUNDLE_IE8_CSS, filters='cssmin', output='output/packed_ie8.css')
