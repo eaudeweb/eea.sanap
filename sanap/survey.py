@@ -178,7 +178,8 @@ class Contacts(views.MethodView):
             abort(403)
 
         form = SurveyForm()
-        surveys = Survey.objects.filter(country=g.user.country, for_eea=False)
+        surveys = Survey.objects.filter(country=g.user.country, for_eea=False,
+                                        draft=False)
         return render_template('contacts.html', form=form, surveys=surveys)
 
 survey.add_url_rule('/contacts', view_func=Contacts.as_view('contacts'))
@@ -190,7 +191,7 @@ class Dashboard(views.MethodView):
 
     def get(self):
         form = SurveyForm()
-        surveys = Survey.objects.filter(for_eea=True)
+        surveys = Survey.objects.filter(for_eea=True, draft=False)
         return render_template('dashboard.html', form=form, surveys=surveys)
 
 survey.add_url_rule('/dashboard', view_func=Dashboard.as_view('dashboard'))
