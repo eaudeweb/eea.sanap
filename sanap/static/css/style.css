@@ -312,7 +312,7 @@ textarea {
     position: fixed;
     right: 10px;
     bottom: 10px;
-    border: 2px solid #008000;
+    border: 2px solid #a5ced1;
     background: #FFF;
     margin: 0;
     padding: 5px 5px 5px 3px;
@@ -639,7 +639,7 @@ body .ui-dialog .ui-dialog-titlebar-close span {
 }
 
 .contact-answers .user {
-    color: #C2931A;
+    color: #999;
 }
 
 p.file-storage {
