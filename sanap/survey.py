@@ -85,6 +85,8 @@ class Edit(views.MethodView):
                     flash_msg += ('When it is final, don\'t forget to submit the'
                                   ' final version to your country coordinator.')
             else:
+                obj.user = flask_login.current_user._get_current_object()
+                obj.save()
                 if obj.for_eea:
                     flash_msg = 'The final version of the self-assessment (%s) has been submitted.' % obj.country
                     emails.country_submitted(obj)
