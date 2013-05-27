@@ -171,6 +171,7 @@ $(function () {
     } else {
       input.prop('checked', true);
     }
+    $('form.ecoAsVir').data('changed', true);
   });
 
   $('.matrix').on('click', 'li input', function (e) {
