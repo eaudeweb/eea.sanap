@@ -26,12 +26,13 @@
     </div>
 
     <div class="row has-follower hide">
-      <p>You can <a href="{{ url_for("survey.download_docx") }}" target="_blank">download the questionnaire</a>
+      <p>You can <a href="{{ url_for('static',
+        filename='files/adaptation_policy_process_self_assessment_2013.docx') }}" target="_blank" download="adaptation_policy_process_self_assessment_2013.docx">download the questionnaire</a>
       as a Word file, but we kindly ask you to submit it online.</p>
       <p>Here you can find the glossary of related terms:
-      <a href="{{ url_for("survey.glossary") }}" target="_blank">online</a>,
-      <a href="{{ url_for("survey.download_glossary", fmt="docx") }}" target="_blank">DOCX</a>
-      or <a href="{{ url_for("survey.download_glossary", fmt="pdf") }}" target="_blank">PDF</a>.</p>
+      <a href="{{ url_for('survey.glossary') }}" target="_blank">online</a>,
+      <a href="{{ url_for('static', filename='files/self_assessment_glossary.docx') }}" target="_blank" download="self_assessment_glossary.docx">DOCX</a>
+      or <a href="{{ url_for('static', filename='files/self_assessment_glossary.pdf') }}" target="_blank" download="self_assessment_glossary.pdf">PDF</a>.</p>
     </div>
   </fieldset>
 

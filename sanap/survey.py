@@ -107,31 +107,6 @@ survey.add_url_rule('/add', view_func=Edit.as_view('edit'))
 survey.add_url_rule('/edit/<string:survey_id>', view_func=Edit.as_view('edit'))
 
 
-@survey.route("/download_docx")
-def download_docx():
-    fname = "Adaptation Policy Process Self-Assessment 2013.docx"
-    survey_file = os.path.join(os.path.dirname(__file__), "static", fname)
-    response = send_file(survey_file, mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-    response.headers[u"Content-Disposition"] = ('attachment; filename="%s"' %
-                                                fname)
-    return response
-
-
-@survey.route("/download_glossary/<string:fmt>")
-def download_glossary(fmt):
-    mimetypes = {'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                 'pdf': 'application/pdf'}
-    if fmt not in mimetypes:
-        abort(403)
-    fname = "Self-Assessment Glossary.%s" % fmt
-    glossary_file = os.path.join(os.path.dirname(__file__), "static", fname)
-
-    response = send_file(glossary_file, mimetype=mimetypes[fmt])
-    response.headers[u"Content-Disposition"] = ('attachment; filename="%s"' %
-                                                fname)
-    return response
-
-
 @survey.route("/glossary")
 def glossary():
     return render_template('glossary.html')
