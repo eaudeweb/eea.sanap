@@ -93,6 +93,10 @@ textarea {
     width: 120px;
 }
 
+.matrix ul > li {
+    cursor: pointer;
+}
+
 #lean_overlay {
     position: fixed;
     z-index:100;

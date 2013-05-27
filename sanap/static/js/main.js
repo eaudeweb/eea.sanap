@@ -161,8 +161,20 @@ $(function () {
 
   // Multiple file input
   $('input[type=file]').change(function(){
-    console.log("XX "+this);
     multiple_upload_handler.call(this);
-  })
+  });
+
+  $('.matrix').on('click', 'li', function (e) {
+    var input = $(this).find('input[type=checkbox]');
+    if(input.is(':checked')) {
+      input.prop('checked', false);
+    } else {
+      input.prop('checked', true);
+    }
+  });
+
+  $('.matrix').on('click', 'li input', function (e) {
+    e.stopPropagation();
+  });
 
 });
