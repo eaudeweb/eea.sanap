@@ -25,7 +25,7 @@ def login_required(fn):
     @wraps(fn)
     @flask_login.login_required
     def decorated_view(*args, **kwargs):
-        if not g.user.country:
+        if not g.user.is_authenticated():
             return redirect(url_for('auth.unauthorized'))
         return fn(*args, **kwargs)
     return decorated_view
@@ -98,7 +98,7 @@ def login():
 class Register(views.MethodView):
 
     def get(self, token):
-        if g.user.is_authenticated():
+        if g.user.is_authenticated() and g.user.country:
             return redirect(url_for('survey.home'))
         try:
             user_invitee = User.objects.get(token=token)
@@ -109,7 +109,7 @@ class Register(views.MethodView):
         return render_template('register.html', form=RegisterForm())
 
     def post(self, token):
-        if g.user.is_authenticated():
+        if g.user.is_authenticated() and g.user.country:
             return redirect(url_for('survey.home'))
         try:
             user_invitee = User.objects.get(token=token)

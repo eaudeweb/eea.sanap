@@ -24,7 +24,7 @@ class RegisterForm(wtf.Form):
     organisation = wtf.TextField('Organisation')
 
     def validate_email(self, field):
-        if User.objects.filter(email=field.data, invitee__exists=False).count() > 0:
+        if User.objects.filter(email=field.data, invitee__exists=False, country__exists=True).count() > 0:
             raise wtf.ValidationError('User is already invited as country coordinator with Eionet Account')
 
     def save(self, user_invitee):

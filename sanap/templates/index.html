@@ -90,7 +90,7 @@
       When you submit the final version of the Self-assessment to the EEA,
       you can also download and save a PDF file of it.
     </p>
-  {% else %}
+  {% elif g.user.country %}
       <p class="highlight">You are a country contact for <span class="country">{{ COUNTRIES[g.user.country] }}</span>.
       This Self-assessment has been sent out by the European Environment Agency (EEA)
       to its member countries. You have received this Self-assessment from your country coordinator.
@@ -101,6 +101,11 @@
       <p>
         <a href="{{ url_for("survey.edit") }}">Proceed to self-assessment &rarr;</a>
       </p>
+  {% else %}
+      <fieldset class="meta-info with-legend">
+        <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.</strong>
+      </fieldset>
+      <br />
   {% endif %}
   <div class="highlight">
     <p>For further assistance please contact Stéphane Isoard (<a href="mailto:stephane.isoard@eea.europa.eu">stephane.isoard@eea.europa.eu</a>)

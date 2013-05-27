@@ -7,6 +7,11 @@
   {% include "navigation.html" %}
 
 <form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
+  {% if not g.user.country %}
+    <fieldset class="meta-info with-legend">
+    <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.</strong>
+    </fieldset>
+  {% endif %}
   <fieldset class="meta-info">
     {% if not form.draft.data %}
       <p class="highlight">
@@ -488,39 +493,44 @@
     </div>
 
   </fieldset>
-
+{% if g.user.country %}
+    <fieldset class="meta-info with-legend">
+      <legend>Thank you for your contribution!</legend>
+      <div class="row">
+        We are looking forward to getting your feedback on this self-assessment. Thanks a lot.
+      </div>
+  
+      <div class="row">
+        {{ render_field(form.feedback) }}
+      </div>
+  
+      <div class="row">
+          {% if form.draft.data %}
+            <span class="export">
+              <input type="checkbox" name="export_pdf" id="export_pdf" value="1" />
+              <label for="export_pdf" id="export_pdf_label">I wish to have a PDF version of the self-assessment.</label>
+            </span><br /><br />
+            {% if g.user.is_coordinator %}
+              <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
+              <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
+            {% elif g.user.country %}
+              <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
+              <button name="draft" value="" type="submit" class="submitVersion spaced">Send to my country coordinator</button>
+            {% endif %}
+          {% else %}
+            <p class="closed">
+              This self-assessment has been submitted. You can no longer contribute to this self-assessment.
+              <br />
+              <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.</span>
+            </p>
+          {% endif %}
+      </div>
+    </fieldset>
+{% else %}
   <fieldset class="meta-info with-legend">
-    <legend>Thank you for your contribution!</legend>
-    <div class="row">
-      We are looking forward to getting your feedback on this self-assessment. Thanks a lot.
-    </div>
-
-    <div class="row">
-      {{ render_field(form.feedback) }}
-    </div>
-
-    <div class="row">
-      {% if form.draft.data %}
-        <span class="export">
-          <input type="checkbox" name="export_pdf" id="export_pdf" value="1" />
-          <label for="export_pdf" id="export_pdf_label">I wish to have a PDF version of the self-assessment.</label>
-        </span><br /><br />
-        {% if g.user.is_coordinator %}
-          <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
-          <button name="draft" value="" type="submit" class="submitVersion spaced">Submit Final Version</button>
-        {% else %}
-          <button name="draft" value="y" type="submit" class="saveDraft">Save Draft</button>
-          <button name="draft" value="" type="submit" class="submitVersion spaced">Send to my country coordinator</button>
-        {% endif %}
-      {% else %}
-        <p class="closed">
-          This self-assessment has been submitted. You can no longer contribute to this self-assessment.
-          <br />
-          <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.</span>
-        </p>
-      {% endif %}
-    </div>
+  <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.</strong>
   </fieldset>
+{% endif %}
 
 </form>
 
