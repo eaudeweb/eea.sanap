@@ -1,7 +1,11 @@
+from copy import copy
+
 from flask.ext import wtf
 from flask import url_for
+
 from libs import markup
 from libs.markup import oneliner as e
+
 from sanap.model_data import SECTORS_DATA
 
 
@@ -161,7 +165,7 @@ class MatrixBaseWidget(object):
 class MatrixCheckboxWidget(MatrixBaseWidget):
 
     def __init__(self, data, *args, **kwargs):
-        self.data = data
+        self.data = copy(data)
         self.id = kwargs.pop('id', '')
         self.label = kwargs.pop('label', '')
         self.title = kwargs.pop('title', '')
