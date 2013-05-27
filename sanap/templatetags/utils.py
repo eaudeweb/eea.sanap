@@ -1,3 +1,4 @@
+from flask import Markup
 from libs import markup
 
 
@@ -15,18 +16,18 @@ def pretty(value):
         page.ul(_class='dict')
         for k, v in value.items():
             if isinstance(v, list) and v:
-                pretty_value = ', '.join(v)
+                pretty_value = Markup.escape(', '.join(v))
             elif isinstance(v, dict) and v:
                 subul = markup.page()
                 subul.ul(_class='subdict')
                 subul.li()
                 subul.span('%s: ' % v.keys()[0])
-                subul.span(v.values()[0])
+                subul.span(Markup.escape(v.values()[0]))
                 subul.li.close()
                 subul.ul.close()
                 pretty_value = subul()
             elif v:
-                pretty_value = v
+                pretty_value = Markup.escape(v)
             else:
                 continue
             page.li()
@@ -36,8 +37,8 @@ def pretty(value):
         page.ul.close()
         return page()
     elif isinstance(value, list):
-        return ', '.join(value)
+        return Markup.escape(', '.join(value))
     else:
         page = markup.page()
-        page.span(value, _class='simple')
+        page.span(Markup.escape(value), _class='simple')
         return page()
