@@ -87,7 +87,7 @@ def login():
                   (user.first_name, user.last_name, user.id))
             user.last_login = datetime.datetime.utcnow()
             user.save(safe=False)
-            resp = redirect(request.args.get('next') or url_for('library.home'))
+            resp = redirect(request.args.get('next') or url_for('survey.home'))
             resp.set_cookie('__ac',
                             base64.b64encode('%s:%s' % (username, password)))
             return resp
