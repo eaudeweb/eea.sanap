@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% from "_formhelpers.html" import render_field, render_other %}
+{% from "_formhelpers.html" import render_field, textarea_readonly %}
 
 {% block content %}
 
@@ -83,6 +83,7 @@
 
     <div class="row nested question">
       {{ render_field(form.integration_examples) }}
+      {{ textarea_readonly(form.integration_examples) }}
     </div>
 
     <div class="row has-follower question">
@@ -91,6 +92,7 @@
 
     <div class="row nested question">
       {{ render_field(form.mitigation_examples) }}
+      {{ textarea_readonly(form.mitigation_examples) }}
     </div>
 
     <div class="row has-follower question">
@@ -99,6 +101,7 @@
 
     <div class="row nested question">
       {{ render_field(form.transnational_cooperation_examples) }}
+      {{ textarea_readonly(form.transnational_cooperation_examples) }}
     </div>
 
     <div class="row question">
@@ -111,6 +114,7 @@
 
     <div class="row">
       {{ render_field(form.part1_comments) }}
+      {{ textarea_readonly(form.part1_comments) }}
     </div>
 
     <div class="row lastOfType">
@@ -143,18 +147,22 @@
 
     <div class="row has-follower nested question">
       {{ render_field(form.horizontal_coordination) }}
+      {{ textarea_readonly(form.horizontal_coordination) }}
     </div>
 
     <div class="row has-follower nested question">
       {{ render_field(form.vertical_coordination) }}
+      {{ textarea_readonly(form.vertical_coordination) }}
     </div>
 
     <div class="row has-follower nested question">
       {{ render_field(form.crucial_in_coordination) }}
+      {{ textarea_readonly(form.crucial_in_coordination) }}
     </div>
 
     <div class="row nested question">
       {{ render_field(form.challenging_in_coordination) }}
+      {{ textarea_readonly(form.challenging_in_coordination) }}
     </div>
 
     <p><strong>Identify risks and explore options</strong></p>
@@ -176,6 +184,7 @@
         if available at sub-national or trans-national level
       (e.g. Länder, provinces, regions, communities, river-basin):</label>
       {{ render_field(form.assessment_subnational_info) }}
+      {{ textarea_readonly(form.assessment_subnational_info) }}
     </div>
 
     <div class="row nested2">
@@ -200,13 +209,16 @@
     </div>
     <div class="row has-follower nested question">
       {{ render_field(form.assessment_coordination) }}
+      {{ textarea_readonly(form.assessment_coordination) }}
     </div>
     <div class="row nested question">
       {{ render_field(form.assessment_methodological_approach) }}
+      {{ textarea_readonly(form.assessment_methodological_approach) }}
     </div>
 
     <div class="row question">
       {{ render_field(form.change_adaptation_costs) }}
+      {{ textarea_readonly(form.change_adaptation_costs) }}
     </div>
 
     <div class="row question">
@@ -223,6 +235,7 @@
 
     <div class="row question">
       {{ render_field(form.assessment_update_info) }}
+      {{ textarea_readonly(form.assessment_update_info) }}
     </div>
 
     <div class="row has-follower question">
@@ -259,10 +272,12 @@
 
     <div class="row question">
       {{ render_field(form.options_methodological) }}
+      {{ textarea_readonly(form.options_methodological) }}
     </div>
 
     <div class="row question">
       {{ render_field(form.action_plan_info) }}
+      {{ textarea_readonly(form.action_plan_info) }}
       <br />
       {{ render_field(form.action_plan_files) }}
     </div>
@@ -271,10 +286,12 @@
 
     <div class="row question">
       {{ render_field(form.practice_example) }}
+      {{ textarea_readonly(form.practice_example) }}
     </div>
 
     <div class="row question">
       {{ render_field(form.integrating_plans) }}
+      {{ textarea_readonly(form.integrating_plans) }}
     </div>
 
     <div class="row has-follower">
@@ -295,6 +312,7 @@
 
     <div class="row has-follower">
       {{ render_field(form.part2_comments) }}
+      {{ textarea_readonly(form.part2_comments) }}
     </div>
 
     <div class="row lastOfType">
@@ -342,6 +360,7 @@
 
     <div class="row question">
       {{ render_field(form.main_instruments_considered) }}
+      {{ textarea_readonly(form.main_instruments_considered) }}
     </div>
 
     <div class="row special question">
@@ -361,6 +380,7 @@
 
     <div class="row">
       {{ render_field(form.part3_comments) }}
+      {{ textarea_readonly(form.part3_comments) }}
     </div>
 
     <div class="row">
@@ -369,10 +389,12 @@
 
     <div class="row question">
       {{ render_field(form.transboundary_issues) }}
+      {{ textarea_readonly(form.transboundary_issues) }}
     </div>
 
     <div class="row question">
       {{ render_field(form.regions_coordination) }}
+      {{ textarea_readonly(form.regions_coordination) }}
     </div>
 
   </fieldset>
@@ -440,10 +462,12 @@
 
     <div class="row question">
       {{ render_field(form.stakeholders_success) }}
+      {{ textarea_readonly(form.stakeholders_success) }}
     </div>
 
     <div class="row">
       {{ render_field(form.part4_comments) }}
+      {{ textarea_readonly(form.part4_comments) }}
     </div>
 
     <div class="row">
@@ -462,34 +486,42 @@
     </div>
     <div class="row nested has-follower question">
       {{ render_field(form.next_step_vulnerability) }}
+      {{ textarea_readonly(form.next_step_vulnerability) }}
     </div>
 
     <div class="row nested has-follower question">
       {{ render_field(form.next_step_legislation) }}
+      {{ textarea_readonly(form.next_step_legislation) }}
     </div>
 
     <div class="row nested has-follower question">
       {{ render_field(form.next_step_implementation) }}
+      {{ textarea_readonly(form.next_step_implementation) }}
     </div>
 
     <div class="row nested has-follower question">
       {{ render_field(form.next_step_monitoring) }}
+      {{ textarea_readonly(form.next_step_monitoring) }}
     </div>
 
     <div class="row nested has-follower question">
       {{ render_field(form.next_step_strategy) }}
+      {{ textarea_readonly(form.next_step_strategy) }}
     </div>
 
     <div class="row nested question">
       {{ render_field(form.next_step_others) }}
+      {{ textarea_readonly(form.next_step_others) }}
     </div>
 
     <div class="row question">
       {{ render_field(form.adaptation_key_issues) }}
+      {{ textarea_readonly(form.adaptation_key_issues) }}
     </div>
 
     <div class="row lastOfType question">
       {{ render_field(form.adaptation_support_eu_level) }}
+      {{ textarea_readonly(form.adaptation_support_eu_level) }}
     </div>
 
   </fieldset>
