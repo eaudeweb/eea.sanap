@@ -17,7 +17,8 @@
       <p class="highlight">
         This self-assessment has been submitted. You can no longer contribute to this self-assessment.
         <br />
-        <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.</span>
+        <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers or you can
+        <a href="{{ url_for("survey.report", survey_id=survey_id) }}">download a ZIP bundle</a>, including any uploaded files in this self-assessment.</span>
       </p>
     {% endif %}
 
@@ -553,7 +554,8 @@
             <p class="closed">
               This self-assessment has been submitted. You can no longer contribute to this self-assessment.
               <br />
-              <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers.</span>
+              <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers or you can
+              <a href="{{ url_for("survey.report", survey_id=survey_id) }}">download a ZIP bundle</a>, including any uploaded files in this self-assessment.</span>
             </p>
           {% endif %}
       </div>

@@ -119,10 +119,13 @@ class Edit(views.MethodView):
                     flash_msg = 'Your self-assessment has been submitted.'
                     emails.contact_submitted(obj)
             if pdf:
-                flash_msg += ("""<br />The <img src="../static/img/pdf.png" /> PDF
+                flash_msg += ("""<br /><br />The <img src="../static/img/pdf.png" /> PDF
                               of your latest version of the self-assessment is ready;
                                 you can <a href="%s" target="_blank">click here to download it</a>.
-                              """ % url_for("survey.export", survey_id=obj.id))
+                                <br />You can also <a href="%s">download a ZIP bundle</a>,
+                                including any uploaded files in this self-assessment.
+                              """ % (url_for("survey.export", survey_id=obj.id),
+                                     url_for("survey.report", survey_id=obj.id)))
             flash(flash_msg)
             return redirect(url_for('.edit', survey_id=obj.id))
 
