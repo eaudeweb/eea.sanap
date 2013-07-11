@@ -2,6 +2,7 @@ import subprocess
 import os
 from tempfile import NamedTemporaryFile
 from datetime import datetime
+import zipfile
 
 from flask import (Blueprint, redirect, render_template, flash, views,
                    url_for, g, send_file, current_app, request, abort)
@@ -10,6 +11,7 @@ from flask.ext import login as flask_login
 from sanap.auth import login_required, eea_admin
 from sanap.models import Survey
 from sanap.forms import SurveyForm
+from sanap.forms.survey import FILE_FIELDS, files
 from sanap import assets as sanap_assets
 from sanap import emails
 
@@ -19,6 +21,29 @@ survey = Blueprint('survey', __name__)
 
 def initialize_app(app):
     app.register_blueprint(survey)
+
+
+def export_pdf(survey):
+    """Generate pdf file out of a Survey object. File handler left open"""
+    proj_dir = os.path.dirname(__file__)
+    source = Edit().get(survey.id)
+    inject_css = ''
+    for css in sanap_assets.BUNDLE_CSS + sanap_assets.BUNDLE_PRINT_CSS:
+        css_file = open(os.path.join(proj_dir, "static", css), "r")
+        inject_css += css_file.read()
+        css_file.close()
+    source = source.replace("<head>",
+                         "<head><style type='text/css'>%s</style>" % inject_css)
+    html_infile = NamedTemporaryFile(suffix='.html')
+    html_infile.write(source.encode("utf-8"))
+    html_infile.flush()
+
+    pdf_outfile = NamedTemporaryFile(suffix='.pdf')
+
+    retcode = subprocess.call(['wkhtmltopdf', '-O', 'Landscape', '-q',
+                                html_infile.name, pdf_outfile.name])
+    html_infile.close()
+    return pdf_outfile
 
 
 class Home(views.MethodView):
@@ -115,34 +140,42 @@ def glossary():
 @survey.route("/export/<string:survey_id>")
 @login_required
 def export(survey_id):
-    proj_dir = os.path.dirname(__file__)
-    source = Edit().get(survey_id)
     survey = Survey.objects.get_or_404(id=survey_id)
     filename = 'sanap-%s-%s.pdf' % (survey.country,
                                 datetime.now().strftime("%Y-%m-%d %H.%M"))
 
-    inject_css = ''
-    for css in sanap_assets.BUNDLE_CSS + sanap_assets.BUNDLE_PRINT_CSS:
-        css_file = open(os.path.join(proj_dir, "static", css), "r")
-        inject_css += css_file.read()
-        css_file.close()
-    source = source.replace("<head>",
-                         "<head><style type='text/css'>%s</style>" % inject_css)
-    html_infile = NamedTemporaryFile(suffix='.html')
-    html_infile.write(source.encode("utf-8"))
-    html_infile.flush()
-
-    pdf_outfile = NamedTemporaryFile(suffix='.pdf')
-
-    retcode = subprocess.call(['wkhtmltopdf', '-O', 'Landscape', '-q',
-                                html_infile.name, pdf_outfile.name])
-    response = send_file(pdf_outfile.name, mimetype='application/pdf')
+    pdf_file = export_pdf(survey)
+    response = send_file(pdf_file.name, mimetype='application/pdf')
     response.headers['Content-Disposition'] = ('attachment; filename="%s"'
                                                % filename)
 
-    pdf_outfile.close()
-    html_infile.close()
+    pdf_file.close()
+    return response
 
+
+@survey.route("/report/<string:survey_id>")
+@login_required
+def report(survey_id):
+    survey = Survey.objects.get_or_404(id=survey_id)
+    filename = 'sanap-%s-%s.pdf' % (survey.country,
+                                datetime.now().strftime("%Y-%m-%d %H.%M"))
+
+    pdf_file = export_pdf(survey)
+    zip_file = NamedTemporaryFile(suffix='.zip')
+    tmp_name = zip_file.name
+    zip_obj = zipfile.ZipFile(zip_file, "w")
+    zip_obj.write(pdf_file.name, filename)
+    for filefield in FILE_FIELDS:
+        for fileinstance in getattr(survey, filefield):
+            abspath = files.path(fileinstance)
+            arcname = "uploads/%s" % abspath.rsplit(os.sep, 1)[-1]
+            zip_obj.write(abspath, arcname)
+    zip_obj.close()
+    pdf_file.close()
+    response = send_file(tmp_name, mimetype='application/zip')
+    response.headers['Content-Disposition'] = (('attachment; '
+                                                'filename="%s-full-report.zip"')
+                                               % survey.country)
     return response
 
 
