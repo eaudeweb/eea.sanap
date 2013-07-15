@@ -168,17 +168,25 @@ def report(survey_id):
     tmp_name = zip_file.name
     zip_obj = zipfile.ZipFile(zip_file, "w")
     zip_obj.write(pdf_file.name, filename)
+    zip_required = False
     for filefield in FILE_FIELDS:
         for fileinstance in getattr(survey, filefield):
+            zip_required = True
             abspath = files.path(fileinstance)
             arcname = "uploads/%s" % abspath.rsplit(os.sep, 1)[-1]
             zip_obj.write(abspath, arcname)
     zip_obj.close()
-    pdf_file.close()
-    response = send_file(tmp_name, mimetype='application/zip')
-    response.headers['Content-Disposition'] = (('attachment; '
-                                                'filename="%s-full-report.zip"')
-                                               % survey.country)
+    if not zip_required:
+        response = send_file(pdf_file.name, mimetype='application/pdf')
+        pdf_file.close()
+        response.headers['Content-Disposition'] = ('attachment; filename="%s"'
+                                                   % filename)
+    else:
+        pdf_file.close()
+        response = send_file(tmp_name, mimetype='application/zip')
+        response.headers['Content-Disposition'] = (('attachment; '
+                                                    'filename="%s-full-report.zip"')
+                                                   % survey.country)
     return response
 
 

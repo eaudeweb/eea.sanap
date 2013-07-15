@@ -28,7 +28,7 @@
             {% endif %}
             <span class="user">by
               {% if groupby == 'user' %}{{ survey.user.name  }}{% endif %}
-              {% if groupby == 'country' %}{{ survey.country_verbose }}{% endif %}
+              {% if groupby == 'country' %}<a href="{{ url_for('survey.report', survey_id=survey.id) }}" target="_blank">{{ survey.country_verbose }}</a>{% endif %}
             </span>
           </li>
         {% endif %}
