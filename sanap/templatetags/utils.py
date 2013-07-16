@@ -1,6 +1,8 @@
 from flask import Markup
 from libs import markup
 
+from sanap.models import User
+
 
 def is_not_empty(value):
     if value:
@@ -42,3 +44,6 @@ def pretty(value):
         page = markup.page()
         page.span(Markup.escape(value), _class='simple')
         return page()
+
+def country_coordinators(value):
+    return User.objects.filter(country=value, invitee=None)

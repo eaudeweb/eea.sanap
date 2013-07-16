@@ -6,10 +6,11 @@
   {% set active_page = 'assessment' -%}
   {% include "navigation.html" %}
 
-<form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and "draft" or "final" }}">
+<form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and g.user.country and "draft" or "final" }}">
   {% if not g.user.country %}
-    <fieldset class="meta-info with-legend">
-    <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.</strong>
+    <fieldset class="meta-info-important">
+    <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.
+    The webform is disabled and it is displayed only for you to see how it looks like.</strong>
     </fieldset>
   {% endif %}
   <fieldset class="meta-info">
@@ -561,8 +562,9 @@
       </div>
     </fieldset>
 {% else %}
-  <fieldset class="meta-info with-legend">
-  <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.</strong>
+  <fieldset class="meta-info-important with-legend">
+  <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.
+  The webform is disabled and it is displayed only for you to see how it looks like.</strong>
   </fieldset>
 {% endif %}
 

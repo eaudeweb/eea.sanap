@@ -154,6 +154,14 @@ textarea {
     border-radius: 6px;
 }
 
+.ecoAsVir  .meta-info-important, .meta-info-important {
+    background: rgb(241, 232, 226);
+    border: 1px solid rgb(241, 50, 50);
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+
 .ecoAsVir .second {
 	margin-top: 30px;
 }
