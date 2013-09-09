@@ -16,7 +16,7 @@ from raven.handlers.logging import SentryHandler
 
 from sanap.models import db
 from sanap.auth import login_manager
-from sanap import auth, frameservice, survey
+from sanap import auth, frameservice, survey, report
 from sanap.forms.survey import files
 from sanap.context_processor import model_data_context
 from sanap.templatetags import pretty, is_not_empty
@@ -47,6 +47,7 @@ DEFAULT_CONFIG = {
 BLUEPRINTS = (
     auth,
     survey,
+    report,
 )
 
 CONTEXT_PROCESSORS = (
