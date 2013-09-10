@@ -15,10 +15,10 @@ from sanap.forms import SurveyForm
 report = Blueprint('report', __name__)
 
 
-FIELDS = ('public_awareness', 'adaptation_need', 'willingness', 'triggers',
-          'knowledge', 'objectives', 'integration', 'mitigation',
+FIELDS = ('public_awareness', 'adaptation_need', 'triggers', 'willingness',
+          'knowledge', 'uncertainties', 'objectives', 'integration', 'mitigation',
           'transnational_cooperation', 'barriers', 'process_stage',
-          'vertical_integration')
+          'horizontal_integration', 'vertical_integration',)
 
 
 def initialize_app(app):
@@ -50,6 +50,10 @@ def process_stats():
     return stats
 
 
+def inser_blank_space(row, nr_of_rows):
+    row += nr_of_rows
+
+
 class Report(views.MethodView):
 
     @flask_login.login_required
@@ -65,6 +69,14 @@ class Report(views.MethodView):
         for field, answers in stats.items():
             question = getattr(form, field, None)
             worksheet.write(row, 0, question.label.text)
+
+            row += 1
+
+            for answer, count in answers.items():
+                worksheet.write(row, 0, answer)
+                worksheet.write(row, 1, count)
+                row += 1
+
             row += 3
 
         workbook.close()
