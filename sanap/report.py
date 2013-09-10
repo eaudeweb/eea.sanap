@@ -37,7 +37,7 @@ def add_count(stats, field_name, value):
 
 def process_stats():
     stats = OrderedDict()
-    for survey in models.Survey.objects.all():
+    for survey in models.Survey.objects.filter(for_eea=True, draft=False):
         for field_name in FIELDS:
             value = getattr(survey, field_name, None)
             if not value:
@@ -48,10 +48,6 @@ def process_stats():
                 for item in value:
                   add_count(stats, field_name, item)
     return stats
-
-
-def inser_blank_space(row, nr_of_rows):
-    row += nr_of_rows
 
 
 class Report(views.MethodView):
