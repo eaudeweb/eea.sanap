@@ -10,6 +10,15 @@
 
 {% set exclude = ('csrf_token', 'user', 'for_eea', 'date_created', 'date_saved', 'draft', 'country') %}
 {% set groupby = 'country' %}
+
+{% if g.user.is_eea_admin %}
+
+<p>An
+    &downarrow;  <a href="{{ url_for('report.report') }}">Excel report</a> is available for download.
+</p>
+
+{% endif %}
+
 {% include '_answers.html' with context %}
 
 
