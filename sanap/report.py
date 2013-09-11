@@ -11,6 +11,7 @@ from flask import send_file
 from sanap import models
 from sanap import forms
 from sanap.model_data import *
+from sanap.auth import login_required, eea_admin
 
 
 report = Blueprint('report', __name__)
@@ -76,15 +77,19 @@ def add_dict_count(stats, field_name, dex):
         return
 
     stats.setdefault(field_name, OrderedDict())
+    if stats[field_name].items():
+        matrix_data = stats[field_name]
+    else:
+        matrix_data = OrderedDict()
 
-    matrix_data = OrderedDict()
     column_keys = [(i.id, clean_label(i.label.text)) for i in MATRIX_FIELDS_FORMS[field_name]()
                    if i.id != 'csrf_token']
 
     for key in MATRIX_FIELDS_CHOICES[field_name]:
         for col in column_keys:
             matrix_data.setdefault(key, OrderedDict())
-            matrix_data[key][col[0]] = 0
+            if not col[0] in matrix_data[key]:
+                matrix_data[key][col[0]] = 0
 
     for key, items in dex.items():
         for item in items:
@@ -96,7 +101,8 @@ def add_dict_count(stats, field_name, dex):
     for key, values in matrix_data.items():
         matrix.append((key,) + tuple(map(lambda x: x[1], values.items())))
 
-    stats[field_name] = matrix
+    stats[field_name] = matrix_data
+    stats[field_name + '_matrix'] = matrix
     return stats
 
 
@@ -119,7 +125,8 @@ def process_stats():
 
 class Report(views.MethodView):
 
-    @flask_login.login_required
+    decorators = (login_required, eea_admin)
+
     def get(self):
         stats = process_stats()
         form = forms.SurveyForm()
@@ -130,12 +137,14 @@ class Report(views.MethodView):
 
         row = 0
         for field, answers in stats.items():
+            if 'matrix' in field:
+                continue
             question = getattr(form, field, None)
             worksheet.write(row, 0, clean_label(question.label.text))
 
             row += 1
             if field in MATRIX_FIELDS:
-                for answer in answers:
+                for answer in stats[field + '_matrix']:
                     for i, item in enumerate(answer):
                         worksheet.write(row, i, item)
                     row += 1
