@@ -31,6 +31,10 @@ LANGUAGES = (
     ('TR', 'Turkish'),
 )
 
+YES_NO_DATA = (
+    'No',
+    'Yes'
+)
 
 YES_NO = (
     ('no', 'No'),
@@ -80,16 +84,15 @@ COUNTRIES = (
     ('EEA', 'EEA'),
 )
 
-
-AGREEMENT = (
-    ('strongly agree', 'strongly agree'),
-    ('agree', 'agree'),
-    ('neutral', 'neutral'),
-    ('disagree', 'disagree'),
-    ('strongly disagree', 'strongly disagree'),
-    ('don\'t know', 'don\'t know'),
+AGREEMENT_DATA = (
+    'strongly agree',
+    'agree',
+    'neutral',
+    'disagree',
+    'strongly disagree',
+    'don\'t know',
 )
-
+AGREEMENT = [(i, i) for i in AGREEMENT_DATA]
 
 LEVEL_DATA = ('very high', 'high', 'medium', 'low', 'very low', 'don\'t know')
 LEVEL = [(i, i) for i in LEVEL_DATA]

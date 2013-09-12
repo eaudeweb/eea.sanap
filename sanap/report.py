@@ -28,6 +28,40 @@ FIELDS = ('public_awareness', 'adaptation_need', 'triggers', 'willingness',
           'stakeholders_involved', 'stakeholders_contribution',
           'development_involvement', 'implementation_involvement', 'monitoring_involvement',)
 
+
+SIMPLE_FIELDS_CHOICES = {
+    'public_awareness': AGREEMENT_DATA,
+    'adaptation_need': AGREEMENT_DATA,
+    'triggers': TRIGGER_DATA,
+    'willingness': LEVEL_DATA,
+    'knowledge': AGREEMENT_DATA,
+    'uncertainties': AGREEMENT_DATA,
+    'objectives': AGREEMENT_DATA,
+    'integration': AGREEMENT_DATA,
+    'mitigation': AGREEMENT_DATA,
+    'transnational_cooperation': AGREEMENT_DATA,
+    'barriers': BARRIER_DATA,
+    'process_stage': PROCESS_STAGE_DATA,
+    'horizontal_integration': EFFECTIVENESS_DATA,
+    'vertical_integration': EFFECTIVENESS_DATA,
+    'assessment': STATUS_DATA,
+    'assessment_scale': ASSESSMENT_SCALE_DATA,
+    'needed_info': NEEDED_INFO_DATA,
+    'assessment_update': PLANNING_DATA,
+    'adaptation_options': STATUS_DATA,
+    'adaptation_scale': ADAPTATION_SCALE_DATA,
+    'identified_options': IDENTIFIED_OPTIONS_DATA,
+    'adaptation_actions': ADAPTATION_ACTIONS_DATA,
+    'prioritised_options': STATUS_DATA,
+    'monitoring_state': STATE_OF_WORK_DATA,
+    'reporting_state': STATE_OF_WORK_DATA,
+    'evaluation_state': STATE_OF_WORK_DATA,
+    'instruments': INSTRUMENTS_DATA,
+    'stakeholders_involved': YES_NO_DATA,
+    'stakeholders_contribution': STAKEHOLDERS_CONTRIBUTION_DATA,
+}
+
+
 MATRIX_FIELDS = ('sectors_assessments', 'main_instruments', 'financing_mechanisms',
                  'development_involvement', 'implementation_involvement',
                  'monitoring_involvement', 'sectors')
@@ -67,6 +101,8 @@ def clean_label(label):
 
 def add_count(stats, field_name, value):
     stats.setdefault(field_name, OrderedDict())
+    for choice in SIMPLE_FIELDS_CHOICES.get(field_name, []):
+        stats[field_name].setdefault(choice, 0)
     if value in stats[field_name]:
         stats[field_name][value] += 1
     else:
@@ -96,7 +132,9 @@ def add_dict_count(stats, field_name, dex):
     for key, items in dex.items():
         for item in items:
             matrix_data.setdefault(item, OrderedDict())
-            matrix_data[item].setdefault(key, 0)
+            if not key in matrix_data[item]:
+                for col in column_keys:
+                    matrix_data[item][col[0]] = 0
             matrix_data[item][key] += 1
 
     matrix = [('',) + tuple(map(lambda x: x[1], column_keys))]

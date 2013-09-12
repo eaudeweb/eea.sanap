@@ -175,8 +175,7 @@ class SurveyForm(_SurveyForm):
     assessment_subnational_files = CustomFileField(Q['files'],
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
-    sectors_assessments = wtf.FormField(SectorsAssessmentsForm,
-        label=Q['17'],
+    sectors_assessments = wtf.FormField(SectorsAssessmentsForm,label=Q['17'],
         widget=MatrixCheckboxWidget(data=SECTORS_EXTENDED, label=Q['17'],
                      title='Coverage /<br />Sectors', id='sectors-assessments'))
 
