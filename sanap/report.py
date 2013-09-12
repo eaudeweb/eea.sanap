@@ -22,7 +22,7 @@ FIELDS = ('public_awareness', 'adaptation_need', 'triggers', 'willingness',
           'transnational_cooperation', 'barriers', 'process_stage',
           'horizontal_integration', 'vertical_integration', 'assessment',
           'assessment_scale', 'sectors_assessments', 'needed_info',
-          'assessment_update', 'adaptation_options', 'identified_options',
+          'assessment_update', 'adaptation_options', 'adaptation_scale', 'identified_options',
           'adaptation_actions', 'prioritised_options', 'monitoring_state', 'reporting_state',
           'evaluation_state', 'instruments', 'main_instruments', 'financing_mechanisms',
           'stakeholders_involved', 'stakeholders_contribution',
@@ -60,6 +60,7 @@ def initialize_app(app):
 
 def clean_label(label):
     label = label.replace('<b>', '').replace('</b>', '')
+    label = label.replace('<strong>', '').replace('</strong>', '')
     return label
 
 
