@@ -176,6 +176,7 @@ class SurveyForm(_SurveyForm):
        validators=[wtf.file_allowed(files, 'Document is not valid')])
 
     sectors_assessments = wtf.FormField(SectorsAssessmentsForm,
+        label=Q['17'],
         widget=MatrixCheckboxWidget(data=SECTORS_EXTENDED, label=Q['17'],
                      title='Coverage /<br />Sectors', id='sectors-assessments'))
 
@@ -242,6 +243,7 @@ class SurveyForm(_SurveyForm):
         validators=[wtf.validators.optional()])
 
     main_instruments = wtf.FormField(MainInstrumentsForm,
+        label=Q['33'],
         widget=MatrixCheckboxWidget(data=MAIN_INSTRUMENTS, id='main-instruments',
                                     title="Sectors / Instruments",
                                     label=Q['33']))
@@ -249,6 +251,7 @@ class SurveyForm(_SurveyForm):
     main_instruments_considered = wtf.TextAreaField(Q['34'])
 
     financing_mechanisms = wtf.FormField(MainInstrumentsForm,
+        label=Q['35'],
         widget=MatrixCheckboxWidget(data=FINANCING_MECHANISMS, label=Q['35'],
                                     id='financing-mechanisms',
                                     title="Financing mechanisms / Sectors"))
@@ -272,16 +275,19 @@ class SurveyForm(_SurveyForm):
                                          validators=[wtf.validators.optional()])
 
     development_involvement = wtf.FormField(InvolmentForm,
+        label=Q['development_phase'],
         widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='development-involvement',
                                     label=Q['development_phase'],
                                     title='Stakeholders / Format of involvement'))
 
     implementation_involvement = wtf.FormField(InvolmentForm,
+        label=Q['implementation_phase'],
         widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='implementation-involvement',
                                     label=Q['implementation_phase'],
                                     title='Stakeholders / Format of involvement'))
 
     monitoring_involvement = wtf.FormField(InvolmentForm,
+        label=Q['monitor_evaluate_phase'],
         widget=MatrixCheckboxWidget(data=INVOLVEMENT, id='monitoring-involvement',
                                     label=Q['monitor_evaluate_phase'],
                                     title='Stakeholders / Format of involvement'))

@@ -20,8 +20,9 @@ report = Blueprint('report', __name__)
 FIELDS = ('public_awareness', 'adaptation_need', 'triggers', 'willingness',
           'knowledge', 'uncertainties', 'objectives', 'integration', 'mitigation',
           'transnational_cooperation', 'barriers', 'process_stage',
-          'horizontal_integration', 'vertical_integration', 'sectors_assessments',
-          'needed_info', 'assessment_update', 'adaptation_options', 'identified_options',
+          'horizontal_integration', 'vertical_integration', 'assessment',
+          'assessment_scale', 'sectors_assessments', 'needed_info',
+          'assessment_update', 'adaptation_options', 'identified_options',
           'adaptation_actions', 'prioritised_options', 'monitoring_state', 'reporting_state',
           'evaluation_state', 'instruments', 'main_instruments', 'financing_mechanisms',
           'stakeholders_involved', 'stakeholders_contribution',
@@ -63,8 +64,7 @@ def clean_label(label):
 
 
 def add_count(stats, field_name, value):
-    if not field_name in stats:
-        stats.setdefault(field_name, OrderedDict())
+    stats.setdefault(field_name, OrderedDict())
     if value in stats[field_name]:
         stats[field_name][value] += 1
     else:
@@ -108,6 +108,9 @@ def add_dict_count(stats, field_name, dex):
 
 def process_stats():
     stats = OrderedDict()
+    for field_name in FIELDS:
+        stats[field_name] = OrderedDict()
+
     for survey in models.Survey.objects.filter(for_eea=True, draft=False):
         for field_name in FIELDS:
             value = getattr(survey, field_name, None)
