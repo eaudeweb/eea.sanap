@@ -24,14 +24,13 @@ FIELDS = ('public_awareness', 'adaptation_need', 'triggers', 'willingness',
           'assessment_scale', 'sectors_assessments', 'needed_info',
           'assessment_update', 'adaptation_options', 'adaptation_scale', 'identified_options',
           'adaptation_actions', 'prioritised_options', 'monitoring_state', 'reporting_state',
-          'evaluation_state', 'instruments', 'main_instruments', 'financing_mechanisms',
+          'evaluation_state', 'sectors', 'instruments', 'main_instruments', 'financing_mechanisms',
           'stakeholders_involved', 'stakeholders_contribution',
           'development_involvement', 'implementation_involvement', 'monitoring_involvement',)
 
-
 MATRIX_FIELDS = ('sectors_assessments', 'main_instruments', 'financing_mechanisms',
                  'development_involvement', 'implementation_involvement',
-                 'monitoring_involvement')
+                 'monitoring_involvement', 'sectors')
 
 
 MATRIX_FIELDS_FORMS = {
@@ -41,6 +40,7 @@ MATRIX_FIELDS_FORMS = {
     'development_involvement': forms.InvolmentForm,
     'implementation_involvement': forms.InvolmentForm,
     'monitoring_involvement': forms.InvolmentForm,
+    'sectors': forms.SectorsForm,
 }
 
 
@@ -51,6 +51,7 @@ MATRIX_FIELDS_CHOICES = {
     'development_involvement': INVOLVEMENT_DATA,
     'implementation_involvement': INVOLVEMENT_DATA,
     'monitoring_involvement': INVOLVEMENT_DATA,
+    'sectors': SECTORS_DATA,
 }
 
 
