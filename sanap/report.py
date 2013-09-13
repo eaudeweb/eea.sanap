@@ -145,6 +145,57 @@ def add_dict_count(stats, field_name, dex):
     stats[field_name + '_matrix'] = matrix
     return stats
 
+def add_sectors_count(stats, field_name, dex):
+    stats.setdefault(field_name, OrderedDict())
+
+    column_keys = [(i.id, clean_label(i.label.text)) for i in MATRIX_FIELDS_FORMS[field_name]()
+                   if i.id != 'csrf_token'][:3]
+    choices = [i for i in MATRIX_FIELDS_CHOICES[field_name]]
+
+    if stats[field_name].items():
+        matrix_data = stats[field_name]
+    else:
+        matrix_data = OrderedDict()
+
+    for key in column_keys:
+        matrix_data.setdefault(key[0], OrderedDict())
+
+    for data in matrix_data:
+        for choice in choices:
+            matrix_data[data].setdefault(choice, OrderedDict([
+                ('0-1', 0),
+                ('2-3', 0),
+                ('4-5-6', 0),
+            ]))
+
+    for key, items in dex.items():
+        if key not in [c[0] for c in column_keys]:
+            continue
+        for item, count in items.items():
+            try:
+                count = int(count)
+            except ValueError:
+                count = 0
+            if int(count) in range(0, 2):
+                matrix_data[key][item]['0-1'] += 1
+            if int(count) in range(2, 4):
+                matrix_data[key][item]['2-3'] += 1
+            if int(count) in range(4, 6):
+                matrix_data[key][item]['4-5-6'] += 1
+
+    matrix = []
+    for key, items in matrix_data.items():
+        matrix.append((dict(column_keys)[key], '', '', ''))
+        matrix.append(('', '0-1', '2-3', '4-5-6'))
+        for choice, values in items.items():
+            matrix.append((choice,) + tuple(values.values()))
+        matrix.append(('', '', '', ''))
+
+    stats[field_name] = matrix_data
+    stats[field_name + '_matrix'] = matrix
+
+    return stats
+
 
 def process_stats():
     stats = OrderedDict()
@@ -155,6 +206,9 @@ def process_stats():
         for field_name in FIELDS:
             value = getattr(survey, field_name, None)
             if not value:
+                continue
+            if field_name == 'sectors':
+                add_sectors_count(stats, field_name, value)
                 continue
             if isinstance(value, basestring):
                 add_count(stats, field_name, value)

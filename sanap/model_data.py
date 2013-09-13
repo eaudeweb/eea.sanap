@@ -359,6 +359,7 @@ Q = {
     '30b': '<b>Reporting</b>',
     '30c': '<b>Evaluation</b>',
     'p2comments': 'In case you have selected "Under development" or "Currently being implemented", please provide additional information and upload related documents.',
+    '31': '31. Please highlight the relevant sectors/areas in your country and assess the current state of adaptation at various levels:',
     '32': '32. Are you using policy instruments (see question 33 below for examples) for implementing adaptation actions?',
     '33': '33. If you are already using instruments for implementing adaptation, what are the main instruments in the different sectors in your country?',
     '34': '34. If (additional) instruments for implementation are planned in your country, what are the main instruments you are considering?',
