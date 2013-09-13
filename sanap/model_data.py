@@ -371,6 +371,7 @@ Q = {
     'development_phase': 'From the national perspective, what has been the involvement of stakeholders in the <strong>development phase</strong> of the adaptation policy process?',
     'implementation_phase': 'From the national perspective, what has been the involvement of stakeholders in the <strong>implementation phase</strong> of the adaptation policy process?',
     'monitor_evaluate_phase': 'From the national perspective, what has been the involvement of stakeholders in the <strong>monitoring and evaluation</strong> of the adaptation policy process?',
+    '40': '40. The three tables below allow you to identify the stakeholders involved and the format of their involvement for the development (1st table), implementation (2nd table) and monitoring and evaluation (3rd table) phases of the adaptation process.',
     '41': '41. From your experience, what are the three most important elements in running a successful stakeholders process?',
     'p4comments': 'Please use the box below to provide any further comments and thoughts related to the questions above or any information that you wish to share with us (e.g. reports, references):',
     'risk_assessments': 'Risk or vulnerability assessments (e.g. consider other sectors)',

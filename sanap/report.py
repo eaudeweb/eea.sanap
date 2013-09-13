@@ -182,6 +182,11 @@ class Report(views.MethodView):
         for field, answers in stats.items():
             if 'matrix' in field:
                 continue
+
+            if field == 'development_involvement':
+                worksheet.write(row, 0, clean_label(Q['40']))
+                row += 2
+
             question = getattr(form, field, None)
             worksheet.write(row, 0, clean_label(question.label.text))
 
