@@ -269,13 +269,20 @@ class Report(views.MethodView):
         worksheet = workbook.add_worksheet()
 
         row = 0
+        worksheet.write(row, 0,"Self-assessment of the adaptation policy process in EEA member countries")
+        row += 3
+
         for field, answers in stats.items():
             if 'matrix' in field:
                 continue
 
-
-
             if field == 'development_involvement':
+                worksheet.write(row, 0, clean_label(Q['40']))
+                row += 2
+            elif field == 'monitoring_state':
+                worksheet.write(row, 0, clean_label(Q['30']))
+                row += 2
+            elif field == 'development_involvement':
                 worksheet.write(row, 0, clean_label(Q['40']))
                 row += 2
 
@@ -283,13 +290,15 @@ class Report(views.MethodView):
             worksheet.write(row, 0, clean_label(question.label.text))
 
             if field == 'sectors':
+                worksheet.write(row, 0, clean_label(Q['31']))
+                row += 2
                 for answer in sectors_stats[field + '_matrix']:
                     for i, item in enumerate(answer):
                         worksheet.write(row, i, item)
                     row += 1
-                row += 1
+                row += 3
 
-            row += 1
+            row += 2
             if field in MATRIX_FIELDS:
                 for answer in stats[field + '_matrix']:
                     for i, item in enumerate(answer):
@@ -300,7 +309,7 @@ class Report(views.MethodView):
                     worksheet.write(row, 0, answer)
                     worksheet.write(row, 1, count)
                     row += 1
-            row += 3
+            row += 10
 
         workbook.close()
         output.seek(0)
