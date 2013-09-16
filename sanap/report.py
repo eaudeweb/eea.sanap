@@ -270,7 +270,7 @@ class Report(views.MethodView):
 
         row = 0
         worksheet.write(row, 0,"Self-assessment of the adaptation policy process in EEA member countries")
-        row += 2
+        row += 3
 
         for field, answers in stats.items():
             if 'matrix' in field:
@@ -296,9 +296,9 @@ class Report(views.MethodView):
                     for i, item in enumerate(answer):
                         worksheet.write(row, i, item)
                     row += 1
-                row += 1
+                row += 3
 
-            row += 1
+            row += 2
             if field in MATRIX_FIELDS:
                 for answer in stats[field + '_matrix']:
                     for i, item in enumerate(answer):
@@ -309,7 +309,7 @@ class Report(views.MethodView):
                     worksheet.write(row, 0, answer)
                     worksheet.write(row, 1, count)
                     row += 1
-            row += 3
+            row += 10
 
         workbook.close()
         output.seek(0)
