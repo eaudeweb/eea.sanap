@@ -355,6 +355,7 @@ Q = {
     '27': '27. Have the adaptation options been included in an action plan?',
     '28': u'28. Please provide a maximum of three examples of what you would consider as ‘good practices’ in adaptation that have already been put in place in your country. Please indicate why they are considered to be ‘good practice’?',
     '29': '29. What are your plans for integrating new information and insights into existing adaptation policies?',
+    '30': u'30. In my country, monitoring, reporting and evaluating schemes for adaptation policies are …',
     '30a': '<b>Monitoring</b>',
     '30b': '<b>Reporting</b>',
     '30c': '<b>Evaluation</b>',
