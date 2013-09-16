@@ -110,7 +110,7 @@ def add_count(stats, field_name, value):
     return stats
 
 
-def add_dict_count(stats, field_name, dex):
+def add_dict_count(stats, field_name, dex, columns=[]):
     if not bool([item for sublist in dex.values() for item in sublist]):
         return
 
@@ -122,6 +122,8 @@ def add_dict_count(stats, field_name, dex):
 
     column_keys = [(i.id, clean_label(i.label.text)) for i in MATRIX_FIELDS_FORMS[field_name]()
                    if i.id != 'csrf_token']
+    if columns:
+        column_keys = [i for i in column_keys if i[0] in columns]
 
     for key in MATRIX_FIELDS_CHOICES[field_name]:
         for col in column_keys:
@@ -130,6 +132,8 @@ def add_dict_count(stats, field_name, dex):
                 matrix_data[key][col[0]] = 0
 
     for key, items in dex.items():
+        if columns and key not in columns:
+            continue
         for item in items:
             matrix_data.setdefault(item, OrderedDict())
             if not key in matrix_data[item]:
@@ -144,6 +148,7 @@ def add_dict_count(stats, field_name, dex):
     stats[field_name] = matrix_data
     stats[field_name + '_matrix'] = matrix
     return stats
+
 
 def add_sectors_count(stats, field_name, dex):
     stats.setdefault(field_name, OrderedDict())
@@ -226,6 +231,8 @@ def add_sectors_count(stats, field_name, dex):
 
 def process_stats():
     stats = OrderedDict()
+    sectors_stats = OrderedDict()
+
     for field_name in FIELDS:
         stats[field_name] = OrderedDict()
 
@@ -236,6 +243,8 @@ def process_stats():
                 continue
             if field_name == 'sectors':
                 add_sectors_count(stats, field_name, value)
+                add_dict_count(sectors_stats, field_name, value,
+                               columns='priority_sectors')
                 continue
             if isinstance(value, basestring):
                 add_count(stats, field_name, value)
@@ -244,7 +253,7 @@ def process_stats():
                   add_count(stats, field_name, item)
             if isinstance(value, dict):
                 add_dict_count(stats, field_name, value)
-    return stats
+    return (stats, sectors_stats)
 
 
 class Report(views.MethodView):
@@ -252,7 +261,7 @@ class Report(views.MethodView):
     decorators = (login_required, eea_admin)
 
     def get(self):
-        stats = process_stats()
+        stats, sectors_stats = process_stats()
         form = forms.SurveyForm()
         output = StringIO()
 
@@ -264,12 +273,21 @@ class Report(views.MethodView):
             if 'matrix' in field:
                 continue
 
+
+
             if field == 'development_involvement':
                 worksheet.write(row, 0, clean_label(Q['40']))
                 row += 2
 
             question = getattr(form, field, None)
             worksheet.write(row, 0, clean_label(question.label.text))
+
+            if field == 'sectors':
+                for answer in sectors_stats[field + '_matrix']:
+                    for i, item in enumerate(answer):
+                        worksheet.write(row, i, item)
+                    row += 1
+                row += 1
 
             row += 1
             if field in MATRIX_FIELDS:
