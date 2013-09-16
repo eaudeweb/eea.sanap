@@ -183,12 +183,39 @@ def add_sectors_count(stats, field_name, dex):
             if int(count) in range(4, 6):
                 matrix_data[key][item]['4-5-6'] += 1
 
+    matrix_data_2 = OrderedDict()
+    for choice in choices:
+        matrix_data_2[choice] = OrderedDict()
+
+    for data in matrix_data_2:
+        for col in column_keys:
+            matrix_data_2[data].setdefault(col[0], OrderedDict([
+                ('0-1', 0),
+                ('2-3', 0),
+                ('4-5-6', 0),
+            ]))
+
+    for key, items in matrix_data.items():
+        for choice, values in items.items():
+            matrix_data_2[choice][key]['0-1'] = values['0-1']
+            matrix_data_2[choice][key]['2-3'] = values['2-3']
+            matrix_data_2[choice][key]['4-5-6'] = values['4-5-6']
+
     matrix = []
     for key, items in matrix_data.items():
         matrix.append((dict(column_keys)[key], '', '', ''))
         matrix.append(('', '0-1', '2-3', '4-5-6'))
         for choice, values in items.items():
             matrix.append((choice,) + tuple(values.values()))
+        matrix.append(('', '', '', ''))
+    matrix.append(('', '', '', ''))
+    matrix.append(('', '', '', ''))
+
+    for key, items in matrix_data_2.items():
+        matrix.append((key, '', '', ''))
+        matrix.append(('', '0-1', '2-3', '4-5-6'))
+        for choice, values in items.items():
+            matrix.append((dict(column_keys)[choice],) + tuple(values.values()))
         matrix.append(('', '', '', ''))
 
     stats[field_name] = matrix_data
