@@ -22,10 +22,11 @@ def pretty(value):
             elif isinstance(v, dict) and v:
                 subul = markup.page()
                 subul.ul(_class='subdict')
-                subul.li()
-                subul.span('%s: ' % v.keys()[0])
-                subul.span(Markup.escape(v.values()[0]))
-                subul.li.close()
+                for subk, subv in v.items():
+                    subul.li()
+                    subul.span('%s: ' % subk)
+                    subul.span(Markup.escape(subv))
+                    subul.li.close()
                 subul.ul.close()
                 pretty_value = subul()
             elif v:
