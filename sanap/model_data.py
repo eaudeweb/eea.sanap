@@ -37,8 +37,8 @@ YES_NO_DATA = (
 )
 
 YES_NO = (
-    ('no', 'No'),
-    ('yes', 'Yes'),
+    ('No', 'No'),
+    ('Yes', 'Yes'),
 )
 
 
