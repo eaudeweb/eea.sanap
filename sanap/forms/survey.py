@@ -56,6 +56,8 @@ class MainInstrumentsForm(wtf.Form):
 
     spatial_planning = MultiCheckboxField()
 
+    disaster_risk_reduction  = MultiCheckboxField()
+
     civil_protection = MultiCheckboxField()
 
     industry = MultiCheckboxField()
