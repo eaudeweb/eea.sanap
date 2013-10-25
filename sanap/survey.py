@@ -208,7 +208,7 @@ survey.add_url_rule('/contacts', view_func=Contacts.as_view('contacts'))
 
 class Dashboard(views.MethodView):
 
-    decorators = (login_required, eea_admin)
+    decorators = (eea_admin, login_required)
 
     def get(self):
         form = SurveyForm()
