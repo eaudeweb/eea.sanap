@@ -25,7 +25,7 @@ setup(
                       'webassets==0.8',
                       'pymongo==2.4.2',
                       'mongoengine==0.7.9',
-                      'flask-mongoengine',
+                      'flask-mongoengine==0.6',
                       'WTForms==1.0.3',
                       'path.py==3.0.1',
                       'requests==1.1.0',
