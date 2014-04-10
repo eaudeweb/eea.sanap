@@ -28,7 +28,14 @@
             {% endif %}
             <span class="user">by
               {% if groupby == 'user' %}{{ survey.user.name  }}{% endif %}
-              {% if groupby == 'country' %}<a href="{{ url_for('survey.report', survey_id=survey.id) }}" target="_blank">{{ survey.country_verbose }}</a>{% endif %}
+              {% if groupby == 'country' -%}
+                <a href="{{ url_for('survey.report', survey_id=survey.id) }}"
+                   target="_blank">{{ survey.country_verbose }}</a>
+                {% if field.name == 'lead_organisation' %}
+                  (<a href="{{ url_for('survey.edit', survey_id=survey.id) }}"
+                      target="_blank">edit</a>)
+                {% endif %}
+              {% endif %}
             </span>
           </li>
         {% endif %}
