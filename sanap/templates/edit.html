@@ -6,7 +6,8 @@
   {% set active_page = 'assessment' -%}
   {% include "navigation.html" %}
 
-<form method="POST" enctype="multipart/form-data" class="ecoAsVir {{ form.draft.data and g.user.country and "draft" or "final" }}">
+<form method="POST" enctype="multipart/form-data"
+      class="ecoAsVir {{ can_edit and "draft" or "final" }}">
   {% if not g.user.country %}
     <fieldset class="meta-info-important">
     <strong>You need to contact your country coordinator if you want to contribute to this self-assessment.
@@ -14,9 +15,16 @@
     </fieldset>
   {% endif %}
   <fieldset class="meta-info">
-    {% if not form.draft.data %}
+
+    {% if not form.draft.data or (can_edit and not form.draft.data) %}
       <p class="highlight">
-        This self-assessment has been submitted. You can no longer contribute to this self-assessment.
+
+        {% if can_edit %}
+          This self-assessment has been submitted.
+        {% elif not form.draft.data %}
+          This self-assessment has been submitted. You can no longer contribute to this self-assessment.
+        {% endif %}
+
         <br />
         <span class="hide">You can <a href="{{ url_for("survey.export", survey_id=survey_id) }}">download a PDF</a> of your answers or you can
         <a href="{{ url_for("survey.report", survey_id=survey_id) }}">download a ZIP bundle</a>, including any uploaded files in this self-assessment.</span>
@@ -526,7 +534,16 @@
     </div>
 
   </fieldset>
-{% if g.user.country %}
+{% if g.user.is_eea_admin %}
+
+  <fieldset class="meta-info">
+    <div class="row">
+      <input type="hidden" name="draft"
+             value="{% if form.draft.data %}y{% endif %}" />
+      <button name="save_changes" value="" type="submit">Save Changes</button>
+    </div>
+  </fieldset>
+{% elif g.user.country %}
     <fieldset class="meta-info with-legend">
       <legend>Thank you for your contribution!</legend>
       <div class="row">

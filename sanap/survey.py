@@ -85,13 +85,26 @@ class Edit(views.MethodView):
         else:
             form = SurveyForm()
 
-        return render_template('edit.html', form=form, survey_id=survey_id)
+
+        if form.draft.data and g.user.country:
+            can_edit = True
+        elif g.user.is_eea_admin and not form.draft.data:
+            can_edit = True
+        else:
+            can_edit = False
+
+        return render_template(
+                    'edit.html',
+                    form=form,
+                    survey_id=survey_id,
+                    can_edit=can_edit)
 
     def post(self, survey_id=None):
         if survey_id:
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
-            if not survey.draft:
+            existing_user = survey.user
+            if not survey.draft and not g.user.is_eea_admin:
                 flash(('Your changes were not saved. This self-assessment'
                        ' has been previously submitted and closed.'), 'error')
                 return render_template('edit.html', form=form)
@@ -101,6 +114,7 @@ class Edit(views.MethodView):
         if form.validate():
             obj = form.save(survey=survey)
             pdf = request.form.get('export_pdf', '')
+
             if obj.draft:
                 flash_msg = 'Your self-assessment has been saved as a draft. '
                 if obj.for_eea:
@@ -109,6 +123,13 @@ class Edit(views.MethodView):
                 else:
                     flash_msg += ('When it is final, don\'t forget to submit the'
                                   ' final version to your country coordinator.')
+
+            elif not obj.draft and g.user.is_eea_admin: #edit after submit
+                obj.user = existing_user
+                obj.country = existing_user.country
+                obj.save()
+                flash_msg = 'Saved changes.'
+
             else:
                 obj.user = flask_login.current_user._get_current_object()
                 obj.save()
@@ -118,6 +139,7 @@ class Edit(views.MethodView):
                 else:
                     flash_msg = 'Your self-assessment has been submitted.'
                     emails.contact_submitted(obj)
+
             if pdf:
                 flash_msg += ("""<br /><br />The <img src="../static/img/pdf.png" /> PDF
                               of your latest version of the self-assessment is ready;
