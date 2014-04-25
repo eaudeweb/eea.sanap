@@ -52,6 +52,10 @@ class User(db.Document, UserMixin):
         return self.country == 'EEA'
 
     @property
+    def is_manager(self):
+        return self.id in ['isoarst', 'prutsand']
+
+    @property
     def is_contact(self):
         return bool(self.invitee)
 

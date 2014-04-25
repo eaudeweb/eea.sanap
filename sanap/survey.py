@@ -88,7 +88,7 @@ class Edit(views.MethodView):
 
         if form.draft.data and g.user.country:
             can_edit = True
-        elif g.user.is_eea_admin and not form.draft.data:
+        elif g.user.is_manager and not form.draft.data:
             can_edit = True
         else:
             can_edit = False
@@ -104,7 +104,7 @@ class Edit(views.MethodView):
             survey = Survey.objects.get_or_404(id=survey_id)
             form = SurveyForm(obj=survey)
             existing_user = survey.user
-            if not survey.draft and not g.user.is_eea_admin:
+            if not survey.draft and not g.user.is_manager:
                 flash(('Your changes were not saved. This self-assessment'
                        ' has been previously submitted and closed.'), 'error')
                 return render_template('edit.html', form=form)
@@ -124,7 +124,7 @@ class Edit(views.MethodView):
                     flash_msg += ('When it is final, don\'t forget to submit the'
                                   ' final version to your country coordinator.')
 
-            elif not obj.draft and g.user.is_eea_admin: #edit after submit
+            elif not obj.draft and g.user.is_manager: #edit after submit
                 obj.user = existing_user
                 obj.country = existing_user.country
                 obj.save()

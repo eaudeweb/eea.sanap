@@ -31,7 +31,7 @@
               {% if groupby == 'country' -%}
                 <a href="{{ url_for('survey.report', survey_id=survey.id) }}"
                    target="_blank">{{ survey.country_verbose }}</a>
-                {% if field.name == 'lead_organisation' %}
+                {% if field.name == 'lead_organisation' and g.user.is_manager %}
                   (<a href="{{ url_for('survey.edit', survey_id=survey.id) }}"
                       target="_blank">edit</a>)
                 {% endif %}
