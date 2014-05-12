@@ -50,8 +50,8 @@ class ListTextAreaWidget(object):
             page.li()
             value = field.data.get(subfield.data, '') if field.data else ''
             page.textarea(value, name=subfield.name, id=subfield.id,
-                          class_='cell')
-            page.textarea.close()
+                          class_='cell visible')
+            #page.textarea.close()
             page.li.close()
         page.ul.close()
         return page()
