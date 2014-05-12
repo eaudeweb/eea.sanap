@@ -41,6 +41,7 @@ def export_pdf(survey):
     pdf_outfile = NamedTemporaryFile(suffix='.pdf')
 
     retcode = subprocess.call(['wkhtmltopdf', '-O', 'Landscape', '-q',
+                                '--print-media-type',
                                 html_infile.name, pdf_outfile.name])
     html_infile.close()
     return pdf_outfile

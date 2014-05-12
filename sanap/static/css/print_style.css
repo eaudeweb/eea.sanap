@@ -12,6 +12,7 @@ a:link, a:visited {
    font-size: 90%;
 }
 
+
 .other a,
 textarea,
 input[type="file"],
@@ -27,6 +28,69 @@ input[type="file"],
 .export,
 .scroll-top {
     display: none;
+}
+
+@media print {
+    table, tr, td, th, tbody, thead, tfoot {
+        page-break-inside: avoid !important;
+    }
+    .visible {
+        display: block !important;
+    }
+    input[type='radio'], input[type='checkbox'] {
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+    label {
+        line-height: 19px;
+        font-weight: normal !important;
+    }
+    .question > label,
+    fieldset > .has-follower > label {
+        font-weight: bold !important;
+    }
+    * {
+        font-size: inherit!important;
+        color: #333!important;
+    }
+    body {
+        font-size: 12px!important;
+    }
+    table {
+        border-collapse: collapse;
+        border: 1pt solid #ddd;
+    }
+    .ecoAsVir .matrix li {
+        width: auto;
+    }
+    #sectors-assessments td > div,
+    #sectors-assessments td > ul > li {
+        height: 14.25pt;
+        overflow: hidden;
+    }
+    #main-instruments table td displayv,
+    #main-instruments table td li {
+        font-size: 75%!important;
+    }
+    table.matrix td > div {
+        vertical-align: top;
+    }
+    fieldset legend {
+        margin-left: 0!important;
+    }
+    .meta-info .highlight, button, .hide_on_print {
+        display: none;
+    }
+    .lead_organisation {
+        font-size: 150%!important;
+        font-weight: bold!important;
+    }
+    #organisations {
+        font-weight: bold!important;
+        border: 0;
+        width: 1000%!important;
+        white-space: normal;
+    }
 }
 
 .print-only {
@@ -66,10 +130,10 @@ body,
 
 .ecoAsVir .matrix {
     margin-left: 0px;
-    break-inside: avoid !important; 
+    break-inside: avoid !important;
 }
 
-.ecoAsVir .matrix th { 
+.ecoAsVir .matrix th {
     font-weight: normal;
     font-size: 11px;
 }

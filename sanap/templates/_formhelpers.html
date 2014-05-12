@@ -15,8 +15,8 @@
 
 {% endmacro %}
 
-{% macro textarea_readonly(field) %}
-      <div class="print-only">
+{% macro textarea_readonly(field, class_='') %}
+      <div class="print-only {{ class_ }}">
         {% if field.data %}
         {{ field.data|escape }}
         {% else %}

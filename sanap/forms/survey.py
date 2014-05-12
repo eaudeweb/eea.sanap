@@ -97,7 +97,7 @@ class SurveyForm(_SurveyForm):
 
     draft = CustomBoolean(default=True)
 
-    lead_organisation = wtf.TextField(Q['lead_organisation'])
+    lead_organisation = wtf.TextAreaField(Q['lead_organisation'])
 
     organisations = Tagit(Q['organisations'])
 

@@ -33,6 +33,7 @@
 
     <div class="row">
       {{ render_field(form.lead_organisation) }}
+      {{ textarea_readonly(form.lead_organisation, class_='lead_organisation') }}
     </div>
 
     <div class="row">
@@ -127,7 +128,7 @@
       {{ textarea_readonly(form.part1_comments) }}
     </div>
 
-    <div class="row lastOfType">
+    <div class="row lastOfType hide_on_print">
       {{ render_field(form.part1_files) }}
     </div>
 
