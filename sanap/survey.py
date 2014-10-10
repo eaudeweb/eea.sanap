@@ -25,6 +25,7 @@ def initialize_app(app):
 
 def export_pdf(survey):
     """Generate pdf file out of a Survey object. File handler left open"""
+    g.is_pdf = True
     proj_dir = os.path.dirname(__file__)
     source = Edit().get(survey.id)
     inject_css = ''
@@ -94,11 +95,10 @@ class Edit(views.MethodView):
         else:
             can_edit = False
 
-        return render_template(
-                    'edit.html',
-                    form=form,
-                    survey_id=survey_id,
-                    can_edit=can_edit)
+        return render_template('edit.html',
+                               form=form,
+                               survey_id=survey_id,
+                               can_edit=can_edit)
 
     def post(self, survey_id=None):
         if survey_id:
