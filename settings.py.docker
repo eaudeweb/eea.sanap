@@ -1,5 +1,5 @@
 from path import path
-from sys import env
+import os
 
 DEBUG = False
 
@@ -24,6 +24,6 @@ MONGODB_SETTINGS= {
 MAIL_DEFAULT_SENDER = ("Eionet Projects", "no-reply@eea.europa.eu")
 MAIL_SUPPRESS_SEND = False
 
-SECRET_KEY = env.get('SECRET_KEY', 'changeme')
-SENTRY_DSN = env.get('SENTRY_DSN', '')
-HOSTNAME = env.get('HOSTNAME', 'http://projects.eionet.europa.eu')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
+SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
+HOSTNAME = os.environ.get('HOSTNAME', 'http://projects.eionet.europa.eu')
