@@ -4,3 +4,5 @@ fabfile.py
 output
 dist
 ecosys.egg-info
+/supervisord.conf
+/settings.py

@@ -2,7 +2,7 @@ from path import path
 
 SECRET_KEY = "ekpfjwiotur3409534"
 
-DEBUG = True
+DEBUG = False
 
 UPLOADED_FILES_DEST = path(__file__).dirname().joinpath('files')
 
@@ -13,6 +13,15 @@ LDAP_SERVERS = [('ldap.eionet.europa.eu', 389),
                 ('ldap2.eionet.europa.eu', 389),
                 ('ldap3.eionet.europa.eu', 389),]
 
-HOSTNAME = 'http://projects.eionet.europa.eu/sanap/self-assessment'
+MONGODB_SETTINGS= {
+        'db': 'sanap',
+        'port': 27200,
+    }
+
+SENTRY_DSN = 'http://680d703cc9c04a029da8e77d196ae0b5:2baa9e302b244957a4878d56912feb2f@sentry.mojito.edw.ro/15'
+
+HOSTNAME = 'http://projects.eionet.europa.eu'
 
 MAIL_DEFAULT_SENDER = ("Eionet Projects", "no-reply@eea.europa.eu")
+MAIL_SUPPRESS_SEND = False
+

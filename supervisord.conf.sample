@@ -1,13 +1,13 @@
 [program:sanap]
 directory=PROJECT_ROOT/
-command=PROJECT_ROOT/bin/gunicorn --bind 127.0.0.1:5000 --workers 2 --log-file PROJECT_ROOT/var/sanap.app-instance/logs/gunicorn.log sanap.manage:app
+command=PROJECT_ROOT/bin/gunicorn --bind 127.0.0.1:5200 --workers 2 --timeout=300 --graceful-timeout=10 --log-file PROJECT_ROOT/var/sanap.app-instance/logs/gunicorn.log sanap.manage:app
 autostart=true
 autorestart=true
 redirect_stderr=true
 
 [program:mongo-sanap]
 directory=PROJECT_ROOT/
-command=PROJECT_ROOT/bin/mongod --smallfiles --oplogSize 1024 --dbpath PROJECT_ROOT/var/sanap.app-instance/data/0/ --port 27000 --logpath PROJECT_ROOT/var/sanap.app-instance/logs/mongo0.log
+command=PROJECT_ROOT/bin/mongod --smallfiles --oplogSize 128 --dbpath PROJECT_ROOT/var/sanap.app-instance/data/0/ --port 27200 --logpath PROJECT_ROOT/var/sanap.app-instance/logs/mongo0.log
 autostart=true
 autorestart=true
 redirect_stderr=true

@@ -14,7 +14,7 @@ env['target_defs'] = {
         'python': '/var/local/a/Python/bin/python',
     },
 }
-env['default_target'] = 'staging'
+env['default_target'] = 'production'
 
 
 def choose_target(func):
@@ -45,12 +45,12 @@ def pack():
 @task
 @choose_target
 def build_env():
-    """ a sad try, never actually used """
+    """ run this before the actual deploy - maybe we can integrate it there """
     mkdirp = [[""], ["var"], ["var", "sanap.app-instance"],
-	      ["var", "sanap.app-instance", "logs"],
+              ["var", "sanap.app-instance", "logs"],
               ["var", "sanap.app-instance", "files"],
               ["var", "sanap.app-instance", "supervisor"]]
-    root = env['target']['project_root']
+    root = env['target_defs'][env['target']]['project_root']
     for mkdir in mkdirp:
         directory = os.path.join(root, *mkdir)
         if not exists(directory):
