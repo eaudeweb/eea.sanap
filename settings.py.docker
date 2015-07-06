@@ -1,0 +1,29 @@
+from path import path
+import os
+
+DEBUG = False
+
+UPLOADED_FILES_DEST = path(__file__).dirname().joinpath('files')
+
+UPLOADS_FILES_URL = '/static/files'
+
+# LDAP related
+LDAP_SERVERS = [
+    ('ldap4.eionet.europa.eu', 389),
+    ('ldap.eionet.europa.eu', 389),
+    ('ldap2.eionet.europa.eu', 389),
+    ('ldap3.eionet.europa.eu', 389),
+]
+
+MONGODB_SETTINGS= {
+    'host': 'db',
+    'db': 'sanap',
+    'port': 27017,
+}
+
+MAIL_DEFAULT_SENDER = ("Eionet Projects", "no-reply@eea.europa.eu")
+MAIL_SUPPRESS_SEND = False
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
+SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
+HOSTNAME = os.environ.get('HOSTNAME', 'http://projects.eionet.europa.eu')

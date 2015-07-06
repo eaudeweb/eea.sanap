@@ -4,6 +4,10 @@
 Self Assessment for National Adaptation Policy
 
 
+## Running with docker
+
+Please see https://github.com/eea/eea.docker.sanap for details.
+
 ## Prerequisites - System packages
 
 These packages should be installed as superuser (root).
