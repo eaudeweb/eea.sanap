@@ -1,8 +1,6 @@
 from path import path
 import os
 
-DEBUG = False
-
 UPLOADED_FILES_DEST = path(__file__).dirname().joinpath('files')
 
 UPLOADS_FILES_URL = '/static/files'
@@ -27,3 +25,5 @@ MAIL_SUPPRESS_SEND = False
 SECRET_KEY = os.environ.get('SECRET_KEY', 'changeme')
 SENTRY_DSN = os.environ.get('SENTRY_DSN', '')
 HOSTNAME = os.environ.get('HOSTNAME', 'http://projects.eionet.europa.eu')
+DEBUG = os.environ.get('DEBUG', False) and True
+
